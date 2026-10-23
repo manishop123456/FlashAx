@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/site";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { ServiceVisual } from "@/components/ui/ServiceVisual";
 
@@ -9,13 +8,16 @@ export function ServicesGrid() {
   return (
     <section id="services" className="section services" aria-labelledby="services-title">
       <div className="wrap">
-        <SectionHeading
-          id="services-title"
-          eyebrow="OUR SERVICES"
-          align="center"
-          lines={["EVERYTHING YOUR IDEA NEEDS.", "ALL IN ONE PLACE."]}
-          lead="From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting, Flashax offers services to help you plan, promote and execute your next project."
-        />
+        {/* Inverted heading hierarchy — OUR SERVICES is the dominant H2 */}
+        <header className="svc-head">
+          <p className="eyebrow" style={{ justifyContent: "center" }}>WHAT WE OFFER</p>
+          <h2 id="services-title" className="svc-head__title">OUR SERVICES</h2>
+          <p className="svc-head__sub">Everything Your Idea Needs. All in One Place.</p>
+          <p className="svc-head__desc">
+            From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting,
+            Flashax offers services to help you plan, promote and execute your next project.
+          </p>
+        </header>
 
         <div className="svc-grid" role="list">
           {services.map((s) => (
