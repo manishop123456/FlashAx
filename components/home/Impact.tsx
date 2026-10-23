@@ -30,7 +30,7 @@ export function Impact() {
             campaign analytics are shared directly with prospective clients during discovery under mutual confidentiality.
           </div>
           <ButtonLink href="/contact" variant="secondary" size="sm" icon="up-right">
-            REQUEST DISCOVERY
+            GET A PROPOSAL
           </ButtonLink>
         </div>
       </div>

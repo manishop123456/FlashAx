@@ -8,7 +8,7 @@ export const siteConfig: SiteConfig = {
   email: "info.flashax@gmail.com",
   phone: "+91 7757855121",
   whatsappUrl: "https://wa.me/917757855121?text=Hello%20Flashax%20Event%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project.",
-  location: "Mumbai, Maharashtra, India",
+  location: "Mumbai-based",
   preferredDomain: "flashaxeventsolutions.in",
   navigation: [
     { label: "Home", href: "/" },
@@ -52,7 +52,7 @@ export const services: FlashaxService[] = [
     slug: "event-management",
     number: "01",
     title: "Event Management",
-    shortDescription: "End-to-end planning and coordination for corporate events, college festivals, product launches, conferences, seminars and employee engagement.",
+    shortDescription: "We plan and coordinate corporate events, college festivals, launches, conferences and other experiences around each client's objectives.",
     fullDescription: "From initial brief through to on-ground execution, we design, plan and coordinate engaging event experiences tailored to your objectives, audience and timeline. We handle venue coordination, scheduling, guest management and on-site direction with structured rigor.",
     offerings: [
       "Corporate Events",
@@ -69,7 +69,7 @@ export const services: FlashaxService[] = [
     slug: "event-production",
     number: "02",
     title: "Event Production",
-    shortDescription: "Stage setup, intelligent sound & lighting, LED screens, exhibition stalls, custom fabrication, branding, manpower and logistics.",
+    shortDescription: "We coordinate event production requirements, technical setups, branding installations, manpower and logistics according to the project scope.",
     fullDescription: "Technical excellence and operational reliability form the backbone of every memorable event. We coordinate stage builds, acoustic and lighting setups, LED video displays, exhibition stalls and fabrication, supported by trained event manpower and disciplined logistics.",
     offerings: [
       "Stage Setup",
@@ -87,7 +87,7 @@ export const services: FlashaxService[] = [
     slug: "brand-activation",
     number: "03",
     title: "Brand Activation",
-    shortDescription: "Experiential brand campaigns, product sampling, interactive promotions, influencer & celebrity coordination, roadshows and launch campaigns.",
+    shortDescription: "We help brands plan promotional activities, product experiences, roadshows and audience engagement campaigns.",
     fullDescription: "Connecting brands directly with targeted audiences through immersive and participatory experiences. We conceptualize, plan and execute on-ground product demonstrations, interactive promotional roadshows and strategic creator collaborations tailored to campaign briefs.",
     offerings: [
       "Product Promotions",
@@ -105,7 +105,7 @@ export const services: FlashaxService[] = [
     slug: "campus-marketing",
     number: "04",
     title: "Campus Marketing",
-    shortDescription: "Campus ambassador networks, college festival sponsorships, institutional outreach, student engagement, intercollegiate events and promotions.",
+    shortDescription: "We help connect brands, colleges and student communities through campus campaigns, partnerships and participation initiatives.",
     fullDescription: "Facilitating genuine collaboration between forward-thinking brands and vibrant collegiate communities. We build structured campus ambassador networks, secure high-impact festival sponsorships, and coordinate interactive student-focused campaigns across leading colleges.",
     offerings: [
       "Campus Ambassadors",
@@ -123,7 +123,7 @@ export const services: FlashaxService[] = [
     slug: "digital-marketing",
     number: "05",
     title: "Digital Marketing",
-    shortDescription: "Social media management, creative design, website development, content creation, photography, videography, video editing and digital advertising.",
+    shortDescription: "We help businesses develop their digital presence through websites, creative content, social media and promotional campaigns.",
     fullDescription: "Amplifying event moments and brand narratives across digital channels. Our creative team delivers tailored social media management, high-performance web solutions, targeted digital campaigns, and professional photo and video capture that extend your project's impact.",
     offerings: [
       "Social Media Management",
@@ -141,7 +141,7 @@ export const services: FlashaxService[] = [
     slug: "corporate-gifting",
     number: "06",
     title: "Corporate Gifting",
-    shortDescription: "Welcome kits, employee appreciation gifts, festive hampers, customized merchandise, promotional gifts, event giveaways and bespoke packaging.",
+    shortDescription: "We help businesses explore corporate gifts, welcome kits, festive hampers and customised merchandise for employees, clients and events.",
     fullDescription: "Thoughtful gifting solutions for corporate teams, festival attendees, and valued partners. We assist with sourcing, custom branding, personalized kits, premium packaging, and delivery coordination tailored to your quantity and timeline specifications.",
     offerings: [
       "Welcome Kits",
@@ -159,7 +159,7 @@ export const services: FlashaxService[] = [
     slug: "csr-programs",
     number: "07",
     title: "CSR Programs",
-    shortDescription: "Financial literacy initiatives, educational workshops, career development, entrepreneurship sessions, digital literacy and community outreach.",
+    shortDescription: "We help coordinate educational workshops, financial literacy sessions and community programs aligned with relevant CSR objectives.",
     fullDescription: "Planning and coordinating socially meaningful educational initiatives and community-aligned engagements. We organize structured workshops on financial capability, digital literacy, and youth career development aligned with our clients' community objectives.",
     offerings: [
       "Financial Literacy",

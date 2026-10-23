@@ -9,33 +9,35 @@ export const capabilities = [
     key: "plan",
     title: "PLAN",
     text: "Strategy, concepts and event planning.",
-    services: [{ label: "Event Management", slug: "event-management" }],
+    services: [
+      { label: "Event Management", slug: "event-management" },
+      { label: "CSR Programs", slug: "csr-programs" },
+    ],
   },
   {
     key: "create",
     title: "CREATE",
-    text: "Creative concepts, branding and experiences.",
+    text: "Creative concepts, branding and corporate gifts.",
     services: [
       { label: "Brand Activation", slug: "brand-activation" },
-      { label: "Digital & Creative", slug: "digital-creative" },
+      { label: "Corporate Gifting", slug: "corporate-gifting" },
     ],
   },
   {
     key: "produce",
     title: "PRODUCE",
-    text: "Production resources and coordination.",
+    text: "Production resources and technical coordination.",
     services: [
-      { label: "Production & Operations", slug: "production-operations" },
-      { label: "Exhibitions", slug: "exhibitions" },
+      { label: "Event Production", slug: "event-production" },
     ],
   },
   {
     key: "amplify",
     title: "AMPLIFY",
-    text: "Promotions, audience engagement and digital content.",
+    text: "Campus campaigns, digital content and promotions.",
     services: [
-      { label: "Campus Connect", slug: "campus-connect" },
-      { label: "Digital & Creative", slug: "digital-creative" },
+      { label: "Campus Marketing", slug: "campus-marketing" },
+      { label: "Digital Marketing", slug: "digital-marketing" },
     ],
   },
 ] as const;
@@ -102,7 +104,7 @@ export const audiences = [
   {
     key: "ngos",
     title: "Community & Institutions",
-    text: "CSR initiatives, financial literacy and educational programmes, community events and awareness drives.",
+    text: "CSR Programs, educational workshops, financial literacy sessions and community outreach initiatives.",
     services: [
       { label: "CSR Programs", slug: "csr-programs" },
       { label: "Digital Marketing", slug: "digital-marketing" },
@@ -176,14 +178,14 @@ export const faqs = [
       "We assist clients with welcome kits, employee kits, festive hampers, customised merchandise, and promotional event giveaways. You can enquire with your target quantities, branding specifications, packaging preferences, and delivery timeline.",
   },
   {
-    question: "What types of CSR and educational programs can you deliver?",
+    question: "What types of CSR Programs can you coordinate?",
     answer:
       "Our CSR Programs division organizes structured workshops on financial literacy, digital education, career development, and community outreach aligned with institutional and corporate social responsibility goals.",
   },
   {
     question: "How do I request a proposal or start an enquiry?",
     answer:
-      "Submit your project details via our enquiry form on the Let's Talk page or contact us via WhatsApp or email. We will review your brief, objectives, location, and tentative date, and schedule a discovery call.",
+      "Submit your project details via our enquiry form on the Get a Proposal page or contact us via WhatsApp or email. We will review your brief, objectives, location, and tentative date, and schedule a discovery call.",
   },
 ] as const;
 

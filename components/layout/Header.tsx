@@ -188,7 +188,7 @@ export function Header() {
 
           {/* Right CTA */}
           <ButtonLink href="/contact" size="sm" variant="primary" icon="up-right" className="header__cta">
-            LET&apos;S TALK
+            GET A PROPOSAL
           </ButtonLink>
 
           {/* Mobile hamburger */}
@@ -287,7 +287,7 @@ export function Header() {
             </Link>
             <div className="drawer__cta">
               <ButtonLink href="/contact" block variant="primary" icon="up-right" onClick={() => setDrawerOpen(false)}>
-                LET&apos;S TALK
+                GET A PROPOSAL
               </ButtonLink>
             </div>
           </nav>

@@ -214,7 +214,7 @@ export default function ContactPage() {
       <main id="main-content">
         <PageHero
           titleId="contact-hero-heading"
-          eyebrow="PROJECT ENQUIRY"
+          eyebrow="GET A PROPOSAL"
           titleLines={["HAVE AN IDEA?", "LET'S MAKE IT HAPPEN."]}
           lead="Tell us what you're planning. We will help you scope the technical requirements, production cadence, and strategic approach tailored to your event."
         />
@@ -613,7 +613,7 @@ export default function ContactPage() {
                       </Button>
                     ) : (
                       <Button type="submit" variant="primary" icon="right" disabled={isSubmitting}>
-                        {isSubmitting ? "Submitting Brief..." : "Submit Enquiry"}
+                        {isSubmitting ? "Submitting Proposal..." : "Get a Proposal"}
                       </Button>
                     )}
                   </div>

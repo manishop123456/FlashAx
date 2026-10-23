@@ -65,7 +65,7 @@ export function Footer() {
               </li>
               <li style={{ marginTop: "0.5rem" }}>
                 <Link href="/contact" style={{ color: "var(--gold)" }}>
-                  Start a project enquiry &rarr;
+                  Get a proposal &rarr;
                 </Link>
               </li>
               <li>

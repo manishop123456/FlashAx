@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { ServiceVisual } from "@/components/ui/ServiceVisual";
@@ -13,7 +12,7 @@ import { Accordion } from "@/components/ui/Accordion";
 export const metadata: Metadata = {
   title: "Our Services | FLASHAX EVENT SOLUTIONS",
   description:
-    "Explore Flashax's seven core service divisions: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, Corporate Gifting, and CSR Programs.",
+    "From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting, Flashax offers services to help you plan, promote and execute your next project.",
 };
 
 const SERVICES_FAQS = [
@@ -22,7 +21,7 @@ const SERVICES_FAQS = [
     answer: (
       <p>
         Every division operates independently. You can engage us specifically for an individual service — such as
-        production support, campus marketing, or corporate gifting — or combine multiple divisions under a single
+        event production, campus marketing, or corporate gifting — or combine multiple divisions under a single
         coordinated brief.
       </p>
     ),
@@ -31,8 +30,8 @@ const SERVICES_FAQS = [
     question: "How are project responsibilities and specialist partners coordinated?",
     answer: (
       <p>
-        Flashax directly leads strategy, concept planning, creative direction, and project coordination. When specialist
-        technical rigging, large-scale fabrication, or specialized talent is required, we coordinate vetted partners while
+        Flashax directly leads planning, creative direction and project coordination. When specialist technical
+        rigging, large-scale fabrication, or specialized talent is required, we coordinate vetted partners while
         maintaining single-source accountability for the agreed brief.
       </p>
     ),
@@ -42,7 +41,7 @@ const SERVICES_FAQS = [
     answer: (
       <p>
         After reviewing your enquiry details, we schedule an initial discovery discussion to understand your objectives,
-        audience, location, and parameters before delivering an itemised scope and timeline proposal.
+        audience, location and parameters before delivering an itemised scope and timeline proposal.
       </p>
     ),
   },
@@ -53,52 +52,72 @@ export default function ServicesPage() {
     <>
       <Header />
       <main id="main-content" role="main">
-        <PageHero
-          titleId="services-page-title"
-          eyebrow="OUR SERVICES"
-          titleLines={["SEVEN DIVISIONS.", "ONE CO-ORDINATED TEAM."]}
-          lead="From event management and brand activations to campus marketing, digital solutions and educational programs, explore Flashax's integrated service divisions."
-        />
+        {/* Services Page Hero: Inverted visual hierarchy with dominant H1 */}
+        <section className="svc-hero" aria-labelledby="services-h1">
+          <div className="wrap svc-hero__inner">
+            <span className="svc-hero__eyebrow">WHAT WE OFFER</span>
 
-        <section className="section" aria-labelledby="services-list-title">
+            <h1 id="services-h1" className="svc-hero__h1">
+              OUR SERVICES
+            </h1>
+
+            <p className="svc-hero__subheadline">
+              Everything Your Idea Needs. All in One Place.
+            </p>
+
+            <p className="svc-hero__desc">
+              From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting,
+              Flashax offers services to help you plan, promote and execute your next project.
+            </p>
+
+            <div className="svc-hero__actions">
+              <ButtonLink href="/contact" variant="primary" icon="up-right">
+                GET A PROPOSAL
+              </ButtonLink>
+              <ButtonLink href="#service-catalogue" variant="secondary" icon="down">
+                EXPLORE SERVICES
+              </ButtonLink>
+            </div>
+          </div>
+        </section>
+
+        {/* 7 Services Catalogue Grid */}
+        <section id="service-catalogue" className="section" aria-labelledby="catalogue-title">
           <div className="wrap">
-            <h2 id="services-list-title" className="sr-only">
-              All Seven Service Divisions
+            <h2 id="catalogue-title" className="sr-only">
+              Flashax Service Categories
             </h2>
-            <div className="svc-list" role="list">
+
+            <div className="svc-grid" role="list">
               {services.map((s) => (
-                <article key={s.slug} className="card svc-row" role="listitem">
-                  <div className="svc-row__media">
+                <article key={s.slug} className="card svc" role="listitem">
+                  <div className="svc__media">
+                    <span className="svc__num">{s.number}</span>
                     <ServiceVisual slug={s.slug} />
                   </div>
-                  <div className="svc-row__body">
-                    <span className="svc-row__num">SERVICE {s.number}</span>
-                    <h3 className="svc-row__title">{s.title}</h3>
-                    <p className="svc-row__text">{s.fullDescription}</p>
+                  <div className="svc__body">
+                    <h3 className="svc__title">{s.title}</h3>
+                    <p className="svc__text">{s.shortDescription}</p>
 
-                    <div>
-                      <h4 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--gold)", marginBottom: "0.6rem" }}>
-                        Key Capabilities &amp; Subservices
-                      </h4>
-                      <ul
-                        className="ticks"
-                        style={{
-                          display: "grid",
-                          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                          gap: "0.4rem 1.25rem",
-                        }}
-                        aria-label={`${s.title} subservices`}
-                      >
-                        {s.offerings.map((offering) => (
-                          <li key={offering} style={{ fontSize: "var(--fs-small)" }}>
-                            {offering}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul
+                      className="ticks"
+                      style={{
+                        margin: "0.25rem 0 0.5rem",
+                        padding: 0,
+                        display: "grid",
+                        gap: "0.35rem",
+                      }}
+                      aria-label={`${s.title} key capabilities`}
+                    >
+                      {s.offerings.slice(0, 4).map((offering) => (
+                        <li key={offering} style={{ fontSize: "var(--fs-small)" }}>
+                          {offering}
+                        </li>
+                      ))}
+                    </ul>
 
                     <Link href={`/services/${s.slug}`} className="link-arrow">
-                      EXPLORE {s.title.toUpperCase()}
+                      EXPLORE SERVICE
                       <ArrowUpRight aria-hidden="true" />
                     </Link>
                   </div>
@@ -128,7 +147,7 @@ export default function ServicesPage() {
                 </p>
               </div>
               <ButtonLink href="/contact" variant="primary" icon="up-right">
-                START A PROJECT
+                GET A PROPOSAL
               </ButtonLink>
             </div>
           </div>

@@ -24,7 +24,7 @@ export function WhoWeAre() {
             />
             <div className="who__actions">
               <ButtonLink href="/services" variant="secondary" icon="up-right">
-                EXPLORE ALL SERVICES
+                EXPLORE SERVICES
               </ButtonLink>
             </div>
           </div>

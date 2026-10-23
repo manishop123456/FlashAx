@@ -167,3 +167,31 @@ This file records decisions that should remain consistent across Antigravity, Co
   6. **Contact Wizard & API Integration:** Updated `SERVICE_OPTIONS` with the 7 new categories and legacy fallback mapping for query preselection (`/contact?service=corporate-gifting`).
 - **Rationale:** Aligns with the newly approved information architecture, strengthens conversion paths, clarifies service taxonomy, and preserves 100% of the verified brand identity.
 
+## D-018 — Content Refinement, Services Page Hero Inversion & Global CTA Standardization
+
+- **Status:** Accepted
+- **Date:** 2026-10-23
+- **Decision:**
+  1. **Services Page Hero Hierarchy Inversion:**
+     - Inverted visual hierarchy on `/services`:
+       - Eyebrow: `WHAT WE OFFER` (gold uppercase)
+       - Dominant H1: `OUR SERVICES` (massive responsive clamp ~72–112px, single line on desktop)
+       - Supporting Headline: `Everything Your Idea Needs. All in One Place.` (clamp ~26–38px)
+       - Description: Exact approved paragraph: *"From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting, Flashax offers services to help you plan, promote and execute your next project."*
+       - Action buttons: `GET A PROPOSAL` (`/contact`) and `EXPLORE SERVICES` (`#service-catalogue` with header scroll-margin offset).
+  2. **Global CTA Standardization:**
+     - Primary CTA: `GET A PROPOSAL` throughout the website (Homepage Hero, Header desktop & drawer, Services hero, Service detail pages, ServicesGrid, Impact, Testimonials, FAQs, Audiences, SelectedWork, FinalCTA, About Us, Contact form submit action, and Footer).
+     - Secondary CTA: `EXPLORE SERVICES` throughout the website.
+     - Replaced inconsistent button labels ("Let's Build Something", "Let's Talk", "Start a Project", "Explore Our World", "Collaborate With Us", "Request Discovery", "Explore All Services", "Discuss Your Project").
+  3. **Service Definitions & Subservices:**
+     - Configured the 7 approved divisions (`Event Management`, `Event Production`, `Brand Activation`, `Campus Marketing`, `Digital Marketing`, `Corporate Gifting`, `CSR Programs`) with exact approved short descriptions.
+     - Refined Services grid cards to display concise 4-bullet capabilities and direct detail links.
+  4. **Global Writing Rules & Terminology:**
+     - Standardized company location description to `Mumbai-based` everywhere.
+     - Enforced `CSR Programs` as the exact service name across all pages, metadata, and structured data.
+     - Maintained verified business facts only; zero invented clients, statistics, or testimonials.
+     - Ensured zero mention of Manish Choudhary or co-founder anywhere on the public website.
+  5. **Our Work / Portfolio Page Integrity:**
+     - Strictly untouched — zero edits to `app/work/page.tsx`, portfolio data, categories, layout, filters, or styling.
+- **Rationale:** Aligns website copy with approved editorial guidelines, establishes a clear typographic hierarchy on the Services page, and creates consistent conversion momentum across all touchpoints.
+

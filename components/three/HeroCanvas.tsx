@@ -80,10 +80,10 @@ export function Hero() {
           {/* Primary & Secondary Calls to Action */}
           <div className="hero__actions">
             <ButtonLink href="/contact" variant="primary" icon="up-right">
-              LET&apos;S BUILD SOMETHING
+              GET A PROPOSAL
             </ButtonLink>
             <ButtonLink href="#services" variant="secondary" icon="down">
-              EXPLORE OUR WORLD
+              EXPLORE SERVICES
             </ButtonLink>
           </div>
         </div>

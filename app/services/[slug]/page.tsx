@@ -149,7 +149,7 @@ export default function ServicePage({ params }: Props) {
 
               <aside className="detail__side">
                 <div className="card panel">
-                  <h3 className="panel__title">Start a Project</h3>
+                  <h3 className="panel__title">Get a Proposal</h3>
                   <p>Ready to discuss {service.title} for your upcoming event or campaign?</p>
                   <ButtonLink href={`/contact?service=${service.slug}`} variant="primary" icon="up-right" block>
                     GET A PROPOSAL

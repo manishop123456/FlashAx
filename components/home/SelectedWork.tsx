@@ -53,7 +53,7 @@ export function SelectedWork() {
               </p>
               <div className="work-empty__actions">
                 <ButtonLink href="/contact" variant="primary" icon="up-right">
-                  DISCUSS YOUR PROJECT
+                  GET A PROPOSAL
                 </ButtonLink>
               </div>
             </div>

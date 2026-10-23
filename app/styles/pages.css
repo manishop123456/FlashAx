@@ -2,6 +2,81 @@
    Interior pages: services, service detail, about, contact, 404, legal
    ========================================================================== */
 
+/* ---- Services Page Hero (New Inverted Hierarchy) ---------------------- */
+.svc-hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: calc(var(--header-h) + clamp(1.5rem, 3vw, 2.75rem));
+  padding-bottom: clamp(3rem, 4.5vw, 4.75rem);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(70% 85% at 50% 20%, rgba(82, 18, 98, 0.45) 0%, transparent 75%),
+    radial-gradient(40% 50% at 50% 0%, rgba(247, 183, 33, 0.12) 0%, transparent 80%),
+    var(--bg);
+}
+.svc-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.svc-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.85vw, 0.9375rem); /* approx 12–15px */
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: clamp(0.75rem, 1.4vw, 1.25rem);
+}
+.svc-hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 7.8vw, 7rem); /* approx 72px – 112px */
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--ivory);
+  margin-bottom: clamp(1rem, 1.8vw, 1.5rem);
+}
+@media (min-width: 600px) {
+  .svc-hero__h1 {
+    white-space: nowrap;
+  }
+}
+.svc-hero__subheadline {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.35vw, 2.375rem); /* approx 26px – 38px */
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--ivory);
+  margin-bottom: clamp(1rem, 1.6vw, 1.35rem);
+}
+.svc-hero__desc {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.25vw, 1.3125rem); /* approx 18px – 21px */
+  line-height: 1.75;
+  color: var(--lavender);
+  max-width: 68ch;
+  margin: 0 auto clamp(1.75rem, 2.8vw, 2.5rem);
+}
+.svc-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  justify-content: center;
+  align-items: center;
+}
+#service-catalogue {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
 /* ---- Services index ---------------------------------------------------- */
 .svc-list {
   display: grid;

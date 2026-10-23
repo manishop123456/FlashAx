@@ -14,7 +14,7 @@ export function ServicesGrid() {
           eyebrow="OUR SERVICES"
           align="center"
           lines={["EVERYTHING YOUR IDEA NEEDS.", "ALL IN ONE PLACE."]}
-          lead="From event management and brand activations to campus marketing, digital solutions and educational programs, explore the services Flashax offers to help bring your ideas to life."
+          lead="From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting, Flashax offers services to help you plan, promote and execute your next project."
         />
 
         <div className="svc-grid" role="list">
@@ -38,7 +38,7 @@ export function ServicesGrid() {
 
         <div className="services__foot">
           <ButtonLink href="/services" variant="secondary" icon="up-right">
-            EXPLORE ALL SERVICES
+            EXPLORE SERVICES
           </ButtonLink>
         </div>
       </div>

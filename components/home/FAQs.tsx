@@ -22,7 +22,7 @@ export function FAQs() {
             />
             <p>Still have questions about your specific requirements?</p>
             <ButtonLink href="/contact" variant="primary" icon="up-right">
-              GET IN TOUCH
+              GET A PROPOSAL
             </ButtonLink>
           </div>
 

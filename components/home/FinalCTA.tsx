@@ -16,10 +16,10 @@ export function FinalCTA() {
         </p>
         <div className="final__actions">
           <ButtonLink href="/contact" variant="primary" icon="up-right">
-            START A PROJECT
+            GET A PROPOSAL
           </ButtonLink>
-          <ButtonLink href="/contact" variant="secondary">
-            TALK TO OUR TEAM
+          <ButtonLink href="/services" variant="secondary">
+            EXPLORE SERVICES
           </ButtonLink>
         </div>
       </div>

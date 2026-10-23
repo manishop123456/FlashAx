@@ -52,7 +52,7 @@ export function Audiences() {
 
         <div className="aud__foot">
           <ButtonLink href="/contact" variant="secondary" icon="up-right">
-            DON&apos;T SEE YOUR CATEGORY? LET&apos;S TALK
+            GET A PROPOSAL
           </ButtonLink>
         </div>
       </div>

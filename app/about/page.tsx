@@ -46,7 +46,7 @@ export default function AboutPage() {
           titleId="about-page-title"
           eyebrow="ABOUT FLASHAX"
           titleLines={["WHERE ENGAGEMENT", "SPARKS SUCCESS."]}
-          lead="Flashax Event Solutions is an event management and brand experience company based in Mumbai."
+          lead="Flashax Event Solutions is a Mumbai-based event management and brand experience company."
         />
 
         {/* 01. About Flashax */}
@@ -66,7 +66,7 @@ export default function AboutPage() {
                       Company Introduction
                     </h3>
                     <p>
-                      Flashax Event Solutions is an event management and brand experience company based in Mumbai. We
+                      Flashax Event Solutions is a Mumbai-based event management and brand experience company. We
                       work with businesses, brands, colleges and event partners to plan and coordinate engaging experiences
                       tailored to each client&apos;s objectives.
                     </p>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                   <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "0.5rem" }}>HEADQUARTERS</p>
                   <h4 style={{ fontSize: "1.25rem", color: "var(--ivory)", marginBottom: "0.5rem" }}>Mumbai, Maharashtra</h4>
                   <p style={{ color: "var(--lavender)", fontSize: "var(--fs-small)" }}>
-                    Based in Mumbai, coordinating projects across corporate venues, college campuses, and exhibition centers.
+                    Mumbai-based, coordinating projects across corporate venues, college campuses, and exhibition centers.
                   </p>
                 </div>
               </div>
@@ -302,10 +302,10 @@ export default function AboutPage() {
 
             <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "4rem", flexWrap: "wrap" }}>
               <ButtonLink href="/contact" variant="primary" icon="up-right">
-                START A PROJECT
+                GET A PROPOSAL
               </ButtonLink>
               <ButtonLink href="/services" variant="secondary" icon="up-right">
-                EXPLORE OUR SERVICES
+                EXPLORE SERVICES
               </ButtonLink>
             </div>
           </div>

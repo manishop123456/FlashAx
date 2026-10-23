@@ -23,7 +23,7 @@ export function Testimonials() {
             </p>
             <div className="proof__cta">
               <ButtonLink href="/contact" variant="secondary" size="sm" icon="up-right">
-                COLLABORATE WITH US
+                GET A PROPOSAL
               </ButtonLink>
             </div>
           </article>
