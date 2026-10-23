@@ -12,15 +12,14 @@ export function FinalCTA() {
           <span className="line gold">LET&apos;S MAKE IT HAPPEN.</span>
         </h2>
         <p className="final__lead">
-          Tell us what you are planning. We will help you explore the services, approach and next steps that best suit
-          your project — from a single specialist service to a full production.
+          Tell us what you&apos;re planning. We&apos;ll discuss your requirements and the right services to help bring your project to life.
         </p>
         <div className="final__actions">
           <ButtonLink href="/contact" variant="primary" icon="up-right">
-            START A PROJECT ENQUIRY
+            START A PROJECT
           </ButtonLink>
-          <ButtonLink href="/services" variant="secondary" icon="up-right">
-            EXPLORE ALL SERVICES
+          <ButtonLink href="/contact" variant="secondary">
+            TALK TO OUR TEAM
           </ButtonLink>
         </div>
       </div>

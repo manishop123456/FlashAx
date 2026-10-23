@@ -1,23 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/lib/site";
 
 const SERVICE_OPTIONS = [
-  { value: "event-management", label: "Event Management & Experiences" },
-  { value: "exhibitions", label: "Exhibition & Trade Show Solutions" },
-  { value: "production-operations", label: "Event Production, Manpower & Operations" },
-  { value: "brand-activation", label: "Brand Activation & Experiential Marketing" },
-  { value: "campus-connect", label: "Campus Connect, Sponsorships & Partnerships" },
-  { value: "digital-creative", label: "Digital Marketing, Creative & Content" },
-  { value: "csr-education", label: "CSR, Financial Literacy & Educational Programs" },
+  { value: "event-management", label: "Event Management" },
+  { value: "event-production", label: "Event Production" },
+  { value: "brand-activation", label: "Brand Activation" },
+  { value: "campus-marketing", label: "Campus Marketing" },
+  { value: "digital-marketing", label: "Digital Marketing" },
+  { value: "corporate-gifting", label: "Corporate Gifting" },
+  { value: "csr-programs", label: "CSR Programs" },
   { value: "multiple", label: "Multiple Integrated Services" },
   { value: "other", label: "Other / Scoping Required" },
 ];
+
+const LEGACY_SERVICE_MAP: Record<string, string> = {
+  exhibitions: "event-production",
+  "production-operations": "event-production",
+  "campus-connect": "campus-marketing",
+  "digital-creative": "digital-marketing",
+  "csr-education": "csr-programs",
+};
 
 const BUDGET_OPTIONS = [
   { value: "", label: "Select estimated budget range (optional)" },
@@ -58,6 +67,22 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      let serviceParam = params.get("service");
+      if (serviceParam && LEGACY_SERVICE_MAP[serviceParam]) {
+        serviceParam = LEGACY_SERVICE_MAP[serviceParam];
+      }
+      if (serviceParam && SERVICE_OPTIONS.some((o) => o.value === serviceParam)) {
+        setFormData((prev) => ({
+          ...prev,
+          services: prev.services.includes(serviceParam!) ? prev.services : [serviceParam!],
+        }));
+      }
+    }
+  }, []);
 
   const validateStep = (currentStep: FormStep): boolean => {
     const nextErrors: Record<string, string> = {};
@@ -152,11 +177,11 @@ export default function ContactPage() {
         setStep("services");
       } else {
         setSubmitStatus("error");
-        setSubmitMessage(data.message || "We could not deliver your message right now. Please reach out directly to enquiries@flashax.com.");
+        setSubmitMessage(data.message || `We could not deliver your message right now. Please reach out directly to ${siteConfig.email}.`);
       }
     } catch {
       setSubmitStatus("error");
-      setSubmitMessage("A network disruption occurred. Please check your connection or email enquiries@flashax.com.");
+      setSubmitMessage(`A network disruption occurred. Please check your connection or email ${siteConfig.email}.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -211,19 +236,33 @@ export default function ContactPage() {
                   <ul className="cap-list" style={{ marginTop: "var(--s-5)" }}>
                     <li>
                       <span>EMAIL</span>
-                      <a href="mailto:enquiries@flashax.com">enquiries@flashax.com</a>
+                      <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                     </li>
                     <li>
-                      <span>HEADQUARTERS</span>
-                      <span>Mumbai, Maharashtra</span>
+                      <span>WHATSAPP</span>
+                      <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                        {siteConfig.phone}
+                      </a>
+                    </li>
+                    <li>
+                      <span>LOCATION</span>
+                      <span>{siteConfig.location}</span>
+                    </li>
+                    <li>
+                      <span>INSTAGRAM</span>
+                      <a href="https://www.instagram.com/flashax._/" target="_blank" rel="noopener noreferrer">
+                        @flashax._ &#8599;
+                      </a>
+                    </li>
+                    <li>
+                      <span>LINKEDIN</span>
+                      <a href="https://www.linkedin.com/company/flashax-event-solutions" target="_blank" rel="noopener noreferrer">
+                        Flashax Event Solutions &#8599;
+                      </a>
                     </li>
                     <li>
                       <span>SCHEDULE</span>
                       <span>Mon–Fri, 10 AM – 7 PM IST</span>
-                    </li>
-                    <li>
-                      <span>RESPONSE TIME</span>
-                      <span>1–2 Business Days</span>
                     </li>
                   </ul>
                 </div>

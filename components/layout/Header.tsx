@@ -92,7 +92,7 @@ export function Header() {
       <div className="wrap">
         <div className="header__bar">
           {/* Brand Logo */}
-          <Link href="/" className="header__logo" aria-label="FLASHAX — home">
+          <Link href="/" className="header__logo" aria-label="FLASHAX EVENT SOLUTIONS — home">
             <Logo priority className="header__logo-img" sizes="172px" />
           </Link>
 
@@ -114,7 +114,7 @@ export function Header() {
                   className="nav-link"
                   aria-current={isAbout ? "page" : undefined}
                 >
-                  About
+                  About Us
                 </Link>
               </li>
               <li ref={megaRef} onMouseEnter={openMega} onMouseLeave={scheduleClose}>
@@ -127,7 +127,7 @@ export function Header() {
                   aria-current={isServices ? "page" : undefined}
                   onClick={() => setMegaOpen((v) => !v)}
                 >
-                  Services
+                  Our Services
                   <ChevronDown aria-hidden="true" />
                 </button>
                 {megaOpen && (
@@ -210,7 +210,7 @@ export function Header() {
       {drawerOpen && (
         <div id="mobile-menu" className="drawer" role="dialog" aria-modal="true" aria-label="Menu">
           <div className="wrap drawer__top">
-            <Link href="/" className="header__logo" aria-label="FLASHAX — home" onClick={() => setDrawerOpen(false)}>
+            <Link href="/" className="header__logo" aria-label="FLASHAX EVENT SOLUTIONS — home" onClick={() => setDrawerOpen(false)}>
               <Logo sizes="150px" className="header__logo-img" />
             </Link>
             <button
@@ -242,7 +242,7 @@ export function Header() {
               aria-current={isAbout ? "page" : undefined}
               onClick={() => setDrawerOpen(false)}
             >
-              About
+              About Us
             </Link>
             <button
               type="button"
@@ -251,7 +251,7 @@ export function Header() {
               aria-controls="drawer-services"
               onClick={() => setSubOpen((v) => !v)}
             >
-              Services
+              Our Services
               <ChevronDown aria-hidden="true" />
             </button>
             {subOpen && (

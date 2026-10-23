@@ -42,20 +42,20 @@ export const capabilities = [
 
 export const principles = [
   {
-    title: "Connected capabilities",
-    text: "Planning, creative, production and promotion sit together, so ideas and execution stay aligned from the first brief.",
+    title: "Built Around Your Goals",
+    text: "We begin by understanding your objectives, audience, budget and timeline.",
   },
   {
-    title: "Tailored to the brief",
-    text: "Every project starts from your objectives, audience and constraints rather than a fixed package.",
+    title: "One Coordinated Team",
+    text: "We coordinate the relevant planning, creative work, production and specialist partners required for the agreed project scope.",
   },
   {
-    title: "Flexible engagement",
-    text: "Bring us a complete project or a single service. The scope is agreed with you before work begins.",
+    title: "Flexible Services",
+    text: "Clients can enquire about individual services or a connected project covering multiple service divisions.",
   },
   {
-    title: "Coordinated delivery",
-    text: "One point of contact coordinates the Flashax team and, where specialist work is needed, suitable vendors and partners.",
+    title: "Clear Communication",
+    text: "A structured approach to responsibilities, timelines and project updates helps clients understand the delivery process.",
   },
 ] as const;
 
@@ -66,7 +66,7 @@ export const audiences = [
     text: "Conferences, annual days, product launches, employee engagement and leadership events.",
     services: [
       { label: "Event Management", slug: "event-management" },
-      { label: "Production", slug: "production-operations" },
+      { label: "Event Production", slug: "event-production" },
     ],
     href: "/services/event-management",
   },
@@ -75,10 +75,10 @@ export const audiences = [
     title: "Colleges",
     text: "College festivals, cultural events, sponsorship programmes and campus partnerships.",
     services: [
-      { label: "Campus Connect", slug: "campus-connect" },
+      { label: "Campus Marketing", slug: "campus-marketing" },
       { label: "Event Management", slug: "event-management" },
     ],
-    href: "/services/campus-connect",
+    href: "/services/campus-marketing",
   },
   {
     key: "brands",
@@ -86,7 +86,7 @@ export const audiences = [
     text: "Activations, experiential campaigns, roadshows, sampling and launch moments.",
     services: [
       { label: "Brand Activation", slug: "brand-activation" },
-      { label: "Exhibitions", slug: "exhibitions" },
+      { label: "Event Production", slug: "event-production" },
     ],
     href: "/services/brand-activation",
   },
@@ -95,20 +95,19 @@ export const audiences = [
     title: "Event organisers",
     text: "Production support, manpower, technical coordination and operations for events you already lead.",
     services: [
-      { label: "Production & Operations", slug: "production-operations" },
-      { label: "Exhibitions", slug: "exhibitions" },
+      { label: "Event Production", slug: "event-production" },
     ],
-    href: "/services/production-operations",
+    href: "/services/event-production",
   },
   {
     key: "ngos",
-    title: "NGOs & community groups",
+    title: "Community & Institutions",
     text: "CSR initiatives, financial literacy and educational programmes, community events and awareness drives.",
     services: [
-      { label: "CSR & Education", slug: "csr-education" },
-      { label: "Digital & Creative", slug: "digital-creative" },
+      { label: "CSR Programs", slug: "csr-programs" },
+      { label: "Digital Marketing", slug: "digital-marketing" },
     ],
-    href: "/services/csr-education",
+    href: "/services/csr-programs",
   },
 ] as const;
 
@@ -142,66 +141,72 @@ export const processSteps = [
 
 export const faqs = [
   {
-    question: "What services does Flashax offer?",
+    question: "What service categories does Flashax offer?",
     answer:
-      "Seven divisions: Event Management & Experiences; Exhibition & Trade Show Solutions; Event Production, Manpower & Operations; Brand Activation & Experiential Marketing; Campus Connect, Sponsorships & Partnerships; Digital Marketing, Creative & Content; and CSR, Financial Literacy & Educational Programs. You can enquire about a complete project or a single service.",
+      "We operate across seven core categories: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, Corporate Gifting, and CSR Programs. Each service is available individually or coordinated together as a connected project.",
   },
   {
-    question: "Can I hire Flashax for just one service?",
+    question: "Do you coordinate corporate conferences and college festivals?",
     answer:
-      "Yes. Each division can work on its own or as part of an integrated project. The scope is discussed and agreed with you before anything begins.",
+      "Yes. Our Event Management division coordinates corporate conferences, leadership summits, product launches, employee engagement days, and college festivals from concept through on-ground execution.",
   },
   {
-    question: "Does Flashax handle everything in-house?",
+    question: "Can we hire Flashax for an individual service rather than a full project?",
     answer:
-      "Flashax leads planning, creative direction and coordination. Some specialist work, such as large-scale fabrication or specific technical requirements, may be coordinated through suitable vendors and partners. We will be clear about who delivers what.",
+      "Absolutely. Clients frequently engage us for standalone services — such as event production support, campus ambassador marketing, digital content, or corporate gifting — as well as integrated end-to-end projects.",
   },
   {
-    question: "What kinds of events and projects do you work on?",
+    question: "How does Flashax manage exhibition stalls and event production support?",
     answer:
-      "Corporate events, college festivals, exhibitions and trade shows, brand activations, campus partnerships, digital and creative campaigns, and CSR or educational programmes. If it brings people and brands together, tell us about it.",
+      "Our Event Production division coordinates stage setups, sound, lighting, LED walls, exhibition stall design, fabrication, and on-ground technical manpower. Core direction is managed by Flashax, collaborating with vetted technical vendors for specialized requirements.",
   },
   {
-    question: "How does the enquiry process work?",
+    question: "What is included in your Campus Marketing solutions?",
     answer:
-      "Share your brief through the enquiry form: the services you need, project details, location, a tentative date and an optional budget range. We review it and get in touch to discuss next steps.",
+      "Campus Marketing covers brand-college partnerships, campus ambassador networks, college festival sponsorships, intercollegiate events, guest speaker sessions, and student registration drives.",
   },
   {
-    question: "Do you work outside a single city?",
+    question: "What creative and digital marketing capabilities do you provide?",
     answer:
-      "Include your location in the enquiry and we will discuss how the project can be planned and delivered there, including multi-location programmes.",
+      "Our Digital Marketing division handles creative design, social media management, website development, content creation, photography, videography, video editing, and digital advertising campaigns to amplify your brand.",
   },
   {
-    question: "How long does a project take?",
+    question: "How does Corporate Gifting work with Flashax?",
     answer:
-      "Timelines depend on scope, venue and approvals. Share your target date early and we will talk through what is realistic.",
+      "We assist clients with welcome kits, employee kits, festive hampers, customised merchandise, and promotional event giveaways. You can enquire with your target quantities, branding specifications, packaging preferences, and delivery timeline.",
   },
   {
-    question: "Do I have to share a budget?",
+    question: "What types of CSR and educational programs can you deliver?",
     answer:
-      "No, the budget range in the form is optional. It simply helps us shape the right scope for your project.",
+      "Our CSR Programs division organizes structured workshops on financial literacy, digital education, career development, and community outreach aligned with institutional and corporate social responsibility goals.",
+  },
+  {
+    question: "How do I request a proposal or start an enquiry?",
+    answer:
+      "Submit your project details via our enquiry form on the Let's Talk page or contact us via WhatsApp or email. We will review your brief, objectives, location, and tentative date, and schedule a discovery call.",
   },
 ] as const;
 
-export const facts = [
+export const deliveryStandards = [
   {
-    value: "7",
-    label: "Service divisions",
-    text: "From events and exhibitions to digital and CSR programmes.",
+    num: "01",
+    title: "Single-Source Accountability",
+    text: "Direct leadership from concept to on-site execution, ensuring one transparent contact for your entire project.",
   },
   {
-    value: "5",
-    label: "Audiences we serve",
-    text: "Corporates, colleges, brands, event organisers and NGOs.",
+    num: "02",
+    title: "Itemised & Transparent Scoping",
+    text: "Milestone-based delivery schedules and honest cost breakdowns without hidden vendor commissions or inflated costs.",
   },
   {
-    value: "5",
-    label: "Step process",
-    text: "Discover, strategise, coordinate, execute and review.",
+    num: "03",
+    title: "Vetted Specialist Partners",
+    text: "Core strategy and production managed in-house, backed by vetted specialist vendors for heavy fabrication and technical rigging.",
   },
   {
-    value: "4",
-    label: "Capability pillars",
-    text: "Plan, create, produce and amplify.",
+    num: "04",
+    title: "Verified Outcome Orientation",
+    text: "Every brief is shaped around defined engagement targets, strict safety standards, and verified on-ground results.",
   },
 ] as const;
+

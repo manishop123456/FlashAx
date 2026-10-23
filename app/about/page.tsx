@@ -1,38 +1,37 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
-import { services, siteConfig } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | FLASHAX EVENT SOLUTIONS",
   description:
-    "Learn about Flashax — our founders, our approach to experiences, and our seven integrated service divisions.",
+    "Learn about Flashax Event Solutions — our Mumbai-based event management and brand experience company, founder Mukesh Choudhary, and our core operating principles.",
 };
 
-const VALUES = [
+const CORE_PRINCIPLES = [
   {
     n: "01",
-    title: "Accountability",
-    desc: "One dedicated project lead. Clear milestones, transparent budgets and no hidden surprises.",
+    title: "Understand the Brief",
+    desc: "Understand the client's goals, audience, constraints and requirements from the very first conversation.",
   },
   {
     n: "02",
-    title: "Creative Rigour",
-    desc: "Ideas backed by strategic intent. Concepts designed to solve real business goals, not just look impressive.",
+    title: "Plan with Purpose",
+    desc: "Build an approach aligned with the agreed objectives, budget and timeline without unnecessary complexity.",
   },
   {
     n: "03",
-    title: "True Partnership",
-    desc: "We measure success by your outcomes. Long-term collaborative relationships over one-off transactions.",
+    title: "Coordinate Responsibly",
+    desc: "Coordinate the right people, resources and specialist partners for the agreed project scope with single-point accountability.",
   },
   {
     n: "04",
-    title: "Complete Integrity",
-    desc: "Honest about in-house capabilities. Transparent about partners. Zero fabricated claims or inflated stats.",
+    title: "Communicate Clearly",
+    desc: "Maintain clear expectations, responsibilities and transparent project updates throughout the delivery lifecycle.",
   },
 ];
 
@@ -41,119 +40,164 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main-content" role="main">
+        {/* Page Hero */}
         <PageHero
           titleId="about-page-title"
           eyebrow="ABOUT FLASHAX"
           titleLines={["WHERE ENGAGEMENT", "SPARKS SUCCESS."]}
-          lead="We create moments that move people through strategic creative thinking and coordinated on-ground execution."
+          lead="Flashax Event Solutions is an event management and brand experience company based in Mumbai."
         />
 
-        <section className="section" aria-labelledby="about-approach-title">
+        {/* 01. About Flashax */}
+        <section className="section" aria-labelledby="about-flashax-title">
           <div className="wrap">
             <div className="about-grid">
               <div>
                 <SectionHeading
-                  id="about-approach-title"
-                  eyebrow="OUR PHILOSOPHY"
-                  lines={["ARCHITECTED WITH INTENTION"]}
-                  lead="Flashax was founded on the conviction that memorable experiences don't happen by accident — they are engineered through creative ambition and operational discipline."
+                  id="about-flashax-title"
+                  eyebrow="01. ABOUT FLASHAX"
+                  lines={["CREATIVE THINKING.", "COORDINATED PLANNING."]}
+                  lead="We work with businesses, brands, colleges and event partners to plan and coordinate engaging experiences tailored to each client's objectives."
                 />
-                <div className="prose" style={{ marginTop: "1.75rem" }}>
-                  <p>
-                    From corporate annual conventions and college cultural festivals to high-impact brand activations
-                    and CSR programmes, every Flashax project runs through our five-phase framework: Discover,
-                    Strategise, Coordinate, Execute and Review.
-                  </p>
-                  <p>
-                    Our leadership brings together complementary backgrounds in large-scale event production, brand
-                    marketing and campus engagement networks. Together, we build teams that operate as a genuine
-                    partner to your internal stakeholders.
-                  </p>
-                  <p>
-                    We operate with transparency: our core planning, creative direction and project coordination are
-                    led directly by Flashax. When specialist requirements arise — such as heavy architectural
-                    fabrication, aerial rigging or niche technical systems — we coordinate vetted partners while
-                    retaining sole accountability for the outcome.
-                  </p>
+                <div className="prose" style={{ marginTop: "2rem" }}>
+                  <div>
+                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                      Company Introduction
+                    </h3>
+                    <p>
+                      Flashax Event Solutions is an event management and brand experience company based in Mumbai. We
+                      work with businesses, brands, colleges and event partners to plan and coordinate engaging experiences
+                      tailored to each client&apos;s objectives.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                      Business Focus
+                    </h3>
+                    <p>
+                      From corporate events and college festivals to brand activations, campus campaigns, digital
+                      solutions and educational programs, we bring creative thinking, organised planning and on-ground
+                      coordination together.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
+                      How We Work
+                    </h3>
+                    <p>
+                      Every project starts with understanding the brief, the intended audience, the budget and the timeline.
+                      We use that understanding to develop a suitable approach and coordinate the required resources for the
+                      agreed scope.
+                    </p>
+                    <p>
+                      We operate with complete clarity: planning, creative direction and core management are led directly
+                      by Flashax. When specialist requirements arise — such as heavy fabrication or technical rigging — we
+                      coordinate vetted partners while maintaining direct responsibility for the final outcome.
+                    </p>
+                  </div>
                 </div>
               </div>
 
               <div className="stack">
-                <div className="card person">
-                  <h3 className="section-head__title" style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>
-                    LEADERSHIP
-                  </h3>
-                  <div className="people">
-                    <div>
-                      <p className="person__role">FOUNDER</p>
-                      <h4 className="person__name">{siteConfig.founder}</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card panel">
-                  <h3 className="panel__title">Our Commitment to Transparency</h3>
+                <div className="card panel" style={{ borderLeft: "3px solid var(--gold)" }}>
+                  <h3 className="panel__title">Our Operational Scope</h3>
                   <ul className="ticks">
-                    <li>Never invent clients, testimonials, numbers or awards</li>
-                    <li>Always clarify in-house scope versus partner coordination</li>
-                    <li>Provide itemized, honest budget breakdowns without hidden costs</li>
-                    <li>Deliver on agreed briefs with verified outcomes</li>
+                    <li>Single coordinated point of contact from brief to delivery</li>
+                    <li>Solutions tailored to client objectives, constraints and budgets</li>
+                    <li>Coordination of vetted production and technical partners</li>
+                    <li>Transparent delivery process with milestone updates</li>
                   </ul>
                 </div>
 
                 <div className="card panel">
-                  <h3 className="panel__title">Seven Core Divisions</h3>
-                  <ul className="cap-list">
-                    {services.map((s) => (
-                      <li key={s.slug}>
-                        <Link href={`/services/${s.slug}`}>{s.title}</Link>
-                        <span>{s.number}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "0.5rem" }}>HEADQUARTERS</p>
+                  <h4 style={{ fontSize: "1.25rem", color: "var(--ivory)", marginBottom: "0.5rem" }}>Mumbai, Maharashtra</h4>
+                  <p style={{ color: "var(--lavender)", fontSize: "var(--fs-small)" }}>
+                    Based in Mumbai, coordinating projects across corporate venues, college campuses, and exhibition centers.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section section--alt" aria-labelledby="about-values-title">
+        {/* 02. Our Founder */}
+        <section className="section section--alt" aria-labelledby="about-founder-title">
           <div className="wrap">
-            <SectionHeading
-              id="about-values-title"
-              eyebrow="CORE PRINCIPLES"
-              align="center"
-              lines={["HOW WE OPERATE"]}
-              lead="Four guiding principles that shape every project delivery and client relationship."
-            />
+            <div className="about-grid">
+              <div>
+                <SectionHeading
+                  id="about-founder-title"
+                  eyebrow="02. LEADERSHIP"
+                  lines={["OUR FOUNDER"]}
+                  lead="Meet the leadership guiding Flashax Event Solutions."
+                />
+                <div className="prose" style={{ marginTop: "2rem" }}>
+                  <p>
+                    <strong>Mukesh Choudhary</strong> is the founder of Flashax Event Solutions. With a commitment to
+                    delivering organised, transparent, and high-impact event experiences, he leads the company&apos;s
+                    vision, client partnerships, and strategic execution.
+                  </p>
+                  <p>
+                    Under his direction, Flashax operates on the philosophy that every successful event is built on
+                    attentive listening, disciplined coordination, and genuine accountability. Whether partnering with
+                    emerging brands, established corporate institutions, or student festival committees, the focus
+                    remains consistent: understanding the brief and executing with excellence.
+                  </p>
+                </div>
+              </div>
 
-            <div className="values" role="list">
-              {VALUES.map((v) => (
-                <article key={v.title} className="card value" role="listitem">
-                  <span className="value__n">{v.n}</span>
-                  <h3>{v.title}</h3>
-                  <p>{v.desc}</p>
+              <div>
+                <article className="card person" style={{ background: "var(--bg-2)", border: "1px solid var(--line-gold)", padding: "clamp(1.75rem, 3vw, 2.75rem)" }}>
+                  <p className="person__role">FOUNDER</p>
+                  <h3 className="person__name" style={{ color: "var(--ivory)", marginTop: "0.25rem" }}>
+                    {siteConfig.founder}
+                  </h3>
+                  <p style={{ color: "var(--gold)", fontSize: "0.85rem", letterSpacing: "0.05em", marginTop: "0.25rem" }}>
+                    Founder, Flashax Event Solutions
+                  </p>
+                  <div style={{ marginTop: "1.5rem", paddingTop: "1.5rem", borderTop: "1px solid var(--line)" }}>
+                    <p style={{ color: "var(--lavender)", fontSize: "var(--fs-small)", lineHeight: 1.7 }}>
+                      &ldquo;Our focus is straightforward: listen carefully to what the client wants to achieve, plan
+                      responsibly within their parameters, and coordinate the team and partners to deliver on ground
+                      without friction.&rdquo;
+                    </p>
+                  </div>
                 </article>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="section" aria-labelledby="about-cta-title">
-          <div className="wrap text-center">
+        {/* 03. Our Core Principles */}
+        <section className="section" aria-labelledby="about-principles-title">
+          <div className="wrap">
             <SectionHeading
-              id="about-cta-title"
-              eyebrow="START A CONVERSATION"
+              id="about-principles-title"
+              eyebrow="03. OPERATING PRINCIPLES"
               align="center"
-              lines={["READY TO BUILD SOMETHING?"]}
-              lead="Whether you have an established brief or are exploring initial concepts, our team is ready to assist."
+              lines={["OUR CORE PRINCIPLES"]}
+              lead="Four standards that guide how Flashax plans, coordinates and delivers every project."
             />
-            <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
+
+            <div className="values" role="list">
+              {CORE_PRINCIPLES.map((principle) => (
+                <article key={principle.title} className="card value" role="listitem">
+                  <span className="value__n">{principle.n}</span>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.desc}</p>
+                </article>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "4rem", flexWrap: "wrap" }}>
               <ButtonLink href="/contact" variant="primary" icon="up-right">
                 START A PROJECT
               </ButtonLink>
               <ButtonLink href="/services" variant="secondary" icon="up-right">
-                EXPLORE ALL SERVICES
+                EXPLORE OUR SERVICES
               </ButtonLink>
             </div>
           </div>

@@ -1,13 +1,8 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroContent } from "@/components/three/HeroCanvas";
-import { WhoWeAre } from "@/components/home/WhoWeAre";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
-import { ExperienceShowcase } from "@/components/home/ExperienceShowcase";
-import { SelectedWork } from "@/components/home/SelectedWork";
 import { WhyFlashax } from "@/components/home/WhyFlashax";
-import { Audiences } from "@/components/home/Audiences";
-import { Process } from "@/components/home/Process";
 import { Impact } from "@/components/home/Impact";
 import { Testimonials } from "@/components/home/Testimonials";
 import { FAQs } from "@/components/home/FAQs";
@@ -18,19 +13,28 @@ export default function HomePage() {
     <>
       <Header />
       <main id="main-content" role="main">
+        {/* 01. Landing Page / Hero */}
         <HeroContent />
-        <WhoWeAre />
+
+        {/* 02. Our Services */}
         <ServicesGrid />
-        <ExperienceShowcase />
-        <SelectedWork />
+
+        {/* 03. Why Flashax */}
         <WhyFlashax />
-        <Audiences />
-        <Process />
+
+        {/* 04. Our Impact */}
         <Impact />
+
+        {/* 05. Testimonials */}
         <Testimonials />
+
+        {/* 06. FAQs */}
         <FAQs />
+
+        {/* 07. Let's Make It Happen */}
         <FinalCTA />
       </main>
+      {/* 08. Footer */}
       <Footer />
     </>
   );

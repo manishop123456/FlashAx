@@ -99,13 +99,19 @@ async function sendEmail(data: ContactFormData): Promise<{ success: boolean; mes
 
   const serviceLabels = data.services.map((s) => {
     const labels: Record<string, string> = {
-      "event-management": "Event Management & Experiences",
+      "event-management": "Event Management",
+      "event-production": "Event Production",
+      "brand-activation": "Brand Activation",
+      "campus-marketing": "Campus Marketing",
+      "digital-marketing": "Digital Marketing",
+      "corporate-gifting": "Corporate Gifting",
+      "csr-programs": "CSR Programs",
+      // Legacy compatibility
       "exhibitions": "Exhibition & Trade Show Solutions",
       "production-operations": "Event Production, Manpower & Operations",
-      "brand-activation": "Brand Activation & Experiential Marketing",
-      "campus-connect": "Campus Connect, Sponsorships & Partnerships",
-      "digital-creative": "Digital Marketing, Creative & Content",
-      "csr-education": "CSR, Financial Literacy & Educational Programs",
+      "campus-connect": "Campus Connect & Partnerships",
+      "digital-creative": "Digital Marketing & Content",
+      "csr-education": "CSR & Educational Programs",
       "multiple": "Multiple Services",
       "other": "Other / Not Sure",
     };

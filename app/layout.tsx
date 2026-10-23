@@ -15,10 +15,9 @@ const body = Inter({
   variable: "--font-body-face",
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://flash-ax.vercel.app";
 const description =
-  "Flashax delivers end-to-end event management, production, brand activation, campus partnerships and creative solutions. Where Engagement Sparks Success.";
+  "Flashax Event Solutions is a Mumbai-based event management and brand experience company delivering corporate events, college festivals, trade exhibitions, brand activations, event production, and campus partnerships. Where Engagement Sparks Success.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,19 +27,30 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
-    "event management",
-    "event production",
-    "brand activation",
-    "exhibition stalls",
-    "campus partnerships",
-    "digital marketing",
-    "CSR programs",
+    "event management company Mumbai",
+    "corporate event planners Mumbai",
+    "college festival management India",
+    "exhibition stall design Mumbai",
+    "trade show solutions",
+    "event production services",
+    "brand activation agency",
+    "campus connect sponsorships",
+    "digital marketing events",
+    "CSR educational programs",
+    "Flashax Event Solutions",
     "Flashax",
   ],
-  authors: [{ name: siteConfig.name }],
+  authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   robots: "index, follow",
+  alternates: {
+    canonical: siteUrl,
+  },
+  icons: {
+    icon: "/brand/flashax-logo-transparent.png",
+    apple: "/brand/flashax-logo-transparent.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -48,11 +58,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description,
+    images: [
+      {
+        url: "/brand/flashax-logo-transparent.png",
+        width: 1024,
+        height: 264,
+        alt: "FLASHAX EVENT SOLUTIONS",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description,
+    images: ["/brand/flashax-logo-transparent.png"],
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
@@ -65,9 +84,45 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EventPlanningService",
+  name: "Flashax Event Solutions",
+  alternateName: "Flashax",
+  description,
+  url: siteUrl,
+  logo: `${siteUrl}/brand/flashax-logo-transparent.png`,
+  founder: {
+    "@type": "Person",
+    name: siteConfig.founder,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mumbai",
+    addressRegion: "Maharashtra",
+    addressCountry: "IN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
+  },
+  sameAs: [
+    "https://www.instagram.com/flashax._/",
+    "https://www.linkedin.com/company/flashax-event-solutions",
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <a href="#main-content" className="skip-link">
           Skip to content

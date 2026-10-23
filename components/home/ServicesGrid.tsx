@@ -11,10 +11,10 @@ export function ServicesGrid() {
       <div className="wrap">
         <SectionHeading
           id="services-title"
-          eyebrow="CORE SERVICES"
+          eyebrow="OUR SERVICES"
           align="center"
           lines={["EVERYTHING YOUR IDEA NEEDS.", "ALL IN ONE PLACE."]}
-          lead="Seven specialized divisions. One seamless partner. Each service operates independently or as part of an integrated solution."
+          lead="From event management and brand activations to campus marketing, digital solutions and educational programs, explore the services Flashax offers to help bring your ideas to life."
         />
 
         <div className="svc-grid" role="list">
@@ -38,7 +38,7 @@ export function ServicesGrid() {
 
         <div className="services__foot">
           <ButtonLink href="/services" variant="secondary" icon="up-right">
-            VIEW ALL SERVICES
+            EXPLORE ALL SERVICES
           </ButtonLink>
         </div>
       </div>

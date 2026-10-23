@@ -18,9 +18,10 @@
   max-width: 28rem;
 }
 .footer__brand img {
-  width: 200px;
+  width: clamp(150px, 45vw, 200px);
   height: auto;
-  border-radius: var(--radius-s);
+  object-fit: contain;
+  display: block;
 }
 .footer__brand p {
   color: var(--lavender);

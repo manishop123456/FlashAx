@@ -33,14 +33,20 @@ export type NavigationItem = {
 export type SocialLink = {
   label: string;
   href: string;
-  icon: "instagram" | "linkedin" | "twitter" | "youtube";
+  icon: "instagram" | "linkedin" | "whatsapp" | "twitter" | "youtube";
 };
 
 export type SiteConfig = {
   name: string;
+  shortName?: string;
   tagline: string;
   founder: string;
   coFounder?: string;
+  email: string;
+  phone: string;
+  whatsappUrl: string;
+  location: string;
+  preferredDomain?: string;
   navigation: NavigationItem[];
   socialLinks: SocialLink[];
 };

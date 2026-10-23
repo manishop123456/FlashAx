@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | FLASHAX",
-  description: "Privacy policy and client data handling commitments for Flashax.",
+  title: `Privacy Policy | ${siteConfig.name}`,
+  description: "Privacy policy and client data handling commitments for Flashax Event Solutions.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -74,7 +75,7 @@ export default function PrivacyPolicyPage() {
                   To request correction, review, or deletion of any personal information or commercial briefs previously submitted to Flashax, please email:
                 </p>
                 <p style={{ marginTop: "var(--s-3)", color: "var(--gold)" }}>
-                  <a href="mailto:enquiries@flashax.com">enquiries@flashax.com</a>
+                  <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                 </p>
               </div>
             </article>

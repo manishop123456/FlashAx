@@ -7,10 +7,10 @@ export function Testimonials() {
       <div className="wrap">
         <SectionHeading
           id="proof-title"
-          eyebrow="TRANSPARENT COLLABORATION"
+          eyebrow="TESTIMONIALS"
           align="center"
-          lines={["PARTNERSHIPS BUILT ON", "TRUST & VERIFIED OUTCOMES."]}
-          lead="We never publish placeholder quotes or unverified partner logos. Approved client testimonials will be displayed as they are cleared for release."
+          lines={["GOOD WORK CREATES", "GOOD PARTNERSHIPS."]}
+          lead="Authentic client feedback and signed endorsements are published as case clearances are approved. We prioritize client confidentiality over unsubstantiated claims."
         />
 
         <div className="proof">

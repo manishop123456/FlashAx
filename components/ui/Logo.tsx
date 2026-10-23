@@ -8,8 +8,8 @@ export function Logo({
   className,
   priority = false,
   sizes = "220px",
-  width = 408,
-  height = 115,
+  width = 1024,
+  height = 264,
 }: {
   className?: string;
   priority?: boolean;
@@ -20,11 +20,12 @@ export function Logo({
   return (
     <Image
       src="/brand/flashax-logo-transparent.png"
-      alt="FLASHAX — Where Engagement Sparks Success"
+      alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
       width={width}
       height={height}
       sizes={sizes}
       priority={priority}
+      unoptimized
       className={className}
     />
   );

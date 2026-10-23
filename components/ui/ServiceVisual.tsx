@@ -27,32 +27,24 @@ function Motif({ slug }: { slug: string }) {
           <path d="M130 172h220M130 190h220" {...soft} />
         </g>
       );
-    case "exhibitions": // booth panels
+    case "event-production":
+    case "production-operations":
+    case "exhibitions": // truss, lighting rigs + stage structure
       return (
         <g>
-          <path d="M80 250h320" {...line} />
-          <path d="M120 250V150l70-34 70 34v100M190 116v134" {...line} />
-          <path d="M260 150l80-26v126M260 250V150" {...line} />
-          <rect x="146" y="176" width="34" height="74" {...soft} />
-          <rect x="294" y="168" width="34" height="46" {...soft} />
-          <circle cx="400" cy="96" r="26" {...line} opacity="0.5" />
-          <path d="M386 96h28M400 82v28" {...soft} />
-        </g>
-      );
-    case "production-operations": // truss + fixtures
-      return (
-        <g>
-          <path d="M60 110h360M60 140h360" {...line} />
+          <path d="M60 100h360M60 130h360" {...line} />
           {Array.from({ length: 15 }).map((_, i) => (
-            <path key={i} d={`M${60 + i * 25} ${i % 2 ? 140 : 110} l25 ${i % 2 ? -30 : 30}`} {...soft} />
+            <path key={i} d={`M${60 + i * 25} ${i % 2 ? 130 : 100} l25 ${i % 2 ? -30 : 30}`} {...soft} />
           ))}
           {[110, 190, 270, 350].map((x) => (
             <g key={x}>
-              <rect x={x - 11} y="140" width="22" height="26" rx="4" fill={GOLD} opacity="0.85" />
-              <path d={`M${x - 8} 166 L${x - 34} 262 L${x + 34} 262 L${x + 8} 166 Z`} fill={GOLD} opacity="0.1" />
+              <rect x={x - 11} y="130" width="22" height="26" rx="4" fill={GOLD} opacity="0.85" />
+              <path d={`M${x - 8} 156 L${x - 34} 252 L${x + 34} 252 L${x + 8} 156 Z`} fill={GOLD} opacity="0.12" />
             </g>
           ))}
-          <path d="M60 262h360" {...line} />
+          <path d="M60 252h360" {...line} />
+          <rect x="160" y="190" width="160" height="62" rx="4" {...soft} />
+          <path d="M180 216h120M180 230h80" {...soft} />
         </g>
       );
     case "brand-activation": // ripple burst
@@ -74,6 +66,7 @@ function Motif({ slug }: { slug: string }) {
           })}
         </g>
       );
+    case "campus-marketing":
     case "campus-connect": // amphitheatre arcs + pennant
       return (
         <g>
@@ -85,6 +78,7 @@ function Motif({ slug }: { slug: string }) {
           <path d="M100 262h280" {...line} />
         </g>
       );
+    case "digital-marketing":
     case "digital-creative": // layered screens + play
       return (
         <g>
@@ -96,6 +90,32 @@ function Motif({ slug }: { slug: string }) {
           <circle cx="388" cy="92" r="6" fill={MAG} opacity="0.85" />
         </g>
       );
+    case "corporate-gifting": // premium gift box with ribbon and spark
+      return (
+        <g>
+          <path d="M110 255h260" {...soft} />
+          <rect x="150" y="145" width="180" height="105" rx="6" {...line} />
+          <rect x="138" y="126" width="204" height="24" rx="4" fill={GOLD} fillOpacity={0.2} stroke={GOLD} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="228" y="126" width="24" height="124" fill={GOLD} opacity="0.85" />
+          <rect x="150" y="185" width="180" height="20" fill={GOLD} opacity="0.3" />
+          <path
+            d="M228 126 C210 94 170 94 190 126 Z M252 126 C270 94 310 94 290 126 Z"
+            stroke={GOLD}
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill={GOLD}
+            fillOpacity={0.4}
+          />
+          <circle cx="240" cy="124" r="8" fill={GOLD} />
+          {/* Sparkles */}
+          <path d="M116 100 L120 110 L130 114 L120 118 L116 128 L112 118 L102 114 L112 110 Z" fill={GOLD} opacity="0.9" />
+          <path d="M366 94 L369 101 L376 104 L369 107 L366 114 L363 107 L356 104 L363 101 Z" fill={IVORY} opacity="0.75" />
+          <circle cx="350" cy="226" r="4" fill={MAG} opacity="0.85" />
+          <circle cx="128" cy="214" r="3.5" fill={GOLD} opacity="0.6" />
+        </g>
+      );
+    case "csr-programs":
     case "csr-education": // growing sprout over open book
       return (
         <g>
