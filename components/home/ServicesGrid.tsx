@@ -6,24 +6,17 @@ import { ServiceVisual } from "@/components/ui/ServiceVisual";
 
 export function ServicesGrid() {
   return (
-    <section id="services" className="section services" aria-labelledby="services-title">
+    <section id="services" className="section services section--alt" aria-labelledby="services-title">
       <div className="wrap">
-        {/* Inverted heading hierarchy — OUR SERVICES is the dominant H2 */}
         <header className="svc-head">
-          <p className="eyebrow" style={{ justifyContent: "center" }}>WHAT WE OFFER</p>
           <h2 id="services-title" className="svc-head__title">OUR SERVICES</h2>
           <p className="svc-head__sub">Everything Your Idea Needs. All in One Place.</p>
-          <p className="svc-head__desc">
-            From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting,
-            Flashax offers services to help you plan, promote and execute your next project.
-          </p>
         </header>
 
         <div className="svc-grid" role="list">
           {services.map((s) => (
             <article key={s.slug} className="card svc" role="listitem">
               <div className="svc__media">
-                <span className="svc__num">{s.number}</span>
                 <ServiceVisual slug={s.slug} />
               </div>
               <div className="svc__body">
@@ -40,7 +33,7 @@ export function ServicesGrid() {
 
         <div className="services__foot">
           <ButtonLink href="/services" variant="secondary" icon="up-right">
-            EXPLORE SERVICES
+            EXPLORE ALL SERVICES
           </ButtonLink>
         </div>
       </div>

@@ -5,13 +5,14 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="section section--alt" aria-labelledby="proof-title">
       <div className="wrap">
-        <SectionHeading
-          id="proof-title"
-          eyebrow="TESTIMONIALS"
-          align="center"
-          lines={["GOOD WORK CREATES", "GOOD PARTNERSHIPS."]}
-          lead="Authentic client feedback and signed endorsements are published as case clearances are approved. We prioritize client confidentiality over unsubstantiated claims."
-        />
+        <header className="proof-head">
+          <p className="eyebrow">WHAT CLIENTS SAY</p>
+          <h2 id="proof-title" className="proof-head__title">WHAT CLIENTS SAY</h2>
+          <p className="proof-head__sub">Good Work Creates Good Partnerships.</p>
+          <p className="proof-head__desc">
+            Authentic client feedback and signed endorsements are published as case clearances are approved. We prioritize client confidentiality over unsubstantiated claims.
+          </p>
+        </header>
 
         <div className="proof">
           <article className="card proof__card">
@@ -29,8 +30,8 @@ export function Testimonials() {
           </article>
 
           <article className="card proof__card">
-            <span className="proof__mark" aria-hidden="true">&amp;</span>
-            <h3 className="proof__title">Ecosystem &amp; vendor partners</h3>
+            <span className="proof__mark" aria-hidden="true">&</span>
+            <h3 className="proof__title">Ecosystem & vendor partners</h3>
             <p className="proof__text">
               For specialist requirements such as heavy fabrication, technical rigging or niche talent, Flashax
               coordinates with vetted vendor networks across major Indian cities.
