@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
@@ -119,6 +120,113 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision Statement Showcase */}
+        <section className="section mv-section" aria-labelledby="about-mv-title">
+          <div className="wrap">
+            <SectionHeading
+              id="about-mv-title"
+              eyebrow="PURPOSE &amp; DIRECTION"
+              align="center"
+              lines={["DRIVEN BY PURPOSE.", "FOCUSED ON IMPACT."]}
+              lead="Our mission and vision define why Flashax exists and where we are steering the future of engagement."
+            />
+
+            <div className="mv-grid" role="region" aria-label="Mission and Vision">
+              {/* Mission Card */}
+              <article className="mv-card">
+                <div className="mv-card__watermark" aria-hidden="true">
+                  <svg viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M150 20C180 80 260 180 230 320C210 390 170 450 150 480C130 450 90 390 70 320C40 180 120 80 150 20Z"
+                      fill="url(#mv-mission-feather)"
+                    />
+                    <path d="M150 30L150 470" stroke="#F7B721" strokeWidth="2" strokeOpacity="0.3" />
+                    <path d="M150 140C190 125 220 155 240 190" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 220C195 205 225 240 235 280" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 300C185 290 205 320 210 350" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 160C110 145 80 175 60 210" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <path d="M150 240C105 225 75 260 65 300" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <path d="M150 320C115 310 95 340 90 370" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <defs>
+                      <linearGradient id="mv-mission-feather" x1="150" y1="20" x2="150" y2="480" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stopColor="#F609CF" stopOpacity="0.35" />
+                        <stop offset="50%" stopColor="#8A1EA3" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#521262" stopOpacity="0.05" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="mv-card__header">
+                  <div className="mv-card__brand">
+                    <Image
+                      src="/brand/flashax-logo-transparent.png"
+                      alt="FLASHAX"
+                      width={140}
+                      height={36}
+                      unoptimized
+                      className="mv-card__brand-img"
+                    />
+                  </div>
+                  <h3 className="mv-card__title">MISSION</h3>
+                </div>
+                <div className="mv-card__box">
+                  <p className="mv-card__text">
+                    To redefine engagement through authentic, high-impact experiences. We empower institutions and
+                    organizations to connect with their audiences in meaningful ways—sparking inspiration, fostering
+                    professional synergy, and building the leaders of tomorrow.
+                  </p>
+                </div>
+              </article>
+
+              {/* Vision Card */}
+              <article className="mv-card">
+                <div className="mv-card__watermark" aria-hidden="true">
+                  <svg viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M150 20C180 80 260 180 230 320C210 390 170 450 150 480C130 450 90 390 70 320C40 180 120 80 150 20Z"
+                      fill="url(#mv-vision-feather)"
+                    />
+                    <path d="M150 30L150 470" stroke="#F7B721" strokeWidth="2" strokeOpacity="0.3" />
+                    <path d="M150 140C190 125 220 155 240 190" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 220C195 205 225 240 235 280" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 300C185 290 205 320 210 350" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
+                    <path d="M150 160C110 145 80 175 60 210" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <path d="M150 240C105 225 75 260 65 300" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <path d="M150 320C115 310 95 340 90 370" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
+                    <defs>
+                      <linearGradient id="mv-vision-feather" x1="150" y1="20" x2="150" y2="480" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stopColor="#F609CF" stopOpacity="0.35" />
+                        <stop offset="50%" stopColor="#8A1EA3" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#521262" stopOpacity="0.05" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="mv-card__header">
+                  <div className="mv-card__brand">
+                    <Image
+                      src="/brand/flashax-logo-transparent.png"
+                      alt="FLASHAX"
+                      width={140}
+                      height={36}
+                      unoptimized
+                      className="mv-card__brand-img"
+                    />
+                  </div>
+                  <h3 className="mv-card__title">VISION</h3>
+                </div>
+                <div className="mv-card__box">
+                  <p className="mv-card__text">
+                    To be the pioneering force in engagement solutions, where every event—from the campus to the
+                    boardroom—is a strategic platform for growth and connection. We envision a future where every gathering
+                    serves as a powerful catalyst for success and sets a new benchmark for community and culture.
+                  </p>
+                </div>
+              </article>
             </div>
           </div>
         </section>
