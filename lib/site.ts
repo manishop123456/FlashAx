@@ -77,7 +77,20 @@ export const services: FlashaxService[] = servicesData.map((s) => ({
       : ["event-management", "event-production", "brand-activation"],
 }));
 
-export const portfolioProjects: PortfolioProject[] = [];
+import { portfolioProjectsData } from "@/lib/portfolioData";
+
+export const portfolioProjects: PortfolioProject[] = portfolioProjectsData.map((p) => ({
+  slug: p.id,
+  title: p.title,
+  category: p.category,
+  summary: p.descriptionParagraphs[0],
+  location: p.venue,
+  coverImage: p.images[0].src,
+  gallery: p.images.map((img) => img.src),
+  servicesDelivered: p.highlights,
+  approvedForPublicDisplay: true,
+  verifiedOutcomes: p.highlights,
+}));
 
 export const portfolioCategories = [
   "All Work",

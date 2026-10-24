@@ -115,25 +115,40 @@ export default function AboutPage() {
             <div className="about-grid about-grid--founder">
               <div className="founder-image">
                 <Image
-                  src="/brand/flashax final profile.png"
+                  src="/brand/mukesh-choudhary-founder.png"
                   alt="Mukesh Choudhary, Founder"
-                  width={480}
-                  height={640}
+                  width={741}
+                  height={1024}
+                  priority
                   className="founder-image__img"
                 />
               </div>
 
               <div className="founder-content">
                 <header className="founder-head">
-                  <h2 id="about-founder-title" className="founder-head__title">MEET THE FOUNDER</h2>
-                  <p className="founder-head__sub">Mukesh Choudhary — Founder</p>
+                  <h2 id="about-founder-title" className="founder-head__title">
+                    MEET THE FOUNDER
+                  </h2>
+                  <p className="founder-head__name">Mukesh Choudhary</p>
+                  <p className="founder-head__role">Founder, Flashax Event Solutions</p>
                 </header>
+
+                <blockquote className="founder-quote">
+                  &ldquo;Every great experience begins with an idea, but bringing that idea to life takes the right planning, creativity and execution.&rdquo;
+                </blockquote>
+
                 <div className="founder-desc">
                   <p>
-                    Flashax Event Solutions was founded with a focus on helping businesses, brands and colleges bring their ideas to life through events, marketing initiatives and coordinated experiences.
+                    I founded Flashax Event Solutions with the vision of helping businesses, brands and colleges transform their ideas into well-planned events, engaging experiences and meaningful connections with their audiences.
                   </p>
                   <p>
-                    The focus is on understanding each client&apos;s requirements, planning carefully and coordinating the resources needed to deliver the agreed project scope.
+                    My approach is built around understanding each client&apos;s objectives, thinking creatively and finding practical solutions that suit their requirements. I believe successful projects are not just about organising an event or delivering a service; they are about understanding the purpose behind it, paying attention to the details and bringing every element together through clear planning and coordination.
+                  </p>
+                  <p>
+                    Through Flashax Event Solutions, I aim to build lasting client relationships based on trust, transparent communication and a clear understanding of each project&apos;s objectives.
+                  </p>
+                  <p className="founder-goal">
+                    <strong>My goal is to help turn ideas into meaningful experiences that bring people, brands and communities closer together.</strong>
                   </p>
                 </div>
               </div>
