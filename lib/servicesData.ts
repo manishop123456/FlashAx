@@ -27,7 +27,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We plan and coordinate events from the initial idea to on-ground execution, helping clients create organised, engaging experiences aligned with their objectives, audience and budget.",
     suggestedMainImage: "A premium corporate event, conference or well-organised live event.",
-    image: "/images/services/card-event-management.png",
+    image: "/images/services/event-management.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -93,7 +93,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We coordinate the technical setup, event infrastructure, branding materials and operational requirements needed to bring events, exhibitions and live experiences to life.",
     suggestedMainImage: "A professionally produced stage with lighting and LED screens.",
-    image: "/images/services/card-event-production.png",
+    image: "/images/services/event-production.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -102,7 +102,7 @@ export const servicesData: FullService[] = [
           "We coordinate stage design, stage structures, backdrops and event layouts suited to the venue, event format and production requirements.",
         suggestedImage: "Stage installation",
         visualKey: "stage-setup",
-        imageSrc: "/images/services/card-event-production.png",
+        imageSrc: "/images/services/event-production.png",
       },
       {
         divisionNumber: "02",
@@ -170,7 +170,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We help brands connect with their target audiences through on-ground promotions, interactive experiences, product trials and coordinated brand campaigns.",
     suggestedMainImage: "A premium branded experiential activation or interactive promotional event.",
-    image: "/images/services/card-brand-activation.png",
+    image: "/images/services/brand-activation.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -246,7 +246,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We help brands and organisations connect with college audiences through campus outreach, student ambassadors, sponsorship initiatives and student-focused campaigns.",
     suggestedMainImage: "Students participating in a college festival, campus activation or intercollegiate competition.",
-    image: "/images/services/card-campus-marketing.png",
+    image: "/images/services/campus-marketing.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -322,7 +322,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We help businesses communicate with their audiences through digital content, creative design, website solutions and coordinated online campaigns.",
     suggestedMainImage: "A creative team working on digital content or a professional social media content setup.",
-    image: "/images/services/card-digital-marketing.png",
+    image: "/images/services/digital-marketing.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -398,7 +398,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We coordinate educational, awareness and community-focused initiatives that help organisations engage with students and communities through meaningful programmes.",
     suggestedMainImage: "An educational workshop, financial literacy session or community learning initiative.",
-    image: "/images/services/card-csr-initiatives.png",
+    image: "/images/services/csr-initiatives.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -466,7 +466,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We help businesses source and coordinate thoughtful gifts, employee kits and branded merchandise for onboarding, celebrations, corporate occasions and events.",
     suggestedMainImage: "Premium corporate gift hampers, welcome kits or branded employee gifts.",
-    image: "/images/services/card-corporate-gifting.png",
+    image: "/images/services/corporate-gifting.png",
     divisions: [
       {
         divisionNumber: "01",
