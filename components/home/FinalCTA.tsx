@@ -5,7 +5,6 @@ export function FinalCTA() {
     <section id="final-cta" className="final" aria-labelledby="cta-title">
       <div className="wrap">
         <header className="final-head">
-          <p className="eyebrow">LET&apos;S CONNECT</p>
           <h2 id="cta-title" className="final-head__title">
             <span className="line">HAVE AN IDEA?</span>
             <span className="line gold">LET&apos;S MAKE IT HAPPEN.</span>

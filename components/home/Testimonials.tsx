@@ -6,11 +6,10 @@ export function Testimonials() {
     <section id="testimonials" className="section section--alt" aria-labelledby="proof-title">
       <div className="wrap">
         <header className="proof-head">
-          <p className="eyebrow">WHAT CLIENTS SAY</p>
           <h2 id="proof-title" className="proof-head__title">WHAT CLIENTS SAY</h2>
-          <p className="proof-head__sub">Good Work Creates Good Partnerships.</p>
+          <p className="proof-head__sub">Built on Trust and Communication</p>
           <p className="proof-head__desc">
-            Authentic client feedback and signed endorsements are published as case clearances are approved. We prioritize client confidentiality over unsubstantiated claims.
+            We believe good working relationships begin with clear expectations, thoughtful planning and open communication. We aim to make every project a collaborative process from the first discussion to final execution.
           </p>
         </header>
 

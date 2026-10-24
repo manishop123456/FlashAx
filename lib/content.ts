@@ -143,49 +143,39 @@ export const processSteps = [
 
 export const faqs = [
   {
-    question: "What service categories does Flashax offer?",
+    question: "What services does Flashax Event Solutions offer?",
     answer:
-      "We operate across seven core categories: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, Corporate Gifting, and CSR Programs. Each service is available individually or coordinated together as a connected project.",
+      "We offer seven services: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, Corporate Gifting and CSR Programs.",
   },
   {
-    question: "Do you coordinate corporate conferences and college festivals?",
+    question: "Can I hire Flashax for just one service?",
     answer:
-      "Yes. Our Event Management division coordinates corporate conferences, leadership summits, product launches, employee engagement days, and college festivals from concept through on-ground execution.",
+      "Yes. You can enquire about an individual service or combine multiple services for a larger project.",
   },
   {
-    question: "Can we hire Flashax for an individual service rather than a full project?",
+    question: "Do you work with both corporates and colleges?",
     answer:
-      "Absolutely. Clients frequently engage us for standalone services — such as event production support, campus ambassador marketing, digital content, or corporate gifting — as well as integrated end-to-end projects.",
+      "Yes. Our services are designed for businesses, brands, colleges, educational institutions and event partners.",
   },
   {
-    question: "How does Flashax manage exhibition stalls and event production support?",
+    question: "Do you provide event equipment and manpower directly?",
     answer:
-      "Our Event Production division coordinates stage setups, sound, lighting, LED walls, exhibition stall design, fabrication, and on-ground technical manpower. Core direction is managed by Flashax, collaborating with vetted technical vendors for specialized requirements.",
+      "Requirements depend on the project. Where necessary, we coordinate with suitable specialist suppliers and service partners for equipment, fabrication, technical production and manpower.",
   },
   {
-    question: "What is included in your Campus Marketing solutions?",
+    question: "How do I get a quotation?",
     answer:
-      "Campus Marketing covers brand-college partnerships, campus ambassador networks, college festival sponsorships, intercollegiate events, guest speaker sessions, and student registration drives.",
+      "Share your requirements, location, tentative date and budget range through our enquiry form or WhatsApp. We will review the brief and discuss the next steps.",
   },
   {
-    question: "What creative and digital marketing capabilities do you provide?",
+    question: "Where is Flashax based?",
     answer:
-      "Our Digital Marketing division handles creative design, social media management, website development, content creation, photography, videography, video editing, and digital advertising campaigns to amplify your brand.",
+      "Flashax Event Solutions is based in Mumbai, Maharashtra.",
   },
   {
-    question: "How does Corporate Gifting work with Flashax?",
+    question: "Can you customise a solution to my budget?",
     answer:
-      "We assist clients with welcome kits, employee kits, festive hampers, customised merchandise, and promotional event giveaways. You can enquire with your target quantities, branding specifications, packaging preferences, and delivery timeline.",
-  },
-  {
-    question: "What types of CSR Programs can you coordinate?",
-    answer:
-      "Our CSR Programs division organizes structured workshops on financial literacy, digital education, career development, and community outreach aligned with institutional and corporate social responsibility goals.",
-  },
-  {
-    question: "How do I request a proposal or start an enquiry?",
-    answer:
-      "Submit your project details via our enquiry form on the Get a Proposal page or contact us via WhatsApp or email. We will review your brief, objectives, location, and tentative date, and schedule a discovery call.",
+      "We can discuss your objectives and budget and propose a suitable scope based on feasibility and resource requirements.",
   },
 ] as const;
 

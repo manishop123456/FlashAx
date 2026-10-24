@@ -13,7 +13,6 @@ export function FAQs() {
     <section id="faqs" className="section" aria-labelledby="faqs-title">
       <div className="wrap">
         <header className="faq-head">
-          <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
           <h2 id="faqs-title" className="faq-head__title">FREQUENTLY ASKED QUESTIONS</h2>
           <p className="faq-head__sub">Clear Answers. No Runaround.</p>
           <p className="faq-head__desc">

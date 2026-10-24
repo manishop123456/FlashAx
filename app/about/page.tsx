@@ -2,8 +2,6 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/ui/PageHero";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
 
@@ -41,254 +39,128 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main-content" role="main">
-        {/* Page Hero */}
-        <PageHero
-          titleId="about-page-title"
-          eyebrow="ABOUT FLASHAX"
-          titleLines={["WHERE ENGAGEMENT", "SPARKS SUCCESS."]}
-          lead="Flashax Event Solutions is a Mumbai-based event management and brand experience company."
-        />
-
         {/* 01. About Flashax */}
         <section className="section" aria-labelledby="about-flashax-title">
           <div className="wrap">
-            <div className="about-grid">
-              <div>
-                <SectionHeading
-                  id="about-flashax-title"
-                  eyebrow="01. ABOUT FLASHAX"
-                  lines={["CREATIVE THINKING.", "COORDINATED PLANNING."]}
-                  lead="We work with businesses, brands, colleges and event partners to plan and coordinate engaging experiences tailored to each client's objectives."
+            <div className="about-grid about-grid--image-right">
+              <div className="about-content">
+                <header className="about-head">
+                  <h2 id="about-flashax-title" className="about-head__title">ABOUT FLASHAX</h2>
+                  <p className="about-head__sub">Creative Thinking. Coordinated Planning.</p>
+                </header>
+                <div className="about-desc">
+                  <p>
+                    At Flashax Event Solutions, we believe that successful projects begin with understanding people, objectives and expectations.
+                  </p>
+                  <p>
+                    We work across event management, event production, brand activation, campus marketing, digital marketing, corporate gifting and CSR programmes. Our approach combines creative thinking with practical planning and coordination.
+                  </p>
+                  <p>
+                    Whether you are planning a corporate event, a college festival, a brand campaign or an educational programme, we aim to understand your requirements and develop a solution suited to your goals, audience, budget and timeline.
+                  </p>
+                </div>
+              </div>
+
+              <div className="about-image">
+                <Image
+                  src="/brand/fhool pati.png"
+                  alt="Flashax Event Solutions"
+                  width={520}
+                  height={520}
+                  className="about-image__img"
                 />
-                <div className="prose" style={{ marginTop: "2rem" }}>
-                  <div>
-                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
-                      Company Introduction
-                    </h3>
-                    <p>
-                      Flashax Event Solutions is a Mumbai-based event management and brand experience company. We
-                      work with businesses, brands, colleges and event partners to plan and coordinate engaging experiences
-                      tailored to each client&apos;s objectives.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
-                      Business Focus
-                    </h3>
-                    <p>
-                      From corporate events and college festivals to brand activations, campus campaigns, digital
-                      solutions and educational programs, we bring creative thinking, organised planning and on-ground
-                      coordination together.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
-                      How We Work
-                    </h3>
-                    <p>
-                      Every project starts with understanding the brief, the intended audience, the budget and the timeline.
-                      We use that understanding to develop a suitable approach and coordinate the required resources for the
-                      agreed scope.
-                    </p>
-                    <p>
-                      We operate with complete clarity: planning, creative direction and core management are led directly
-                      by Flashax. When specialist requirements arise — such as heavy fabrication or technical rigging — we
-                      coordinate vetted partners while maintaining direct responsibility for the final outcome.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="stack">
-                <div className="card panel" style={{ borderLeft: "3px solid var(--gold)" }}>
-                  <h3 className="panel__title">Our Operational Scope</h3>
-                  <ul className="ticks">
-                    <li>Single coordinated point of contact from brief to delivery</li>
-                    <li>Solutions tailored to client objectives, constraints and budgets</li>
-                    <li>Coordination of vetted production and technical partners</li>
-                    <li>Transparent delivery process with milestone updates</li>
-                  </ul>
-                </div>
-
-                <div className="card panel">
-                  <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "0.5rem" }}>HEADQUARTERS</p>
-                  <h4 style={{ fontSize: "1.25rem", color: "var(--ivory)", marginBottom: "0.5rem" }}>Mumbai, Maharashtra</h4>
-                  <p style={{ color: "var(--lavender)", fontSize: "var(--fs-small)" }}>
-                    Mumbai-based, coordinating projects across corporate venues, college campuses, and exhibition centers.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Mission & Vision Statement Showcase */}
-        <section className="section mv-section" aria-labelledby="about-mv-title">
-          <div className="wrap">
-            <SectionHeading
-              id="about-mv-title"
-              eyebrow="PURPOSE &amp; DIRECTION"
-              align="center"
-              lines={["DRIVEN BY PURPOSE.", "FOCUSED ON IMPACT."]}
-              lead="Our mission and vision define why Flashax exists and where we are steering the future of engagement."
-            />
-
-            <div className="mv-grid" role="region" aria-label="Mission and Vision">
-              {/* Mission Card */}
-              <article className="mv-card">
-                <div className="mv-card__watermark" aria-hidden="true">
-                  <svg viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M150 20C180 80 260 180 230 320C210 390 170 450 150 480C130 450 90 390 70 320C40 180 120 80 150 20Z"
-                      fill="url(#mv-mission-feather)"
-                    />
-                    <path d="M150 30L150 470" stroke="#F7B721" strokeWidth="2" strokeOpacity="0.3" />
-                    <path d="M150 140C190 125 220 155 240 190" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 220C195 205 225 240 235 280" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 300C185 290 205 320 210 350" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 160C110 145 80 175 60 210" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <path d="M150 240C105 225 75 260 65 300" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <path d="M150 320C115 310 95 340 90 370" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <defs>
-                      <linearGradient id="mv-mission-feather" x1="150" y1="20" x2="150" y2="480" gradientUnits="userSpaceOnUse">
-                        <stop offset="0%" stopColor="#F609CF" stopOpacity="0.35" />
-                        <stop offset="50%" stopColor="#8A1EA3" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="#521262" stopOpacity="0.05" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <div className="mv-card__header">
-                  <div className="mv-card__brand">
-                    <Image
-                      src="/brand/flashax-logo-transparent.png"
-                      alt="FLASHAX"
-                      width={140}
-                      height={36}
-                      unoptimized
-                      className="mv-card__brand-img"
-                    />
-                  </div>
-                  <h3 className="mv-card__title">MISSION</h3>
-                </div>
-                <div className="mv-card__box">
-                  <p className="mv-card__text">
-                    To redefine engagement through authentic, high-impact experiences. We empower institutions and
-                    organizations to connect with their audiences in meaningful ways—sparking inspiration, fostering
-                    professional synergy, and building the leaders of tomorrow.
-                  </p>
-                </div>
-              </article>
-
-              {/* Vision Card */}
-              <article className="mv-card">
-                <div className="mv-card__watermark" aria-hidden="true">
-                  <svg viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M150 20C180 80 260 180 230 320C210 390 170 450 150 480C130 450 90 390 70 320C40 180 120 80 150 20Z"
-                      fill="url(#mv-vision-feather)"
-                    />
-                    <path d="M150 30L150 470" stroke="#F7B721" strokeWidth="2" strokeOpacity="0.3" />
-                    <path d="M150 140C190 125 220 155 240 190" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 220C195 205 225 240 235 280" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 300C185 290 205 320 210 350" stroke="#F609CF" strokeWidth="1.5" strokeOpacity="0.25" />
-                    <path d="M150 160C110 145 80 175 60 210" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <path d="M150 240C105 225 75 260 65 300" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <path d="M150 320C115 310 95 340 90 370" stroke="#521262" strokeWidth="1.5" strokeOpacity="0.3" />
-                    <defs>
-                      <linearGradient id="mv-vision-feather" x1="150" y1="20" x2="150" y2="480" gradientUnits="userSpaceOnUse">
-                        <stop offset="0%" stopColor="#F609CF" stopOpacity="0.35" />
-                        <stop offset="50%" stopColor="#8A1EA3" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="#521262" stopOpacity="0.05" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <div className="mv-card__header">
-                  <div className="mv-card__brand">
-                    <Image
-                      src="/brand/flashax-logo-transparent.png"
-                      alt="FLASHAX"
-                      width={140}
-                      height={36}
-                      unoptimized
-                      className="mv-card__brand-img"
-                    />
-                  </div>
-                  <h3 className="mv-card__title">VISION</h3>
-                </div>
-                <div className="mv-card__box">
-                  <p className="mv-card__text">
-                    To be the pioneering force in engagement solutions, where every event—from the campus to the
-                    boardroom—is a strategic platform for growth and connection. We envision a future where every gathering
-                    serves as a powerful catalyst for success and sets a new benchmark for community and culture.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* 02. Our Founder */}
+        {/* 02. Meet the Founder */}
         <section className="section section--alt" aria-labelledby="about-founder-title">
           <div className="wrap">
-            <div className="about-grid">
-              <div>
-                <SectionHeading
-                  id="about-founder-title"
-                  eyebrow="02. LEADERSHIP"
-                  lines={["OUR FOUNDER"]}
-                  lead="Meet the leadership guiding Flashax Event Solutions."
+            <div className="about-grid about-grid--founder">
+              <div className="founder-image">
+                <Image
+                  src="/brand/flashax final profile.png"
+                  alt="Mukesh Choudhary, Founder"
+                  width={480}
+                  height={640}
+                  className="founder-image__img"
                 />
-                <div className="prose" style={{ marginTop: "2rem" }}>
-                  <p>
-                    <strong>Mukesh Choudhary</strong> is the founder of Flashax Event Solutions. With a commitment to
-                    delivering organised, transparent, and high-impact event experiences, he leads the company&apos;s
-                    vision, client partnerships, and strategic execution.
-                  </p>
-                  <p>
-                    Under his direction, Flashax operates on the philosophy that every successful event is built on
-                    attentive listening, disciplined coordination, and genuine accountability. Whether partnering with
-                    emerging brands, established corporate institutions, or student festival committees, the focus
-                    remains consistent: understanding the brief and executing with excellence.
-                  </p>
-                </div>
               </div>
 
-              <div>
-                <article className="card person" style={{ background: "var(--bg-2)", border: "1px solid var(--line-gold)", padding: "clamp(1.75rem, 3vw, 2.75rem)" }}>
-                  <p className="person__role">FOUNDER</p>
-                  <h3 className="person__name" style={{ color: "var(--ivory)", marginTop: "0.25rem" }}>
-                    {siteConfig.founder}
-                  </h3>
-                  <p style={{ color: "var(--gold)", fontSize: "0.85rem", letterSpacing: "0.05em", marginTop: "0.25rem" }}>
-                    Founder, Flashax Event Solutions
+              <div className="founder-content">
+                <header className="founder-head">
+                  <h2 id="about-founder-title" className="founder-head__title">MEET THE FOUNDER</h2>
+                  <p className="founder-head__sub">Mukesh Choudhary</p>
+                </header>
+                <div className="founder-desc">
+                  <p>
+                    Flashax Event Solutions was founded with a focus on helping businesses, brands and colleges bring their ideas to life through events, marketing initiatives and coordinated experiences.
                   </p>
-                  <div style={{ marginTop: "1.5rem", paddingTop: "1.5rem", borderTop: "1px solid var(--line)" }}>
-                    <p style={{ color: "var(--lavender)", fontSize: "var(--fs-small)", lineHeight: 1.7 }}>
-                      &ldquo;Our focus is straightforward: listen carefully to what the client wants to achieve, plan
-                      responsibly within their parameters, and coordinate the team and partners to deliver on ground
-                      without friction.&rdquo;
-                    </p>
-                  </div>
-                </article>
+                  <p>
+                    The focus is on understanding each client's requirements, planning carefully and coordinating the resources needed to deliver the agreed project scope.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 03. Our Core Principles */}
+        {/* 03. Vision & Mission */}
+        <section className="section mv-section" aria-labelledby="about-mv-title">
+          <div className="wrap">
+            <div className="mv-grid">
+              <article className="mv-card">
+                <div className="mv-card__watermark" aria-hidden="true">
+                  <Image
+                    src="/brand/flashax-logo-transparent.png"
+                    alt=""
+                    fill
+                    sizes="70vw"
+                    className="mv-card__watermark-img"
+                    priority={false}
+                  />
+                </div>
+                <h2 className="mv-card__title">OUR MISSION</h2>
+                <div className="mv-card__panel">
+                  <p className="mv-card__text">
+                    To help businesses, brands and educational institutions connect with their audiences through thoughtful planning, creative solutions and reliable execution, while building long-term relationships based on trust and transparency.
+                  </p>
+                </div>
+              </article>
+
+              <article className="mv-card">
+                <div className="mv-card__watermark" aria-hidden="true">
+                  <Image
+                    src="/brand/flashax-logo-transparent.png"
+                    alt=""
+                    fill
+                    sizes="70vw"
+                    className="mv-card__watermark-img"
+                    priority={false}
+                  />
+                </div>
+                <h2 className="mv-card__title">OUR VISION</h2>
+                <div className="mv-card__panel">
+                  <p className="mv-card__text">
+                    To become a trusted event and brand solutions partner known for creating meaningful experiences, building strong connections and bringing ideas to life.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 04. Operating Principles */}
         <section className="section" aria-labelledby="about-principles-title">
           <div className="wrap">
-            <SectionHeading
-              id="about-principles-title"
-              eyebrow="03. OPERATING PRINCIPLES"
-              align="center"
-              lines={["OUR CORE PRINCIPLES"]}
-              lead="Four standards that guide how Flashax plans, coordinates and delivers every project."
-            />
+            <header className="principles-head">
+              <h2 id="about-principles-title" className="principles-head__title">OPERATING PRINCIPLES</h2>
+              <p className="principles-head__sub">Leadership Operating Principles</p>
+              <p className="principles-head__desc">
+                Four standards that guide how Flashax plans, coordinates and delivers every project.
+              </p>
+            </header>
 
             <div className="values" role="list">
               {CORE_PRINCIPLES.map((principle) => (
