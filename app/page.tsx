@@ -4,6 +4,7 @@ import { HeroContent } from "@/components/three/HeroCanvas";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { WhyFlashax } from "@/components/home/WhyFlashax";
 import { Process } from "@/components/home/Process";
+import { PartnerMarquee } from "@/components/home/PartnerMarquee";
 import { SelectedWork } from "@/components/home/SelectedWork";
 import { FAQs } from "@/components/home/FAQs";
 import { FinalCTA } from "@/components/home/FinalCTA";
@@ -25,7 +26,10 @@ export default function HomePage() {
         {/* 04. How We Work */}
         <Process />
 
-        {/* 05. Selected Work / Featured Projects */}
+        {/* 05. Partner Logo Marquee */}
+        <PartnerMarquee />
+
+        {/* 06. Selected Work / Featured Projects */}
         <SelectedWork />
 
         {/* 06. FAQs */}

@@ -4,6 +4,7 @@ export interface ServiceDivision {
   description: string;
   suggestedImage: string;
   visualKey: string;
+  imageSrc?: string;
 }
 
 export interface FullService {
@@ -12,9 +13,9 @@ export interface FullService {
   anchorId: string;
   title: string;
   mainDescription: string;
-  disclaimer?: string;
   suggestedMainImage: string;
   divisions: ServiceDivision[];
+  image?: string;
 }
 
 export const servicesData: FullService[] = [
@@ -26,6 +27,7 @@ export const servicesData: FullService[] = [
     mainDescription:
       "We plan and coordinate events from the initial idea to on-ground execution, helping clients create organised, engaging experiences aligned with their objectives, audience and budget.",
     suggestedMainImage: "A premium corporate event, conference or well-organised live event.",
+    image: "/images/services/card-event-management.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -34,6 +36,7 @@ export const servicesData: FullService[] = [
           "We coordinate corporate gatherings such as annual days, employee celebrations, award functions, networking events and business events based on your requirements.",
         suggestedImage: "Corporate gathering",
         visualKey: "corporate-events",
+        imageSrc: "/images/services/corporate-events.webp",
       },
       {
         divisionNumber: "02",
@@ -42,6 +45,7 @@ export const servicesData: FullService[] = [
           "We help plan and coordinate college festivals, cultural events, student activities and large campus celebrations, including schedules, vendors and event-day operations.",
         suggestedImage: "College festival crowd",
         visualKey: "college-festivals",
+        imageSrc: "/images/services/college-festivals.webp",
       },
       {
         divisionNumber: "03",
@@ -50,6 +54,7 @@ export const servicesData: FullService[] = [
           "We coordinate launch events that introduce a new product or service to customers, partners, employees or invited guests through a well-planned event experience.",
         suggestedImage: "Product launch",
         visualKey: "product-launches",
+        imageSrc: "/images/services/product-launches.webp",
       },
       {
         divisionNumber: "04",
@@ -66,6 +71,7 @@ export const servicesData: FullService[] = [
           "We help manage invitations, guest registrations, check-ins, reception desks, VIP coordination and guest movement to support a smooth event experience.",
         suggestedImage: "Guest registration desk",
         visualKey: "guest-management",
+        imageSrc: "/images/services/guest-management.webp",
       },
       {
         divisionNumber: "06",
@@ -74,6 +80,7 @@ export const servicesData: FullService[] = [
           "We help develop the event concept, plan timelines, coordinate venues and suppliers, organise requirements and manage the details needed to bring the event together.",
         suggestedImage: "Event planning or production coordination",
         visualKey: "event-planning",
+        imageSrc: "/images/services/event-planning.webp",
       },
     ],
   },
@@ -84,9 +91,8 @@ export const servicesData: FullService[] = [
     title: "EVENT PRODUCTION",
     mainDescription:
       "We coordinate the technical setup, event infrastructure, branding materials and operational requirements needed to bring events, exhibitions and live experiences to life.",
-    disclaimer:
-      "We present these as production and coordination services. Flashax coordinates setups with vetted specialist partners rather than claiming full equipment ownership or employing every specialist directly. Execution depends on project scope and supplier availability.",
     suggestedMainImage: "A professionally produced stage with lighting and LED screens.",
+    image: "/images/services/card-event-production.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -95,6 +101,7 @@ export const servicesData: FullService[] = [
           "We coordinate stage design, stage structures, backdrops and event layouts suited to the venue, event format and production requirements.",
         suggestedImage: "Stage installation",
         visualKey: "stage-setup",
+        imageSrc: "/images/services/card-event-production.png",
       },
       {
         divisionNumber: "02",
@@ -161,9 +168,8 @@ export const servicesData: FullService[] = [
     title: "BRAND ACTIVATION",
     mainDescription:
       "We help brands connect with their target audiences through on-ground promotions, interactive experiences, product trials and coordinated brand campaigns.",
-    disclaimer:
-      "Campaign reach, sales outcomes, lead numbers, influencer participation and celebrity availability are subject to advance booking, institutional approvals and commercial terms.",
     suggestedMainImage: "A premium branded experiential activation or interactive promotional event.",
+    image: "/images/services/card-brand-activation.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -238,9 +244,8 @@ export const servicesData: FullService[] = [
     title: "CAMPUS MARKETING",
     mainDescription:
       "We help brands and organisations connect with college audiences through campus outreach, student ambassadors, sponsorship initiatives and student-focused campaigns.",
-    disclaimer:
-      "College permissions, sponsorship funding, student registrations and final attendance depend on institutional policies, college authority approvals and academic calendars.",
     suggestedMainImage: "Students participating in a college festival, campus activation or intercollegiate competition.",
+    image: "/images/services/card-campus-marketing.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -315,9 +320,8 @@ export const servicesData: FullService[] = [
     title: "DIGITAL MARKETING",
     mainDescription:
       "We help businesses communicate with their audiences through digital content, creative design, website solutions and coordinated online campaigns.",
-    disclaimer:
-      "Advertising media spends, specialist production, platform subscription access and third-party creator or influencer fees are agreed separately and billed as defined in project scopes.",
     suggestedMainImage: "A creative team working on digital content or a professional social media content setup.",
+    image: "/images/services/card-digital-marketing.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -392,9 +396,8 @@ export const servicesData: FullService[] = [
     title: "CSR INITIATIVES",
     mainDescription:
       "We coordinate educational, awareness and community-focused initiatives that help organisations engage with students and communities through meaningful programmes.",
-    disclaimer:
-      "Flashax acts as the programme planning and coordination lead. We do not claim unverified NGO affiliations, CSR tax certification or unverified social impact statistics.",
     suggestedMainImage: "An educational workshop, financial literacy session or community learning initiative.",
+    image: "/images/services/card-csr-initiatives.png",
     divisions: [
       {
         divisionNumber: "01",
@@ -461,9 +464,8 @@ export const servicesData: FullService[] = [
     title: "CORPORATE GIFTING",
     mainDescription:
       "We help businesses source and coordinate thoughtful gifts, employee kits and branded merchandise for onboarding, celebrations, corporate occasions and events.",
-    disclaimer:
-      "Product selection, custom branding, quantities, minimum order requirements (MOQ), delivery schedules and final pricing depend on vendor availability and the approved client order.",
     suggestedMainImage: "Premium corporate gift hampers, welcome kits or branded employee gifts.",
+    image: "/images/services/card-corporate-gifting.png",
     divisions: [
       {
         divisionNumber: "01",

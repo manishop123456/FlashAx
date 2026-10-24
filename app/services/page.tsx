@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
@@ -40,6 +41,25 @@ export default function ServicesPage() {
                 EXPLORE OUR SERVICES
               </ButtonLink>
             </div>
+
+            {/* Seven Services Overview Showcase */}
+            <div className="svc-hero__overview">
+              <div className="svc-hero__overview-frame">
+                <Image
+                  src="/images/services/seven-services-overview.webp"
+                  alt="Flashax Seven Services Overview — Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, CSR Initiatives, and Corporate Gifting"
+                  width={1500}
+                  height={1000}
+                  priority
+                  className="svc-hero__overview-img"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1080px"
+                />
+                <div className="svc-hero__overview-overlay" />
+                <div className="svc-hero__overview-badge">
+                  <span>7 Core Capabilities</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -74,12 +94,6 @@ export default function ServicesPage() {
                     </h2>
                     <p className="svc-lead-block__desc">{svc.mainDescription}</p>
 
-                    {svc.disclaimer && (
-                      <aside className="svc-lead-block__disclaimer" role="note" aria-label={`${svc.title} scope notice`}>
-                        <p>{svc.disclaimer}</p>
-                      </aside>
-                    )}
-
                     <div className="svc-lead-block__actions">
                       <ButtonLink
                         href={`/contact?service=${svc.slug}`}
@@ -99,7 +113,11 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="svc-lead-block__visual" aria-hidden="true">
-                    <ServiceVisual slug={svc.slug} />
+                    <ServiceVisual
+                      slug={svc.slug}
+                      imageSrc={svc.image}
+                      alt={svc.title}
+                    />
                   </div>
                 </div>
 
@@ -123,6 +141,7 @@ export default function ServicesPage() {
                             title={div.title}
                             divisionNumber={div.divisionNumber}
                             serviceSlug={svc.slug}
+                            imageSrc={div.imageSrc}
                           />
                         </div>
                       </article>

@@ -1,26 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { HeroParticles } from "@/components/ui/HeroParticles";
-import { prefersReducedMotion } from "@/lib/webgl";
 
 export function Hero() {
-  const [shouldAnimateFlash, setShouldAnimateFlash] = useState(false);
-
-  useEffect(() => {
-    // Skip animation if reduced motion is requested
-    if (prefersReducedMotion()) return;
-
-    // Trigger cool white flash animation on initial opening or whenever refreshed
-    const timer = setTimeout(() => {
-      setShouldAnimateFlash(true);
-    }, 120);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="hero" aria-labelledby="hero-title">
       {/* Subtle Floating Particle Background (Purple, Magenta, Muted Gold) */}
@@ -37,35 +21,18 @@ export function Hero() {
             FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success
           </h1>
 
-          {/* Oversized Official Brand Logo with Opening White Flash Reveal */}
-          <div className={`hero__brand ${shouldAnimateFlash ? "hero__brand--flash" : ""}`}>
-            {/* Transient ambient golden bloom behind the logo during reveal */}
-            {shouldAnimateFlash && (
-              <span className="hero__brand-glow" aria-hidden="true" />
-            )}
-
+          {/* Official Brand Logo (Clean, High Quality, Completely Static) */}
+          <div className="hero__brand">
             <Image
               src="/brand/flashax-logo-transparent.png"
               alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
               width={1024}
-              height={264}
+              height={261}
               priority
               unoptimized
               className="hero__brand-img"
               sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, (max-width: 1440px) 76vw, 1260px"
             />
-
-            {/* High-intensity White Flash Beam & Glint Sweeping Once Across the Logo */}
-            {shouldAnimateFlash && (
-              <span
-                className="hero__brand-flash"
-                aria-hidden="true"
-                onAnimationEnd={() => setShouldAnimateFlash(false)}
-              >
-                <span className="hero__brand-beam" />
-                <span className="hero__brand-sparkle" />
-              </span>
-            )}
           </div>
 
           {/* Small Service Descriptor (Gold Accent #F7B721, Clean Spacing) */}

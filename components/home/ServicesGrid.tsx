@@ -21,7 +21,11 @@ export function ServicesGrid() {
           {services.map((s) => (
             <article key={s.slug} className="card svc" role="listitem">
               <div className="svc__media">
-                <ServiceVisual slug={s.slug} />
+                <ServiceVisual
+                  slug={s.slug}
+                  imageSrc={s.image}
+                  alt={`${s.title} — Flashax Event Solutions`}
+                />
               </div>
               <div className="svc__body">
                 <h3 className="svc__title">{s.title}</h3>

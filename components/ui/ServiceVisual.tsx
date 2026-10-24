@@ -1,4 +1,5 @@
 import { useId } from "react";
+import Image from "next/image";
 
 /**
  * Abstract service artwork — an honest, consistent visual language used in place of
@@ -131,8 +132,38 @@ function Motif({ slug }: { slug: string }) {
   }
 }
 
-export function ServiceVisual({ slug, className = "visual" }: { slug: string; className?: string }) {
+export function ServiceVisual({
+  slug,
+  imageSrc,
+  alt,
+  className = "visual",
+  priority = false,
+}: {
+  slug: string;
+  imageSrc?: string;
+  alt?: string;
+  className?: string;
+  priority?: boolean;
+}) {
   const uid = useId().replace(/:/g, "");
+
+  if (imageSrc) {
+    return (
+      <div className={`service-visual-wrap ${className}`}>
+        <Image
+          src={imageSrc}
+          alt={alt || `${slug.replace(/-/g, " ")} — Flashax Event Solutions`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
+          style={{ objectFit: "cover" }}
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
+        />
+        <div className="service-visual-overlay" />
+      </div>
+    );
+  }
+
   return (
     <svg
       className={className}

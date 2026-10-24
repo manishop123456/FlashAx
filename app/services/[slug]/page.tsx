@@ -67,16 +67,6 @@ export default function ServicePage({ params }: Props) {
                 </h1>
                 <p className="svc-lead-block__desc">{service.mainDescription}</p>
 
-                {service.disclaimer && (
-                  <aside
-                    className="svc-lead-block__disclaimer"
-                    role="note"
-                    aria-label={`${service.title} scope notice`}
-                  >
-                    <p>{service.disclaimer}</p>
-                  </aside>
-                )}
-
                 <div className="svc-lead-block__actions">
                   <ButtonLink
                     href={`/contact?service=${service.slug}`}
@@ -89,7 +79,12 @@ export default function ServicePage({ params }: Props) {
               </div>
 
               <div className="svc-lead-block__visual" aria-hidden="true">
-                <ServiceVisual slug={service.slug} />
+                <ServiceVisual
+                  slug={service.slug}
+                  imageSrc={service.image}
+                  alt={service.title}
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -118,6 +113,7 @@ export default function ServicePage({ params }: Props) {
                         title={div.title}
                         divisionNumber={div.divisionNumber}
                         serviceSlug={service.slug}
+                        imageSrc={div.imageSrc}
                       />
                     </div>
                   </article>

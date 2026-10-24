@@ -1,21 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
-import { prefersReducedMotion } from "@/lib/webgl";
 
 export function HeroFallback() {
-  const [shouldAnimateFlash, setShouldAnimateFlash] = useState(false);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    const timer = setTimeout(() => {
-      setShouldAnimateFlash(true);
-    }, 120);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="hero hero--fallback" aria-labelledby="hero-title-fallback">
       <div className="hero__backdrop" aria-hidden="true">
@@ -28,30 +16,17 @@ export function HeroFallback() {
             FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success
           </h1>
 
-          <div className={`hero__brand ${shouldAnimateFlash ? "hero__brand--flash" : ""}`}>
-            {shouldAnimateFlash && (
-              <span className="hero__brand-glow" aria-hidden="true" />
-            )}
+          <div className="hero__brand">
             <Image
               src="/brand/flashax-logo-transparent.png"
               alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
               width={1024}
-              height={264}
+              height={261}
               priority
               unoptimized
               className="hero__brand-img"
               sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, (max-width: 1440px) 76vw, 1260px"
             />
-            {shouldAnimateFlash && (
-              <span
-                className="hero__brand-flash"
-                aria-hidden="true"
-                onAnimationEnd={() => setShouldAnimateFlash(false)}
-              >
-                <span className="hero__brand-beam" />
-                <span className="hero__brand-sparkle" />
-              </span>
-            )}
           </div>
 
           <p className="hero__descriptor">

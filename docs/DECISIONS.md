@@ -255,3 +255,28 @@ This file records decisions that should remain consistent across Antigravity, Co
      - The main `/services` overview catalogue remains intact with its 7 full-width sections and quicknav.
      - The `/work` portfolio page remains completely untouched.
 - **Rationale:** Ensures visitors navigating from the navbar dropdown or anywhere on the website experience the dedicated, founder-approved editorial content for each specific service without legacy cards or duplicate full catalogues.
+
+
+### Service Images Integration (October 25, 2026)
+- **Context:** The user provided 7 renamed high-resolution WebP service assets to integrate into the existing website.
+- **Decision:**
+  1. **Assets Stored:** Placed in `public/images/services/`:
+     - `corporate-events.webp` (1500x1000)
+     - `college-festivals.webp` (1500x1000)
+     - `product-launches.webp` (1500x1000)
+     - `event-production-and-planning.webp` (1500x1000)
+     - `guest-management.webp` (1500x1000)
+     - `event-planning.webp` (1500x1000)
+     - `seven-services-overview.webp` (1500x1000)
+  2. **Authentic Service Mapping:**
+     - `seven-services-overview.webp`: Featured exclusively as the 7 capabilities overview banner on `/services` (`app/services/page.tsx`). Never used as an individual service card thumbnail.
+     - `event-planning.webp`: Integrated as the cover visual for Event Management on the Home page (`/`) and Service detail page (`/services/event-management`), and as the division visual for Event Planning.
+     - `event-production-and-planning.webp`: Integrated as the cover visual for Event Production on the Home page (`/`) and Service detail page (`/services/event-production`), and as the division visual for Stage Setup.
+     - `corporate-events.webp`: Integrated into Event Management division "Corporate Events" (`/services/event-management` and `/services#event-management`).
+     - `college-festivals.webp`: Integrated into Event Management division "College Festivals" (`/services/event-management` and `/services#event-management`).
+     - `product-launches.webp`: Integrated into Event Management division "Product Launches" (`/services/event-management` and `/services#event-management`).
+     - `guest-management.webp`: Integrated into Event Management division "Guest Management" (`/services/event-management` and `/services#event-management`).
+  3. **Preservation of Procedural Visuals:**
+     - In strict adherence to non-negotiable rules, no unrelated event photographs were assigned to **Digital Marketing**, **CSR Initiatives**, or **Corporate Gifting**. These services, along with **Brand Activation** and **Campus Marketing**, retain their tailored geometric vector motifs (`ServiceVisual` & `DivisionVisual`).
+  4. **Performance & Styling:**
+     - All image thumbnails use `object-fit: cover` with fixed aspect ratios (`16:9` on Home cards, `16:10` on editorial pages), Next.js responsive sizing, lazy loading below the fold, and subtle vignette overlays matching the `#17091D` / `#521262` palette.

@@ -73,6 +73,65 @@
   justify-content: center;
   align-items: center;
 }
+
+/* ---- Seven Services Overview Showcase Banner ---- */
+.svc-hero__overview {
+  width: 100%;
+  max-width: 960px;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.svc-hero__overview-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid rgba(247, 183, 33, 0.28);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.65), 0 0 40px -10px rgba(82, 18, 98, 0.45);
+  background: var(--surface);
+}
+
+.svc-hero__overview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1200ms var(--ease);
+}
+
+.svc-hero__overview-frame:hover .svc-hero__overview-img {
+  transform: scale(1.03);
+}
+
+.svc-hero__overview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 9, 29, 0.05) 0%, rgba(23, 9, 29, 0.45) 100%);
+  pointer-events: none;
+}
+
+.svc-hero__overview-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(23, 9, 29, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(247, 183, 33, 0.35);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 #service-catalogue {
   scroll-margin-top: calc(var(--header-h) + 1.5rem);
 }
@@ -615,8 +674,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: center;
-  padding: clamp(2.5rem, 4vw, 3.75rem) clamp(1.75rem, 3.5vw, 3rem);
+  justify-content: flex-start;
+  height: 100%;
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.75rem, 3.5vw, 3rem);
   border-radius: var(--radius-l);
   background:
     radial-gradient(120% 100% at 50% 0%, rgba(82, 18, 98, 0.45) 0%, transparent 65%),
@@ -1303,7 +1363,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-3);
-  margin-top: var(--s-3);
+  margin-top: var(--s-1);
 }
 .svc-lead-block__visual {
   position: relative;
@@ -1314,9 +1374,22 @@
   background: var(--grad-purple);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
-.svc-lead-block__visual .visual {
+.svc-lead-block__visual .visual,
+.svc-lead-block__visual .service-visual-wrap {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+}
+.svc-lead-block__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 900ms var(--ease);
+}
+.svc-lead-block:hover .svc-lead-block__visual img {
+  transform: scale(1.04);
 }
 
 /* Divisions header banner */
@@ -1442,11 +1515,22 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.division-visual--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 900ms var(--ease);
+}
+.division-row:hover .division-visual--image img {
+  transform: scale(1.04);
 }
 .division-visual__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(23, 9, 29, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 55%, rgba(23, 9, 29, 0.75) 100%);
   pointer-events: none;
 }
 

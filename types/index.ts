@@ -7,6 +7,7 @@ export type FlashaxService = {
   offerings: string[];
   relatedServiceSlugs: string[];
   heroImage?: string;
+  image?: string;
 };
 
 export type PortfolioProject = {

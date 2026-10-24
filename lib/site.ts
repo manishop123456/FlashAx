@@ -75,6 +75,7 @@ export const services: FlashaxService[] = servicesData.map((s) => ({
       : s.slug === "csr-initiatives"
       ? ["campus-marketing", "event-management", "digital-marketing"]
       : ["event-management", "event-production", "brand-activation"],
+  image: s.image,
 }));
 
 import { portfolioProjectsData } from "@/lib/portfolioData";

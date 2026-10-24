@@ -553,11 +553,12 @@ export function DivisionVisual({
       <div className={`${className} division-visual--image`}>
         <Image
           src={imageSrc}
-          alt={title}
+          alt={`${title} — Flashax Event Solutions`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           style={{ objectFit: "cover" }}
           priority={false}
+          loading="lazy"
         />
         <div className="division-visual__overlay" />
       </div>
