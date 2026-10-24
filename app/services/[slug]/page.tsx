@@ -1,178 +1,179 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { services } from "@/lib/site";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/ui/PageHero";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { ServiceVisual } from "@/components/ui/ServiceVisual";
-import { Accordion } from "@/components/ui/Accordion";
+import { DivisionVisual } from "@/components/ui/DivisionVisual";
+import { servicesData, type FullService } from "@/lib/servicesData";
 
 interface Props {
   params: { slug: string };
 }
 
+function resolveService(slug: string): FullService | undefined {
+  const normalized =
+    slug === "csr-programs" || slug === "csr-education"
+      ? "csr-initiatives"
+      : slug === "production-operations" || slug === "exhibitions"
+      ? "event-production"
+      : slug === "campus-connect"
+      ? "campus-marketing"
+      : slug === "digital-creative"
+      ? "digital-marketing"
+      : slug;
+  return servicesData.find((s) => s.slug === normalized);
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = services.find((s) => s.slug === params.slug);
-  if (!service) return { title: "Service Not Found" };
+  const service = resolveService(params.slug);
+  if (!service) return { title: "Service Not Found | FLASHAX EVENT SOLUTIONS" };
   return {
-    title: service.title,
-    description: service.shortDescription,
+    title: `${service.title} | FLASHAX EVENT SOLUTIONS`,
+    description: service.mainDescription,
   };
 }
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return servicesData.map((s) => ({ slug: s.slug }));
 }
 
-const PROCESS_STEPS = [
-  { title: "Discover", text: "Understand objectives, audience, venue constraints and deliverables." },
-  { title: "Strategise", text: "Shape the concept, creative direction, resource plan and milestones." },
-  { title: "Coordinate", text: "Line up specialists, vendors, permits, logistics and equipment." },
-  { title: "Execute", text: "On-site direction, real-time quality control and flawless delivery." },
-  { title: "Review", text: "Evaluate outcomes against the brief and capture insights for next time." },
-];
-
 export default function ServicePage({ params }: Props) {
-  const service = services.find((s) => s.slug === params.slug);
+  const service = resolveService(params.slug);
   if (!service) notFound();
 
-  const related = service.relatedServiceSlugs
-    .map((slug) => services.find((s) => s.slug === slug))
-    .filter(Boolean) as typeof services;
-
-  const faqs = [
-    {
-      question: `What is included in ${service.title}?`,
-      answer: <p>{service.fullDescription}</p>,
-    },
-    {
-      question: "Can I hire this service as a standalone engagement?",
-      answer: (
-        <p>
-          Yes. Every division operates independently. You can engage us specifically for {service.title} or combine it
-          with other services under a single coordinated agreement.
-        </p>
-      ),
-    },
-    {
-      question: "Does Flashax handle all specialist work in-house?",
-      answer: (
-        <p>
-          Core strategy, planning, creative and production leadership are led in-house. When highly specialized
-          elements (large-scale custom fabrication, specialized technical machinery) are needed, we coordinate vetted
-          partners while remaining your single accountable contact.
-        </p>
-      ),
-    },
-    {
-      question: "How do we receive a detailed scope and quotation?",
-      answer: (
-        <p>
-          Submit the project enquiry form with your tentative date and requirements. We review it and schedule a
-          discovery call to establish scope before preparing a proposal.
-        </p>
-      ),
-    },
-  ];
+  const otherServices = servicesData.filter((s) => s.slug !== service.slug);
 
   return (
     <>
       <Header />
       <main id="main-content" role="main">
-        <PageHero
-          titleId="service-detail-title"
-          eyebrow={`SERVICE DIVISION ${service.number}`}
-          titleLines={[service.title]}
-          lead={service.shortDescription}
-          aside={
-            <div className="visual-frame">
-              <ServiceVisual slug={service.slug} />
-            </div>
-          }
-        />
-
-        <section className="section" aria-labelledby="service-overview-title">
+        {/* SECTION 01 — SERVICE HERO */}
+        <section className="svc-detail-hero" aria-labelledby="service-detail-title">
           <div className="wrap">
-            <div className="detail">
-              <div className="detail__main">
-                <div>
-                  <SectionHeading
-                    id="service-overview-title"
-                    eyebrow="CAPABILITY SCOPE"
-                    lines={["WHAT WE DELIVER"]}
-                    lead={service.fullDescription}
-                  />
-                  <div className="offers" role="list">
-                    {service.offerings.map((offering, i) => (
-                      <div key={offering} className="card offer" role="listitem">
-                        <span className="offer__n">{String(i + 1).padStart(2, "0")}</span>
-                        <p>{offering}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            <nav className="svc-breadcrumb" aria-label="Breadcrumb">
+              <Link href="/services" className="svc-breadcrumb__link">
+                <ArrowLeft size={14} aria-hidden="true" />
+                <span>BACK TO SERVICES</span>
+              </Link>
+            </nav>
 
-                <div>
-                  <SectionHeading
-                    eyebrow="EXECUTION FRAMEWORK"
-                    lines={["OUR DELIVERY PROCESS"]}
-                    lead="How this division coordinates every stage from the initial brief to post-project review."
-                  />
-                  <div className="mini-steps" role="list">
-                    {PROCESS_STEPS.map((st, i) => (
-                      <article key={st.title} className="mini-step" role="listitem">
-                        <span className="mini-step__n">{String(i + 1).padStart(2, "0")}</span>
-                        <div>
-                          <h3>{st.title}</h3>
-                          <p>{st.text}</p>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
+            <div className="svc-lead-block">
+              <div className="svc-lead-block__content">
+                <h1 id="service-detail-title" className="svc-lead-block__title">
+                  {service.title}
+                </h1>
+                <p className="svc-lead-block__desc">{service.mainDescription}</p>
 
-                <div>
-                  <SectionHeading
-                    eyebrow="DIVISION FAQS"
-                    lines={["FREQUENTLY ASKED"]}
-                    lead={`Key questions regarding ${service.title} delivery and engagement.`}
-                  />
-                  <div style={{ marginTop: "1.5rem" }}>
-                    <Accordion items={faqs} label={`${service.title} FAQs`} />
-                  </div>
-                </div>
-              </div>
+                {service.disclaimer && (
+                  <aside
+                    className="svc-lead-block__disclaimer"
+                    role="note"
+                    aria-label={`${service.title} scope notice`}
+                  >
+                    <p>{service.disclaimer}</p>
+                  </aside>
+                )}
 
-              <aside className="detail__side">
-                <div className="card panel">
-                  <h3 className="panel__title">Get a Proposal</h3>
-                  <p>Ready to discuss {service.title} for your upcoming event or campaign?</p>
-                  <ButtonLink href={`/contact?service=${service.slug}`} variant="primary" icon="up-right" block>
+                <div className="svc-lead-block__actions">
+                  <ButtonLink
+                    href={`/contact?service=${service.slug}`}
+                    variant="primary"
+                    icon="up-right"
+                  >
                     GET A PROPOSAL
                   </ButtonLink>
                 </div>
+              </div>
 
-                {related.length > 0 && (
-                  <div className="card panel">
-                    <h3 className="panel__title">Related Divisions</h3>
-                    <div className="related">
-                      {related.map((rel) => (
-                        <Link key={rel.slug} href={`/services/${rel.slug}`}>
-                          <span>{rel.title}</span>
-                          <ArrowUpRight aria-hidden="true" />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </aside>
+              <div className="svc-lead-block__visual" aria-hidden="true">
+                <ServiceVisual slug={service.slug} />
+              </div>
             </div>
           </div>
         </section>
+
+        {/* SECTION 02 & 03 — SERVICE OFFERINGS (Alternating Editorial Layout) */}
+        <section className="svc-divisions-section" aria-label={`${service.title} offerings`}>
+          <div className="wrap">
+            <div className="division-list" role="list">
+              {service.divisions.map((div, divIndex) => {
+                const isEven = divIndex % 2 === 1;
+                return (
+                  <article
+                    key={div.title}
+                    className={`division-row ${isEven ? "division-row--even" : ""}`}
+                    role="listitem"
+                  >
+                    <div className="division-row__content">
+                      <h3 className="division-row__title">{div.title}</h3>
+                      <p className="division-row__desc">{div.description}</p>
+                    </div>
+
+                    <div className="division-row__media">
+                      <DivisionVisual
+                        visualKey={div.visualKey}
+                        title={div.title}
+                        divisionNumber={div.divisionNumber}
+                        serviceSlug={service.slug}
+                      />
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 04 — SERVICE-SPECIFIC ENQUIRY CTA */}
+        <section className="services-enquiry" aria-labelledby="service-enquiry-title">
+          <div className="wrap services-enquiry__inner">
+            <span className="svc-lead-block__num">LET&apos;S CONNECT</span>
+            <h2 id="service-enquiry-title" className="services-enquiry__title">
+              READY TO DISCUSS {service.title}?
+            </h2>
+            <p className="services-enquiry__text">
+              Tell us what you are planning, and let&apos;s discuss how Flashax Event Solutions can coordinate and deliver your requirements.
+            </p>
+            <div className="services-enquiry__cta">
+              <ButtonLink
+                href={`/contact?service=${service.slug}`}
+                variant="primary"
+                icon="up-right"
+              >
+                GET A PROPOSAL
+              </ButtonLink>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 05 — RETURN NAVIGATION */}
+        <nav className="svc-return-nav" aria-label="Explore other services">
+          <div className="wrap svc-return-nav__inner">
+            <div className="svc-return-nav__header">
+              <Link href="/services" className="svc-breadcrumb__link">
+                <ArrowLeft size={16} aria-hidden="true" />
+                <span>VIEW ALL SERVICES OVERVIEW</span>
+              </Link>
+              <span className="svc-return-nav__hint">Explore other service categories:</span>
+            </div>
+            <div className="svc-return-nav__grid">
+              {otherServices.map((other) => (
+                <Link
+                  key={other.slug}
+                  href={`/services/${other.slug}`}
+                  className="svc-return-nav__item"
+                >
+                  <span className="svc-return-nav__num">{other.number.split("/")[0]}</span>
+                  <span className="svc-return-nav__title">{other.title}</span>
+                  <ArrowUpRight size={14} aria-hidden="true" className="svc-return-nav__arrow" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
       </main>
       <Footer />
     </>

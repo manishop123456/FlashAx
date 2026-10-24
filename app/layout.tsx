@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "brand activation agency",
     "campus connect sponsorships",
     "digital marketing events",
-    "CSR Programs",
+    "CSR Initiatives",
     "Flashax Event Solutions",
     "Flashax",
   ],

@@ -13,7 +13,8 @@ const nextConfig = {
       { source: "/services/production-operations", destination: "/services/event-production", permanent: true },
       { source: "/services/campus-connect", destination: "/services/campus-marketing", permanent: true },
       { source: "/services/digital-creative", destination: "/services/digital-marketing", permanent: true },
-      { source: "/services/csr-education", destination: "/services/csr-programs", permanent: true },
+      { source: "/services/csr-education", destination: "/services/csr-initiatives", permanent: true },
+      { source: "/services/csr-programs", destination: "/services/csr-initiatives", permanent: true },
     ];
   },
 };

@@ -1,5 +1,4 @@
 import { faqs } from "@/lib/content";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -13,11 +12,7 @@ export function FAQs() {
     <section id="faqs" className="section" aria-labelledby="faqs-title">
       <div className="wrap">
         <header className="faq-head">
-          <h2 id="faqs-title" className="faq-head__title">FREQUENTLY ASKED QUESTIONS</h2>
-          <p className="faq-head__sub">Clear Answers. No Runaround.</p>
-          <p className="faq-head__desc">
-            Practical information about how we work, how projects are scoped, and what to expect when you partner with Flashax.
-          </p>
+          <h2 id="faqs-title" className="faq-head__title">FAQ</h2>
         </header>
 
         <div className="faq">

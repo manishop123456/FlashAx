@@ -11,6 +11,10 @@ export function ServicesGrid() {
         <header className="svc-head">
           <h2 id="services-title" className="svc-head__title">OUR SERVICES</h2>
           <p className="svc-head__sub">Everything Your Idea Needs. All in One Place.</p>
+          <p className="svc-head__desc">
+            From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting,
+            Flashax offers services to help you plan, promote and execute your next project.
+          </p>
         </header>
 
         <div className="svc-grid" role="list">
@@ -33,7 +37,7 @@ export function ServicesGrid() {
 
         <div className="services__foot">
           <ButtonLink href="/services" variant="secondary" icon="up-right">
-            EXPLORE ALL SERVICES
+            EXPLORE SERVICES
           </ButtonLink>
         </div>
       </div>

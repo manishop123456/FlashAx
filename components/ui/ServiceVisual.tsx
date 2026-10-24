@@ -115,6 +115,7 @@ function Motif({ slug }: { slug: string }) {
           <circle cx="128" cy="214" r="3.5" fill={GOLD} opacity="0.6" />
         </g>
       );
+    case "csr-initiatives":
     case "csr-programs":
     case "csr-education": // growing sprout over open book
       return (

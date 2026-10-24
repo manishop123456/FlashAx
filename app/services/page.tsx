@@ -1,153 +1,169 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { services } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { ServiceVisual } from "@/components/ui/ServiceVisual";
-import { Accordion } from "@/components/ui/Accordion";
+import { DivisionVisual } from "@/components/ui/DivisionVisual";
+import { servicesData } from "@/lib/servicesData";
 
 export const metadata: Metadata = {
   title: "Our Services | FLASHAX EVENT SOLUTIONS",
   description:
-    "From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting, Flashax offers services to help you plan, promote and execute your next project.",
+    "From planning memorable events to building brand experiences and engaging audiences, Flashax Event Solutions offers coordinated solutions for businesses, colleges and organisations.",
 };
-
-const SERVICES_FAQS = [
-  {
-    question: "Can we hire Flashax for a single service or only complete projects?",
-    answer: (
-      <p>
-        Every division operates independently. You can engage us specifically for an individual service — such as
-        event production, campus marketing, or corporate gifting — or combine multiple divisions under a single
-        coordinated brief.
-      </p>
-    ),
-  },
-  {
-    question: "How are project responsibilities and specialist partners coordinated?",
-    answer: (
-      <p>
-        Flashax directly leads planning, creative direction and project coordination. When specialist technical
-        rigging, large-scale fabrication, or specialized talent is required, we coordinate vetted partners while
-        maintaining single-source accountability for the agreed brief.
-      </p>
-    ),
-  },
-  {
-    question: "What is the typical timeline and proposal process?",
-    answer: (
-      <p>
-        After reviewing your enquiry details, we schedule an initial discovery discussion to understand your objectives,
-        audience, location and parameters before delivering an itemised scope and timeline proposal.
-      </p>
-    ),
-  },
-];
 
 export default function ServicesPage() {
   return (
     <>
       <Header />
       <main id="main-content" role="main">
-        {/* Services Page Hero: Inverted visual hierarchy with dominant H1 */}
+        {/* 1. Services Page Introduction */}
         <section className="svc-hero" aria-labelledby="services-h1">
           <div className="wrap svc-hero__inner">
-            <span className="svc-hero__eyebrow">WHAT WE OFFER</span>
-
             <h1 id="services-h1" className="svc-hero__h1">
               OUR SERVICES
             </h1>
 
-            <p className="svc-hero__subheadline">
-              Everything Your Idea Needs. All in One Place.
-            </p>
-
             <p className="svc-hero__desc">
-              From corporate events and college festivals to brand campaigns, digital marketing and corporate gifting,
-              Flashax offers services to help you plan, promote and execute your next project.
+              From planning memorable events to building brand experiences and engaging audiences, Flashax Event
+              Solutions offers coordinated solutions for businesses, colleges and organisations. Explore our services to
+              understand how we can support your next project.
             </p>
 
             <div className="svc-hero__actions">
               <ButtonLink href="/contact" variant="primary" icon="up-right">
-                GET A PROPOSAL
+                DISCUSS YOUR PROJECT
               </ButtonLink>
-              <ButtonLink href="#service-catalogue" variant="secondary" icon="down">
-                EXPLORE SERVICES
+              <ButtonLink href="#event-management" variant="secondary" icon="down">
+                EXPLORE OUR SERVICES
               </ButtonLink>
             </div>
           </div>
         </section>
 
-        {/* 7 Services Catalogue Grid */}
-        <section id="service-catalogue" className="section" aria-labelledby="catalogue-title">
-          <div className="wrap">
-            <h2 id="catalogue-title" className="sr-only">
-              Flashax Service Categories
+        {/* 2. Quick Navigation Anchor Bar */}
+        <nav className="svc-quicknav" aria-label="Service categories quick navigation">
+          <div className="svc-quicknav__inner wrap">
+            {servicesData.map((svc) => (
+              <a key={svc.slug} href={`#${svc.anchorId}`} className="svc-quicknav__link">
+                <span>{svc.number.split("/")[0]}.</span>
+                <span>{svc.title}</span>
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        {/* 3. Seven Full-Width Service Sections */}
+        <div id="service-catalogue">
+          {servicesData.map((svc) => (
+            <section
+              key={svc.slug}
+              id={svc.anchorId}
+              className="svc-section"
+              aria-labelledby={`${svc.slug}-title`}
+            >
+              <div className="wrap">
+                {/* Main Service Introduction: 2-column editorial on desktop */}
+                <div className="svc-lead-block">
+                  <div className="svc-lead-block__content">
+                    <span className="svc-lead-block__num">{svc.number}</span>
+                    <h2 id={`${svc.slug}-title`} className="svc-lead-block__title">
+                      {svc.title}
+                    </h2>
+                    <p className="svc-lead-block__desc">{svc.mainDescription}</p>
+
+                    {svc.disclaimer && (
+                      <aside className="svc-lead-block__disclaimer" role="note" aria-label={`${svc.title} scope notice`}>
+                        <p>{svc.disclaimer}</p>
+                      </aside>
+                    )}
+
+                    <div className="svc-lead-block__actions">
+                      <ButtonLink
+                        href={`/contact?service=${svc.slug}`}
+                        variant="primary"
+                        icon="up-right"
+                      >
+                        DISCUSS THIS SERVICE
+                      </ButtonLink>
+                      <ButtonLink
+                        href={`/services/${svc.slug}`}
+                        variant="secondary"
+                        icon="up-right"
+                      >
+                        VIEW SERVICE GUIDE
+                      </ButtonLink>
+                    </div>
+                  </div>
+
+                  <div className="svc-lead-block__visual" aria-hidden="true">
+                    <ServiceVisual slug={svc.slug} />
+                  </div>
+                </div>
+
+                <div className="division-list" role="list">
+                  {svc.divisions.map((div, divIndex) => {
+                    const isEven = divIndex % 2 === 1;
+                    return (
+                      <article
+                        key={div.title}
+                        className={`division-row ${isEven ? "division-row--even" : ""}`}
+                        role="listitem"
+                      >
+                        <div className="division-row__content">
+                          <h3 className="division-row__title">{div.title}</h3>
+                          <p className="division-row__desc">{div.description}</p>
+                        </div>
+
+                        <div className="division-row__media">
+                          <DivisionVisual
+                            visualKey={div.visualKey}
+                            title={div.title}
+                            divisionNumber={div.divisionNumber}
+                            serviceSlug={svc.slug}
+                          />
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* 4. Multi-Service Integrated Coordination Callout */}
+        <div className="wrap">
+          <div className="callout" style={{ marginBlock: "clamp(3.5rem, 6vw, 6rem)" }}>
+            <div>
+              <h3 className="callout__title">Need a combination of services?</h3>
+              <p>
+                Most client projects span multiple services. We provide one dedicated project lead to coordinate
+                everything across events, production, marketing and gifting, so you never have to manage separate vendors
+                or misaligned handovers.
+              </p>
+            </div>
+            <ButtonLink href="/contact" variant="primary" icon="up-right">
+              GET A PROPOSAL
+            </ButtonLink>
+          </div>
+        </div>
+
+        {/* 5. Final Enquiry Section */}
+        <section className="services-enquiry" aria-labelledby="enquiry-heading">
+          <div className="wrap services-enquiry__inner">
+            <h2 id="enquiry-heading" className="services-enquiry__title">
+              Have a Project in Mind?
             </h2>
-
-            <div className="svc-grid" role="list">
-              {services.map((s) => (
-                <article key={s.slug} className="card svc" role="listitem">
-                  <div className="svc__media">
-                    <span className="svc__num">{s.number}</span>
-                    <ServiceVisual slug={s.slug} />
-                  </div>
-                  <div className="svc__body">
-                    <h3 className="svc__title">{s.title}</h3>
-                    <p className="svc__text">{s.shortDescription}</p>
-
-                    <ul
-                      className="ticks"
-                      style={{
-                        margin: "0.25rem 0 0.5rem",
-                        padding: 0,
-                        display: "grid",
-                        gap: "0.35rem",
-                      }}
-                      aria-label={`${s.title} key capabilities`}
-                    >
-                      {s.offerings.slice(0, 4).map((offering) => (
-                        <li key={offering} style={{ fontSize: "var(--fs-small)" }}>
-                          {offering}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link href={`/services/${s.slug}`} className="link-arrow">
-                      EXPLORE SERVICE
-                      <ArrowUpRight aria-hidden="true" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {/* Services FAQ Section */}
-            <div style={{ marginTop: "5rem" }}>
-              <SectionHeading
-                eyebrow="SERVICES FAQ"
-                lines={["FREQUENTLY ASKED QUESTIONS"]}
-                lead="Answers to common questions about engaging Flashax across single or multiple service divisions."
-              />
-              <div style={{ marginTop: "2rem" }}>
-                <Accordion items={SERVICES_FAQS} label="Services FAQ accordion" />
-              </div>
-            </div>
-
-            {/* Multi-Service Project Callout */}
-            <div className="callout">
-              <div>
-                <h3 className="callout__title">Need a combination of services?</h3>
-                <p>
-                  Most client projects span multiple divisions. We provide one dedicated project lead to coordinate everything
-                  so you never have to manage separate vendors or deal with misaligned handovers.
-                </p>
-              </div>
+            <p className="services-enquiry__text">
+              Tell us what you are planning, and let&apos;s discuss how Flashax Event Solutions can support your
+              requirements.
+            </p>
+            <div className="services-enquiry__cta">
               <ButtonLink href="/contact" variant="primary" icon="up-right">
-                GET A PROPOSAL
+                DISCUSS YOUR PROJECT
               </ButtonLink>
             </div>
           </div>

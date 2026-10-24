@@ -11,7 +11,7 @@ export const capabilities = [
     text: "Strategy, concepts and event planning.",
     services: [
       { label: "Event Management", slug: "event-management" },
-      { label: "CSR Programs", slug: "csr-programs" },
+      { label: "CSR Initiatives", slug: "csr-initiatives" },
     ],
   },
   {
@@ -104,40 +104,40 @@ export const audiences = [
   {
     key: "ngos",
     title: "Community & Institutions",
-    text: "CSR Programs, educational workshops, financial literacy sessions and community outreach initiatives.",
+    text: "CSR Initiatives, educational workshops, financial literacy sessions and community outreach initiatives.",
     services: [
-      { label: "CSR Programs", slug: "csr-programs" },
+      { label: "CSR Initiatives", slug: "csr-initiatives" },
       { label: "Digital Marketing", slug: "digital-marketing" },
     ],
-    href: "/services/csr-programs",
+    href: "/services/csr-initiatives",
   },
 ] as const;
 
 export const processSteps = [
   {
-    title: "Discover",
-    text: "Understand the objective, the audience and what success looks like.",
-    points: ["Brief and objectives", "Audience and venue context", "Scope and budget range"],
+    number: "01",
+    title: "UNDERSTAND",
+    text: "We discuss your goals, audience, budget, timeline, location and expectations to understand what your project needs.",
   },
   {
-    title: "Strategise",
-    text: "Shape the concept, the approach and the plan.",
-    points: ["Creative direction", "Production planning", "Timeline and responsibilities"],
+    number: "02",
+    title: "PLAN",
+    text: "We develop a proposed approach covering the scope of work, key activities, estimated costs, timelines and resources.",
   },
   {
-    title: "Coordinate",
-    text: "Line up teams, vendors and logistics.",
-    points: ["Vendors and partners", "Venue and permissions", "Schedules and assets"],
+    number: "03",
+    title: "COORDINATE",
+    text: "Once the plan is approved, we coordinate the relevant suppliers, partners, materials, people and other project requirements.",
   },
   {
-    title: "Execute",
-    text: "Deliver the experience on the ground.",
-    points: ["On-site direction", "Technical checks", "Guest and audience flow"],
+    number: "04",
+    title: "EXECUTE",
+    text: "We coordinate the agreed activities and manage on-ground or campaign-related requirements according to the project scope.",
   },
   {
-    title: "Review",
-    text: "Look back at what worked and what to carry forward.",
-    points: ["Outcome review against the brief", "Feedback and learnings", "Wrap-up and handover"],
+    number: "05",
+    title: "REVIEW",
+    text: "We review the completed work, gather feedback where appropriate and identify opportunities to improve future projects.",
   },
 ] as const;
 
@@ -145,37 +145,52 @@ export const faqs = [
   {
     question: "What services does Flashax Event Solutions offer?",
     answer:
-      "We offer seven services: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, Corporate Gifting and CSR Programs.",
+      "We offer seven services: Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, CSR Initiatives and Corporate Gifting.",
   },
   {
-    question: "Can I hire Flashax for just one service?",
+    question: "Can I hire Flashax for an individual service or only combined projects?",
     answer:
-      "Yes. You can enquire about an individual service or combine multiple services for a larger project.",
+      "Yes. You can enquire about an individual service or combine multiple services into a single coordinated project under one point of contact.",
   },
   {
-    question: "Do you work with both corporates and colleges?",
+    question: "Do you work with both corporate clients and college institutions?",
     answer:
-      "Yes. Our services are designed for businesses, brands, colleges, educational institutions and event partners.",
+      "Yes. We work across corporate conferences, annual days, product launches and employee engagement, as well as college festivals, campus marketing, youth outreach and educational programmes.",
   },
   {
-    question: "Do you provide event equipment and manpower directly?",
+    question: "Do you provide event production and handle specialist vendor coordination?",
     answer:
-      "Requirements depend on the project. Where necessary, we coordinate with suitable specialist suppliers and service partners for equipment, fabrication, technical production and manpower.",
+      "Yes. We coordinate stage setups, sound and lighting, LED video screens, stall fabrication, branding installations, manpower and logistics, working with vetted specialist partners where required while remaining your single point of contact.",
   },
   {
-    question: "How do I get a quotation?",
+    question: "What is included in your campus marketing solutions?",
     answer:
-      "Share your requirements, location, tentative date and budget range through our enquiry form or WhatsApp. We will review the brief and discuss the next steps.",
+      "Our campus marketing includes campus ambassador networks, college festival sponsorships, student outreach, intercollegiate activations and on-campus promotional drives.",
+  },
+  {
+    question: "How does your corporate gifting service work?",
+    answer:
+      "We help businesses source and customise welcome kits, employee kits, festive hampers, promotional gifts, event giveaways and premium packaging tailored to quantities, branding requirements and timelines.",
+  },
+  {
+    question: "What kinds of CSR initiatives do you coordinate?",
+    answer:
+      "We help coordinate socially meaningful initiatives such as financial literacy workshops, digital education, student career development, entrepreneurship sessions, community outreach and impact reporting.",
+  },
+  {
+    question: "How do we request a project proposal or quotation?",
+    answer:
+      "Submit your requirements through our Get a Proposal form or reach out directly on WhatsApp. We will discuss your brief, understand your objectives and provide an organised scope of work.",
+  },
+  {
+    question: "How are planning timelines and project pricing determined?",
+    answer:
+      "Timelines and pricing depend on the project scope, location, deliverables and lead time. We discuss your budget and parameters openly to recommend practical solutions and realistic schedules.",
   },
   {
     question: "Where is Flashax based?",
     answer:
       "Flashax Event Solutions is based in Mumbai, Maharashtra.",
-  },
-  {
-    question: "Can you customise a solution to my budget?",
-    answer:
-      "We can discuss your objectives and budget and propose a suitable scope based on feasibility and resource requirements.",
   },
 ] as const;
 

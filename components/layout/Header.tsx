@@ -161,7 +161,7 @@ export function Header() {
                           >
                             <div>
                               <span className="mega__num">OVERVIEW</span>
-                              <span className="mega__title">View All 7 Divisions</span>
+                              <span className="mega__title">View All 7 Services</span>
                               <p className="mega__desc">Explore our full end-to-end event production and brand capabilities.</p>
                             </div>
                             <span className="mega__all-icon">

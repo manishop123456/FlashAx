@@ -21,7 +21,6 @@ export function SelectedWork() {
         <div className="work-head">
           <SectionHeading
             id="work-title"
-            eyebrow="SELECTED WORK"
             lines={["BUILT FOR THE", "MOMENTS THAT MATTER."]}
             lead="Selected projects across corporate events, campus festivals, exhibitions, brand activations and digital campaigns."
           />

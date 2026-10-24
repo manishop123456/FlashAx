@@ -22,8 +22,8 @@ export const siteConfig: SiteConfig = {
         { label: "Brand Activation", href: "/services/brand-activation" },
         { label: "Campus Marketing", href: "/services/campus-marketing" },
         { label: "Digital Marketing", href: "/services/digital-marketing" },
+        { label: "CSR Initiatives", href: "/services/csr-initiatives" },
         { label: "Corporate Gifting", href: "/services/corporate-gifting" },
-        { label: "CSR Programs", href: "/services/csr-programs" },
       ],
     },
     { label: "Our Work", href: "/work" },
@@ -47,133 +47,35 @@ export const siteConfig: SiteConfig = {
   ],
 };
 
-export const services: FlashaxService[] = [
-  {
-    slug: "event-management",
-    number: "01",
-    title: "Event Management",
-    shortDescription: "We plan and coordinate corporate events, college festivals, launches, conferences and other experiences around each client's objectives.",
-    fullDescription: "From initial brief through to on-ground execution, we design, plan and coordinate engaging event experiences tailored to your objectives, audience and timeline. We handle venue coordination, scheduling, guest management and on-site direction with structured rigor.",
-    offerings: [
-      "Corporate Events",
-      "College Festivals",
-      "Product Launches",
-      "Conferences and Seminars",
-      "Employee Engagement",
-      "Guest Management",
-      "Event Planning",
-    ],
-    relatedServiceSlugs: ["event-production", "brand-activation", "digital-marketing"],
-  },
-  {
-    slug: "event-production",
-    number: "02",
-    title: "Event Production",
-    shortDescription: "We coordinate event production requirements, technical setups, branding installations, manpower and logistics according to the project scope.",
-    fullDescription: "Technical excellence and operational reliability form the backbone of every memorable event. We coordinate stage builds, acoustic and lighting setups, LED video displays, exhibition stalls and fabrication, supported by trained event manpower and disciplined logistics.",
-    offerings: [
-      "Stage Setup",
-      "Sound and Lighting",
-      "LED Screens",
-      "Exhibition Stalls",
-      "Stall Fabrication",
-      "Event Branding",
-      "Manpower and Logistics",
-      "Trophies and Merchandise",
-    ],
-    relatedServiceSlugs: ["event-management", "brand-activation", "corporate-gifting"],
-  },
-  {
-    slug: "brand-activation",
-    number: "03",
-    title: "Brand Activation",
-    shortDescription: "We help brands plan promotional activities, product experiences, roadshows and audience engagement campaigns.",
-    fullDescription: "Connecting brands directly with targeted audiences through immersive and participatory experiences. We conceptualize, plan and execute on-ground product demonstrations, interactive promotional roadshows and strategic creator collaborations tailored to campaign briefs.",
-    offerings: [
-      "Product Promotions",
-      "Brand Campaigns",
-      "Product Sampling",
-      "Influencer Campaigns",
-      "Celebrity Coordination",
-      "Roadshows",
-      "Audience Engagement",
-      "Launch Campaigns",
-    ],
-    relatedServiceSlugs: ["event-management", "campus-marketing", "digital-marketing"],
-  },
-  {
-    slug: "campus-marketing",
-    number: "04",
-    title: "Campus Marketing",
-    shortDescription: "We help connect brands, colleges and student communities through campus campaigns, partnerships and participation initiatives.",
-    fullDescription: "Facilitating genuine collaboration between forward-thinking brands and vibrant collegiate communities. We build structured campus ambassador networks, secure high-impact festival sponsorships, and coordinate interactive student-focused campaigns across leading colleges.",
-    offerings: [
-      "Campus Ambassadors",
-      "College Sponsorships",
-      "College Outreach",
-      "Student Engagement",
-      "Intercollegiate Events",
-      "Campus Promotions",
-      "Guest Speaker Sessions",
-      "Registration Drives",
-    ],
-    relatedServiceSlugs: ["brand-activation", "event-management", "csr-programs"],
-  },
-  {
-    slug: "digital-marketing",
-    number: "05",
-    title: "Digital Marketing",
-    shortDescription: "We help businesses develop their digital presence through websites, creative content, social media and promotional campaigns.",
-    fullDescription: "Amplifying event moments and brand narratives across digital channels. Our creative team delivers tailored social media management, high-performance web solutions, targeted digital campaigns, and professional photo and video capture that extend your project's impact.",
-    offerings: [
-      "Social Media Management",
-      "Creative Design",
-      "Website Development",
-      "Content Creation",
-      "Photography and Videography",
-      "Video Editing",
-      "Digital Advertising",
-      "Influencer Marketing",
-    ],
-    relatedServiceSlugs: ["brand-activation", "event-management", "campus-marketing"],
-  },
-  {
-    slug: "corporate-gifting",
-    number: "06",
-    title: "Corporate Gifting",
-    shortDescription: "We help businesses explore corporate gifts, welcome kits, festive hampers and customised merchandise for employees, clients and events.",
-    fullDescription: "Thoughtful gifting solutions for corporate teams, festival attendees, and valued partners. We assist with sourcing, custom branding, personalized kits, premium packaging, and delivery coordination tailored to your quantity and timeline specifications.",
-    offerings: [
-      "Welcome Kits",
-      "Employee Kits",
-      "Festive Hampers",
-      "Corporate Gifts",
-      "Customised Merchandise",
-      "Promotional Gifts",
-      "Event Giveaways",
-      "Gift Packaging",
-    ],
-    relatedServiceSlugs: ["event-management", "event-production", "brand-activation"],
-  },
-  {
-    slug: "csr-programs",
-    number: "07",
-    title: "CSR Programs",
-    shortDescription: "We help coordinate educational workshops, financial literacy sessions and community programs aligned with relevant CSR objectives.",
-    fullDescription: "Planning and coordinating socially meaningful educational initiatives and community-aligned engagements. We organize structured workshops on financial capability, digital literacy, and youth career development aligned with our clients' community objectives.",
-    offerings: [
-      "Financial Literacy",
-      "Educational Workshops",
-      "Career Development",
-      "Entrepreneurship Sessions",
-      "Digital Literacy",
-      "Community Outreach",
-      "Guest Speaker Coordination",
-      "Impact Reporting",
-    ],
-    relatedServiceSlugs: ["campus-marketing", "event-management", "digital-marketing"],
-  },
-];
+import { servicesData } from "@/lib/servicesData";
+
+export const services: FlashaxService[] = servicesData.map((s) => ({
+  slug: s.slug,
+  number: s.number.split("/")[0],
+  title: s.title
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+    .replace("Csr", "CSR"),
+  shortDescription: s.mainDescription,
+  fullDescription: s.mainDescription,
+  offerings: s.divisions.map((d) => d.title),
+  relatedServiceSlugs:
+    s.slug === "event-management"
+      ? ["event-production", "brand-activation", "digital-marketing"]
+      : s.slug === "event-production"
+      ? ["event-management", "brand-activation", "corporate-gifting"]
+      : s.slug === "brand-activation"
+      ? ["event-management", "campus-marketing", "digital-marketing"]
+      : s.slug === "campus-marketing"
+      ? ["brand-activation", "event-management", "csr-initiatives"]
+      : s.slug === "digital-marketing"
+      ? ["brand-activation", "event-management", "campus-marketing"]
+      : s.slug === "csr-initiatives"
+      ? ["campus-marketing", "event-management", "digital-marketing"]
+      : ["event-management", "event-production", "brand-activation"],
+}));
 
 export const portfolioProjects: PortfolioProject[] = [];
 

@@ -14,8 +14,8 @@ const SERVICE_OPTIONS = [
   { value: "brand-activation", label: "Brand Activation" },
   { value: "campus-marketing", label: "Campus Marketing" },
   { value: "digital-marketing", label: "Digital Marketing" },
+  { value: "csr-initiatives", label: "CSR Initiatives" },
   { value: "corporate-gifting", label: "Corporate Gifting" },
-  { value: "csr-programs", label: "CSR Programs" },
   { value: "multiple", label: "Multiple Integrated Services" },
   { value: "other", label: "Other / Scoping Required" },
 ];
@@ -25,7 +25,8 @@ const LEGACY_SERVICE_MAP: Record<string, string> = {
   "production-operations": "event-production",
   "campus-connect": "campus-marketing",
   "digital-creative": "digital-marketing",
-  "csr-education": "csr-programs",
+  "csr-education": "csr-initiatives",
+  "csr-programs": "csr-initiatives",
 };
 
 const BUDGET_OPTIONS = [
@@ -344,7 +345,7 @@ export default function ContactPage() {
                     <fieldset>
                       <legend id="enquiry-form-title">Select Capabilities</legend>
                       <p className="wizard__sub">
-                        Which services does your project require? Choose one or multiple divisions.
+                        Which services does your project require? Choose one or multiple services.
                       </p>
 
                       <div className="options" role="group" aria-label="Service capabilities">
@@ -613,7 +614,7 @@ export default function ContactPage() {
                       </Button>
                     ) : (
                       <Button type="submit" variant="primary" icon="right" disabled={isSubmitting}>
-                        {isSubmitting ? "Submitting Proposal..." : "Get a Proposal"}
+                        {isSubmitting ? "Submitting Proposal..." : "GET A PROPOSAL"}
                       </Button>
                     )}
                   </div>

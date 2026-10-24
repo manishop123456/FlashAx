@@ -10,15 +10,12 @@ export function FinalCTA() {
             <span className="line gold">LET&apos;S MAKE IT HAPPEN.</span>
           </h2>
           <p className="final-head__desc">
-            Tell us what you&apos;re planning. We&apos;ll discuss your requirements and the right services to help bring your project to life.
+            Tell us what you&apos;re planning. We&apos;ll discuss your requirements and the right services to help bring your idea to life.
           </p>
         </header>
         <div className="final__actions">
           <ButtonLink href="/contact" variant="primary" icon="up-right">
             GET A PROPOSAL
-          </ButtonLink>
-          <ButtonLink href="/services" variant="secondary">
-            EXPLORE SERVICES
           </ButtonLink>
         </div>
       </div>

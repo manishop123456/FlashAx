@@ -104,8 +104,9 @@ async function sendEmail(data: ContactFormData): Promise<{ success: boolean; mes
       "brand-activation": "Brand Activation",
       "campus-marketing": "Campus Marketing",
       "digital-marketing": "Digital Marketing",
+      "csr-initiatives": "CSR Initiatives",
       "corporate-gifting": "Corporate Gifting",
-      "csr-programs": "CSR Programs",
+      "csr-programs": "CSR Initiatives",
       // Legacy compatibility
       "exhibitions": "Exhibition & Trade Show Solutions",
       "production-operations": "Event Production, Manpower & Operations",

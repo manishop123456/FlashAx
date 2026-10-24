@@ -195,3 +195,63 @@ This file records decisions that should remain consistent across Antigravity, Co
      - Strictly untouched — zero edits to `app/work/page.tsx`, portfolio data, categories, layout, filters, or styling.
 - **Rationale:** Aligns website copy with approved editorial guidelines, establishes a clear typographic hierarchy on the Services page, and creates consistent conversion momentum across all touchpoints.
 
+## D-019 — Final Website Structure, Taxonomy & Section Implementation
+
+- **Status:** Accepted
+- **Date:** 2026-10-24
+- **Decision:**
+  1. **Final Homepage Structure (8 Sections):**
+     - `01. Hero / Landing Page`: Large official logo with one-time white flash reveal, floating particle canvas, service descriptor `EVENTS • EXPERIENCES • BRAND SOLUTIONS`, and CTAs (`GET A PROPOSAL` & `EXPLORE SERVICES`).
+     - `02. Our Services`: Eyebrow `WHAT WE OFFER`, heading `OUR SERVICES`, subheading `Everything Your Idea Needs. All in One Place.`, exact description paragraph, asymmetric 7-card grid (4 wide in row 1, 3 centered in row 2) without numerical badges, and `EXPLORE SERVICES` CTA linking to `/services`.
+     - `03. Why Flashax?`: Two-column editorial layout. Left: Large `WHY` (ivory) `FLASHAX?` (gold), subheading *"The Difference Is in the Execution."*, and exact introduction paragraph. Right: 4 approved differentiators (`SOLUTIONS AROUND YOUR GOALS`, `MULTIPLE SERVICES, ONE POINT OF CONTACT`, `CREATIVE IDEAS, PRACTICAL EXECUTION`, `CLEAR COMMUNICATION`).
+     - `04. How We Work`: Replaced old Process with approved 5-step timeline (`01 — UNDERSTAND`, `02 — PLAN`, `03 — COORDINATE`, `04 — EXECUTE`, `05 — REVIEW`), horizontal on desktop, vertical on mobile.
+     - `05. Selected Work / Featured Projects`: Honest curation state linking to `/work` without synthetic case studies.
+     - `06. FAQs`: Accessible accordion answering common questions across all 7 services, event types, pricing, and timelines.
+     - `07. Final Enquiry CTA`: Heading *"HAVE AN IDEA? LET'S MAKE IT HAPPEN."*, copy *"Tell us what you're planning. We'll discuss your requirements and the right services to help bring your idea to life."*, primary CTA `GET A PROPOSAL`.
+     - `08. Footer`: Global footer with 7 services and founder Mukesh Choudhary.
+  2. **Final About Us Structure (5 Sections):**
+     - `01. About Flashax`: Concise approved company introduction.
+     - `02. Meet the Founder`: Mukesh Choudhary — Founder with official profile photo.
+     - `03. Mission and Vision`: Two equal-sized cards for Our Mission and Our Vision with approved copy.
+     - `04. What Makes Flashax Different?`: Two-column editorial layout with 6 differentiators (`A CONNECTED SERVICE APPROACH`, `SCOPE THAT FITS THE PROJECT`, `AUDIENCE-CENTRED THINKING`, `COORDINATION ACROSS REQUIREMENTS`, `PRACTICAL AND TRANSPARENT PLANNING`, `A COLLABORATIVE WORKING RELATIONSHIP`) and closing statement.
+     - `05. Our Operating Principles`: Unboxed editorial grid with 8 principles (`01` to `08`) with prominent gold numbers, line icons, warm ivory titles, and muted lavender descriptions (4 columns on desktop, 2 on tablet, 1 on mobile), followed by bottom proposal CTAs.
+  3. **Final Services Taxonomy (Exact 7 Divisions in Order):**
+     - `01. Event Management` (`/services/event-management`)
+     - `02. Event Production` (`/services/event-production`)
+     - `03. Brand Activation` (`/services/brand-activation`)
+     - `04. Campus Marketing` (`/services/campus-marketing`)
+     - `05. Digital Marketing` (`/services/digital-marketing`)
+     - `06. CSR Initiatives` (`/services/csr-initiatives` — updated from CSR Programs with permanent 301 redirects and fallback mappings)
+     - `07. Corporate Gifting` (`/services/corporate-gifting`)
+  4. **Strict Safety Rules Maintained:**
+     - `/work` portfolio page strictly untouched and unchanged.
+     - Founder: Mukesh Choudhary exclusively; zero mention of Manish Choudhary or co-founder publicly.
+     - Zero fabricated testimonials, client logos, awards, or stats.
+## D-020 — Service Routing and Dedicated Detail Page Implementation
+
+- **Status:** Accepted
+- **Date:** 2026-10-24
+- **Decision:**
+  1. **Root Cause Resolution:**
+     - Identified that `/services/[slug]/page.tsx` was previously rendering a legacy layout (`PageHero`, `.offers` card grid, `.mini-steps`, and generic accordion FAQs) derived from outdated copy in `lib/site.ts`.
+     - Completely overhauled `app/services/[slug]/page.tsx` to render the approved editorial layout based directly on the authoritative founder content in `lib/servicesData.ts`.
+  2. **Dedicated Individual Service Pages (Exact 7 Routes):**
+     - Each route displays **only** the selected service and its own divisions:
+       - `/services/event-management` (6 divisions: Corporate Events, College Festivals, Product Launches, Conferences and Seminars, Guest Management, Event Planning)
+       - `/services/event-production` (8 divisions, equipment ownership & coordination disclaimer)
+       - `/services/brand-activation` (8 divisions, campaign availability disclaimer)
+       - `/services/campus-marketing` (8 divisions, institutional permissions disclaimer)
+       - `/services/digital-marketing` (8 divisions, commercial terms disclaimer)
+       - `/services/csr-initiatives` (7 divisions, non-NGO execution disclaimer)
+       - `/services/corporate-gifting` (8 divisions, MOQ and sample availability disclaimer)
+  3. **Editorial Layout Structure for Detail Pages:**
+     - `Section 01 — Service Hero`: Back to services breadcrumb link, eyebrow badge (`SERVICE {number}`), prominent H1, founder main description, relevant service visual, and action buttons (`GET A PROPOSAL` & `BACK TO SERVICES`).
+     - `Section 02 & 03 — Service Divisions`: Full division list with alternating desktop layout (text left / image right for odd, image left / text right for even; stacked on mobile), complete founder copy, and visual containers (`DivisionVisual`).
+     - `Section 04 — Service-Specific Enquiry CTA`: Contextual heading (`READY TO DISCUSS {service.title}?`), description, and `GET A PROPOSAL` CTA button preselecting the service in the contact wizard (`/contact?service=${slug}`).
+     - `Section 05 — Return Navigation`: `VIEW ALL SERVICES OVERVIEW` link to `/services` and a clean grid linking to the other 6 service categories.
+  4. **Single Source of Truth:**
+     - Updated `lib/site.ts` `services` array to derive dynamically from `lib/servicesData.ts`, synchronizing the Header mega menu, mobile navigation drawer, footer, and sitemap.
+  5. **Scope & Safety Rules Maintained:**
+     - The main `/services` overview catalogue remains intact with its 7 full-width sections and quicknav.
+     - The `/work` portfolio page remains completely untouched.
+- **Rationale:** Ensures visitors navigating from the navbar dropdown or anywhere on the website experience the dedicated, founder-approved editorial content for each specific service without legacy cards or duplicate full catalogues.
