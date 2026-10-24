@@ -46,7 +46,7 @@ export default function ServicesPage() {
             <div className="svc-hero__overview">
               <div className="svc-hero__overview-frame">
                 <Image
-                  src="/images/services/seven-services-overview.webp"
+                  src="/images/services/seven-services-overview.png"
                   alt="Flashax Seven Services Overview — Event Management, Event Production, Brand Activation, Campus Marketing, Digital Marketing, CSR Initiatives, and Corporate Gifting"
                   width={1500}
                   height={1000}

@@ -36,7 +36,7 @@ export const servicesData: FullService[] = [
           "We coordinate corporate gatherings such as annual days, employee celebrations, award functions, networking events and business events based on your requirements.",
         suggestedImage: "Corporate gathering",
         visualKey: "corporate-events",
-        imageSrc: "/images/services/corporate-events.webp",
+        imageSrc: "/images/services/corporate-events.png",
       },
       {
         divisionNumber: "02",
@@ -45,7 +45,7 @@ export const servicesData: FullService[] = [
           "We help plan and coordinate college festivals, cultural events, student activities and large campus celebrations, including schedules, vendors and event-day operations.",
         suggestedImage: "College festival crowd",
         visualKey: "college-festivals",
-        imageSrc: "/images/services/college-festivals.webp",
+        imageSrc: "/images/services/college-festivals.png",
       },
       {
         divisionNumber: "03",
@@ -54,7 +54,7 @@ export const servicesData: FullService[] = [
           "We coordinate launch events that introduce a new product or service to customers, partners, employees or invited guests through a well-planned event experience.",
         suggestedImage: "Product launch",
         visualKey: "product-launches",
-        imageSrc: "/images/services/product-launches.webp",
+        imageSrc: "/images/services/product-launches.png",
       },
       {
         divisionNumber: "04",
@@ -63,6 +63,7 @@ export const servicesData: FullService[] = [
           "We coordinate conferences, seminars, panel discussions and business sessions, including schedules, speakers, venues, registrations and attendee arrangements.",
         suggestedImage: "Conference stage",
         visualKey: "conferences-seminars",
+        imageSrc: "/images/services/conferences-and-seminars.png",
       },
       {
         divisionNumber: "05",
@@ -71,7 +72,7 @@ export const servicesData: FullService[] = [
           "We help manage invitations, guest registrations, check-ins, reception desks, VIP coordination and guest movement to support a smooth event experience.",
         suggestedImage: "Guest registration desk",
         visualKey: "guest-management",
-        imageSrc: "/images/services/guest-management.webp",
+        imageSrc: "/images/services/guest-management.png",
       },
       {
         divisionNumber: "06",
@@ -80,7 +81,7 @@ export const servicesData: FullService[] = [
           "We help develop the event concept, plan timelines, coordinate venues and suppliers, organise requirements and manage the details needed to bring the event together.",
         suggestedImage: "Event planning or production coordination",
         visualKey: "event-planning",
-        imageSrc: "/images/services/event-planning.webp",
+        imageSrc: "/images/services/event-planning.png",
       },
     ],
   },

@@ -93,6 +93,36 @@
   will-change: transform, opacity, filter;
 }
 
+.hero__brand-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    rgba(247, 183, 33, 0.18) 0%,
+    rgba(82, 18, 98, 0.38) 45%,
+    transparent 75%
+  );
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: -1;
+  animation: hero-halo-breathe 6s ease-in-out infinite alternate;
+}
+
+@keyframes hero-halo-breathe {
+  0% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
 .hero__brand-img {
   width: 100%;
   height: auto;
@@ -144,19 +174,37 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero__brand {
-    animation: none;
+/* Staggered smooth fade-up animation for hero elements */
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
     opacity: 1;
-    transform: none;
-    filter: none;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__brand,
+  .hero__descriptor,
+  .hero__actions {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .hero__brand-halo {
+    animation: none !important;
+    opacity: 0.6 !important;
   }
   .hero__brand-img {
-    animation: none;
-    transform: none;
+    animation: none !important;
+    transform: none !important;
   }
   .hero__brand:hover .hero__brand-img {
-    transform: none;
+    transform: none !important;
   }
 }
 
@@ -182,6 +230,9 @@
   -webkit-backdrop-filter: blur(14px);
   margin-bottom: clamp(2.2rem, 4vh, 3.25rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: hero-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 320ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero__dot {
@@ -198,6 +249,9 @@
   align-items: center;
   gap: clamp(1.2rem, 2vw, 2rem);
   width: 100%;
+  opacity: 0;
+  animation: hero-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero__actions .btn {

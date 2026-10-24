@@ -17,6 +17,7 @@ export function HeroFallback() {
           </h1>
 
           <div className="hero__brand">
+            <div className="hero__brand-halo" aria-hidden="true" />
             <Image
               src="/brand/flashax-logo-transparent.png"
               alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
