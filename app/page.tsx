@@ -8,10 +8,14 @@ import { PartnerMarquee } from "@/components/home/PartnerMarquee";
 import { SelectedWork } from "@/components/home/SelectedWork";
 import { FAQs } from "@/components/home/FAQs";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { LogoLoader } from "@/components/ui/LogoLoader";
 
 export default function HomePage() {
   return (
     <>
+      {/* 00. Signature Experience: Logo-Only Loader & Hero Match Cut */}
+      <LogoLoader />
+
       <Header />
       <main id="main-content" role="main">
         {/* 01. Hero / Landing Page */}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import { TransitionProvider } from "@/components/transition";
+import { ScrollObserver } from "@/components/ui/ScrollObserver";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -120,6 +121,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (!sessionStorage.getItem('flashax_intro_shown') && 
+                    window.location.pathname === '/' && 
+                    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                  document.documentElement.classList.add('intro-pending');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
@@ -129,6 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <TransitionProvider>
+          <ScrollObserver />
           {children}
         </TransitionProvider>
       </body>

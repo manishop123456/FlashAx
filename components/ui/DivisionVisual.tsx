@@ -559,6 +559,7 @@ export function DivisionVisual({
           style={{ objectFit: "cover" }}
           priority={false}
           loading="lazy"
+          unoptimized
         />
         <div className="division-visual__overlay" />
       </div>

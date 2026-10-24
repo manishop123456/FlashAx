@@ -158,6 +158,7 @@ export function ServiceVisual({
           style={{ objectFit: "cover" }}
           priority={priority}
           loading={priority ? undefined : "lazy"}
+          unoptimized
         />
         <div className="service-visual-overlay" />
       </div>

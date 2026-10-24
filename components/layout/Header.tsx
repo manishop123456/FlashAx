@@ -14,6 +14,7 @@ export function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(false);
+  const [scrollDir, setScrollDir] = useState<"up" | "down">("up");
   const megaRef = useRef<HTMLLIElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
@@ -21,7 +22,25 @@ export function Header() {
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+          setScrolled(currentY > 24);
+
+          if (Math.abs(currentY - lastY) > 8) {
+            setScrollDir(currentY > lastY && currentY > 100 ? "down" : "up");
+            lastY = currentY;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -86,9 +105,14 @@ export function Header() {
   const isAbout = pathname.startsWith("/about");
   const isWork = pathname.startsWith("/work");
   const solid = scrolled || megaOpen;
+  const unobtrusive = scrollDir === "down" && scrolled && !megaOpen && !drawerOpen;
 
   return (
-    <header className={`header ${solid ? "header--solid" : ""}`}>
+    <header
+      className={`header ${solid ? "header--solid" : ""} ${
+        unobtrusive ? "header--unobtrusive" : ""
+      }`}
+    >
       <div className="wrap">
         <div className="header__bar">
           {/* Brand Logo */}

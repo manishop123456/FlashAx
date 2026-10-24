@@ -1,12 +1,72 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { HeroParticles } from "@/components/ui/HeroParticles";
+import { prefersReducedMotion } from "@/lib/webgl";
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const brandRef = useRef<HTMLDivElement>(null);
+  const haloRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
+    let animId: number;
+
+    const onPointerMove = (e: PointerEvent) => {
+      // Gentle depth perspective: max 2.5 degrees tilt
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const normX = (e.clientX - centerX) / centerX;
+      const normY = (e.clientY - centerY) / centerY;
+
+      targetRotY = normX * 2.8;
+      targetRotX = -normY * 2.2;
+    };
+
+    const onPointerLeave = () => {
+      targetRotX = 0;
+      targetRotY = 0;
+    };
+
+    const updateLoop = () => {
+      // Smooth lerp damping
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+
+      if (brandRef.current) {
+        brandRef.current.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+      }
+
+      if (haloRef.current) {
+        const shiftX = (currentRotY * 4).toFixed(1);
+        const shiftY = (-currentRotX * 4).toFixed(1);
+        haloRef.current.style.transform = `translate(calc(-50% + ${shiftX}px), calc(-50% + ${shiftY}px)) scale(1.02)`;
+      }
+
+      animId = requestAnimationFrame(updateLoop);
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerleave", onPointerLeave, { passive: true });
+    animId = requestAnimationFrame(updateLoop);
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerleave", onPointerLeave);
+      cancelAnimationFrame(animId);
+    };
+  }, []);
+
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section ref={heroRef} className="hero" aria-labelledby="hero-title">
       {/* Subtle Floating Particle Background (Purple, Magenta, Muted Gold) */}
       <div className="hero__backdrop" aria-hidden="true">
         <div className="hero__radial" />
@@ -21,9 +81,9 @@ export function Hero() {
             FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success
           </h1>
 
-          {/* Official Brand Logo (Clean, High Quality, Completely Static) */}
-          <div className="hero__brand">
-            <div className="hero__brand-halo" aria-hidden="true" />
+          {/* Official Brand Logo with Subtle 3D Perspective Depth */}
+          <div ref={brandRef} className="hero__brand">
+            <div ref={haloRef} className="hero__brand-halo" aria-hidden="true" />
             <Image
               src="/brand/flashax-logo-transparent.png"
               alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"

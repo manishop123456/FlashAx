@@ -36,30 +36,74 @@
 }
 
 .btn--primary {
+  position: relative;
+  overflow: hidden;
   background: var(--gold);
   color: var(--bg);
+  box-shadow: 0 4px 18px rgba(247, 183, 33, 0.25);
+  transition: background-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease),
+              box-shadow var(--t-fast) var(--ease);
+}
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+.btn--primary:hover:not(:disabled)::before {
+  left: 150%;
 }
 .btn--primary:hover:not(:disabled) {
   background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(247, 183, 33, 0.4), 0 0 16px rgba(247, 183, 33, 0.2);
 }
 .btn--primary:hover:not(:disabled) svg {
-  transform: translate(2px, -2px);
+  transform: translate(3px, -3px);
 }
 .btn--primary:active:not(:disabled) {
   transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(247, 183, 33, 0.2);
 }
 
 .btn--secondary {
   color: var(--ivory);
   border-color: var(--line-strong);
-  background: rgba(23, 9, 29, 0.35);
+  background: rgba(23, 9, 29, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              background var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease),
+              box-shadow var(--t-fast) var(--ease);
 }
 .btn--secondary:hover:not(:disabled) {
   border-color: var(--gold);
   color: var(--gold);
+  background: rgba(82, 18, 98, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(247, 183, 33, 0.15);
 }
 .btn--secondary:hover:not(:disabled) svg {
-  transform: translateY(2px);
+  transform: translateY(3px);
+}
+.btn--secondary:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 .btn--ghost {
@@ -100,17 +144,51 @@
   transform: translate(3px, -3px);
 }
 
-/* ---- Cards ------------------------------------------------------------- */
+/* ---- Cards with 3D Depth & Image Parallax Zoom -------------------------- */
 .card {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
-  transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease),
-    background-color var(--t-med) var(--ease);
+  overflow: hidden;
+  transition: border-color var(--t-med) var(--ease),
+              transform var(--t-med) var(--ease),
+              background-color var(--t-med) var(--ease),
+              box-shadow var(--t-med) var(--ease);
+  will-change: transform, box-shadow;
 }
 .card:hover {
   border-color: var(--line-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(82, 18, 98, 0.28);
+}
+.card img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover img {
+  transform: scale(1.035);
+}
+
+/* ---- Scroll Reveal System --------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Stretch a link's hit area to its whole card */

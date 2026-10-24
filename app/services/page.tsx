@@ -53,6 +53,7 @@ export default function ServicesPage() {
                   priority
                   className="svc-hero__overview-img"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1080px"
+                  unoptimized
                 />
                 <div className="svc-hero__overview-overlay" />
                 <div className="svc-hero__overview-badge">

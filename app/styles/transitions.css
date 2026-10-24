@@ -191,4 +191,99 @@
       opacity: 1;
     }
   }
+
+  .logo-loader-overlay {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   FLASHAX Signature Experience — Logo Loader & Match Cut
+   ========================================================================== */
+.logo-loader-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #0e0412;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.logo-loader__radial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(850px, 90vw);
+  height: min(850px, 90vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(82, 18, 98, 0.5) 0%,
+    rgba(247, 183, 33, 0.12) 35%,
+    rgba(34, 13, 43, 0.3) 60%,
+    transparent 75%
+  );
+  filter: blur(45px);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.logo-loader__actor {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.logo-loader__img-frame {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+}
+
+.logo-loader__img {
+  width: clamp(280px, 50vw, 680px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-loader__sweep {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -60%;
+  width: 50%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(247, 183, 33, 0.15) 25%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(247, 183, 33, 0.35) 75%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Prevent flash of hero brand before match cut settles */
+html.intro-pending .hero__brand {
+  opacity: 0 !important;
+  animation: none !important;
 }
