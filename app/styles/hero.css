@@ -200,27 +200,6 @@
   filter: blur(3px);
 }
 
-/* Restrained Light Sweep across Lettering */
-.hero__lettering-beam {
-  position: absolute;
-  top: 10%;
-  bottom: 22%;
-  width: 80px;
-  transform: skewX(-24deg);
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(247, 183, 33, 0.12) 20%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(247, 183, 33, 0.25) 75%,
-    transparent 100%
-  );
-  mix-blend-mode: overlay;
-  opacity: 0;
-  z-index: 4;
-}
-
 /* Optical Star Burst on the X Symbol */
 .hero__x-flare {
   position: absolute;

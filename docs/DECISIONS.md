@@ -334,3 +334,28 @@ This file records decisions that should remain consistent across Antigravity, Co
        - Glides up smoothly to `opacity: 1`, `transform: translateY(0) scale(1)`, `filter: blur(0)`.
      - Built with full accessibility: immediately renders in its resting state when `prefers-reduced-motion: reduce` is enabled.
 - **Rationale:** Delivers immediate, unblocked page rendering with a visually stunning, smooth entrance glide for the official brand centerpiece, coupled with a recognizable feather favicon.
+
+## D-023 - Premium Coordinated Hero Entrance Animation (GSAP Timeline)
+
+- **Status:** Accepted
+- **Date:** 2026-10-25
+- **Context:** Upgraded the homepage hero section with a coordinated, cinematic brand entrance animation matching the FLASHAX HERO ANIMATION implementation brief.
+- **Decision:**
+  1. **Coordinated GSAP Timeline (~2.8s Total Duration):**
+     - **0.0s**: Navigation header smoothly fades in place. Ambient purple/magenta/gold particle canvas fades in.
+     - **0.1s**: Main Flashax logo rises from 70px below with a smooth ease curve (`cubic-bezier(0.22, 1, 0.36, 1)`) and fade-in over 1.25s.
+     - **0.35s - 1.15s**: Radiant golden spark (`.hero__feather-spark`) travels up the spine curve of the feather mark from base (5%, 70%) through mid-arch (9.5%, 44%) to tip (18%, 22%) with glowing core and trail.
+     - **0.95s - 1.70s**: Restrained diagonal light sweep beam (`.hero__lettering-beam`) sweeps smoothly across the "FLASHAX" lettering from left to right.
+     - **1.65s - 1.95s**: Optical 4-point star flare (`.hero__x-flare`) illuminates at the center intersection of the stylized X symbol (87%, 44.5%) with golden-magenta radiance.
+     - **1.95s - 2.80s**: Tagline descriptor pill ("EVENTS • EXPERIENCES • BRAND SOLUTIONS") rises 24px and fades in smoothly.
+     - **2.25s - 3.00s**: Primary "GET A PROPOSAL" CTA button rises 20px and fades in.
+     - **2.42s - 3.10s**: Secondary "EXPLORE SERVICES" CTA button rises 20px with slight stagger.
+  2. **Subtle Background Particles & Desktop Cursor Interaction:**
+     - Enhanced `HeroParticles.tsx` with gentle cursor deflection: particles near the cursor part softly (within 90px) and continue floating upward.
+  3. **Button Hover Micro-Interactions:**
+     - Added smooth upward-right arrow glide (`translate(3px, -3px)`) and warm golden bloom on hovering "GET A PROPOSAL".
+  4. **Performance & Accessibility:**
+     - Timeline managed via `gsap.context()` with full cleanup on unmount (`ctx.revert()`).
+     - All elements finish in their exact natural CSS positions with zero layout shifts or post-animation floating distortion.
+     - Full `prefers-reduced-motion` support: immediately presents all elements at resting positions with 0 duration.
+     - Validated with `npm run typecheck`, `npm run lint`, and `npm run build`.

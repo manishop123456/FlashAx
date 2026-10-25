@@ -13,7 +13,6 @@ export function Hero() {
   const brandRef = useRef<HTMLDivElement>(null);
   const haloRef = useRef<HTMLDivElement>(null);
   const sparkRef = useRef<HTMLDivElement>(null);
-  const beamRef = useRef<HTMLDivElement>(null);
   const xFlareRef = useRef<HTMLDivElement>(null);
   const descriptorRef = useRef<HTMLParagraphElement>(null);
   const primaryCtaRef = useRef<HTMLDivElement>(null);
@@ -50,7 +49,6 @@ export function Hero() {
         left: "5%",
         top: "70%",
       });
-      gsap.set(beamRef.current, { opacity: 0, left: "14%" });
       gsap.set(xFlareRef.current, { opacity: 0, scale: 0.2 });
       gsap.set(descriptorRef.current, { opacity: 0, y: 24 });
       gsap.set(primaryCtaRef.current, { opacity: 0, y: 20 });
@@ -117,30 +115,7 @@ export function Hero() {
         1.15
       );
 
-      // 3. Restrained light sweep travels across FLASHAX lettering
-      tl.fromTo(
-        beamRef.current,
-        { opacity: 0, left: "16%" },
-        {
-          opacity: 0.85,
-          left: "84%",
-          duration: 0.8,
-          ease: "power2.inOut",
-        },
-        0.95
-      );
-
-      tl.to(
-        beamRef.current,
-        {
-          opacity: 0,
-          duration: 0.25,
-          ease: "power1.out",
-        },
-        1.7
-      );
-
-      // 4. Optical flare briefly illuminates the X symbol
+      // 3. Optical flare briefly illuminates the X symbol
       tl.fromTo(
         xFlareRef.current,
         { opacity: 0, scale: 0.2 },
@@ -150,7 +125,7 @@ export function Hero() {
           duration: 0.3,
           ease: "back.out(2)",
         },
-        1.65
+        1.2
       );
 
       tl.to(
@@ -158,46 +133,46 @@ export function Hero() {
         {
           opacity: 0,
           scale: 0.8,
-          duration: 0.4,
+          duration: 0.35,
           ease: "power2.in",
         },
-        1.95
+        1.5
       );
 
-      // 5. Tagline pill fades in and rises upward slightly
+      // 4. Tagline pill fades in and rises upward slightly
       tl.to(
         descriptorRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.85,
+          duration: 0.8,
           ease: "cubic-bezier(0.22, 1, 0.36, 1)",
         },
-        1.95
+        1.6
       );
 
-      // 6. Primary CTA button ("GET A PROPOSAL") fades in after tagline
+      // 5. Primary CTA button ("GET A PROPOSAL") fades in after tagline
       tl.to(
         primaryCtaRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.7,
           ease: "cubic-bezier(0.22, 1, 0.36, 1)",
         },
-        2.25
+        1.85
       );
 
-      // 7. Secondary CTA button ("EXPLORE SERVICES") appears with slight stagger
+      // 6. Secondary CTA button ("EXPLORE SERVICES") appears with slight stagger
       tl.to(
         secondaryCtaRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.7,
           ease: "cubic-bezier(0.22, 1, 0.36, 1)",
         },
-        2.42
+        2.02
       );
     }, heroRef);
 
@@ -289,9 +264,6 @@ export function Hero() {
 
               {/* Coordinated Visual Reveal Effects */}
               <div className="hero__brand-effects" aria-hidden="true">
-                {/* Light sweep across lettering */}
-                <div ref={beamRef} className="hero__lettering-beam" />
-
                 {/* Golden Feather Spark travelling up the spine */}
                 <div ref={sparkRef} className="hero__feather-spark">
                   <div className="hero__feather-spark-core" />
