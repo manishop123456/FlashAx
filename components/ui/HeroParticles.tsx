@@ -35,6 +35,9 @@ export function HeroParticles() {
     let height = 0;
     const reduced = prefersReducedMotion();
 
+    let mouseX = -1000;
+    let mouseY = -1000;
+
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -45,11 +48,27 @@ export function HeroParticles() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
+    const onPointerMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+
+    const onPointerLeave = () => {
+      mouseX = -1000;
+      mouseY = -1000;
+    };
+
     resize();
     window.addEventListener("resize", resize, { passive: true });
 
+    if (!reduced) {
+      window.addEventListener("mousemove", onPointerMove, { passive: true });
+      window.addEventListener("mouseleave", onPointerLeave, { passive: true });
+    }
+
     // Determine particle count based on screen width for clean visual density
-    const count = width < 768 ? 30 : width < 1200 ? 45 : 60;
+    const count = width < 768 ? 28 : width < 1200 ? 42 : 55;
     const dots: Dot[] = [];
 
     for (let i = 0; i < count; i++) {
@@ -60,12 +79,12 @@ export function HeroParticles() {
       dots.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: 1.2 + Math.random() * 1.6, // small particle sizes
+        radius: 1.1 + Math.random() * 1.5, // small, elegant particle sizes
         color: colorPrefix,
-        vx: (Math.random() - 0.5) * 0.22, // restrained movement
-        vy: -0.12 - Math.random() * 0.18, // gentle upward drift
-        alpha: 0.25 + Math.random() * 0.45,
-        alphaSpeed: 0.008 + Math.random() * 0.012,
+        vx: (Math.random() - 0.5) * 0.18, // restrained movement
+        vy: -0.1 - Math.random() * 0.16, // gentle upward drift
+        alpha: 0.22 + Math.random() * 0.42,
+        alphaSpeed: 0.007 + Math.random() * 0.012,
         phase: Math.random() * Math.PI * 2,
       });
     }
@@ -81,6 +100,18 @@ export function HeroParticles() {
           d.y += d.vy;
           d.phase += d.alphaSpeed;
 
+          // Subtle cursor interaction: gentle deflection when cursor nears particle
+          if (mouseX > -500) {
+            const dx = d.x - mouseX;
+            const dy = d.y - mouseY;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 90 && dist > 1) {
+              const force = (1 - dist / 90) * 0.35;
+              d.x += (dx / dist) * force;
+              d.y += (dy / dist) * force;
+            }
+          }
+
           // Wrap boundaries smoothly
           if (d.y < -10) d.y = height + 10;
           if (d.y > height + 10) d.y = -10;
@@ -89,7 +120,7 @@ export function HeroParticles() {
         }
 
         // Subtle opacity twinkle
-        const currentAlpha = Math.max(0.12, Math.min(0.75, d.alpha + Math.sin(d.phase) * 0.18));
+        const currentAlpha = Math.max(0.12, Math.min(0.72, d.alpha + Math.sin(d.phase) * 0.16));
 
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
@@ -107,6 +138,8 @@ export function HeroParticles() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onPointerMove);
+      window.removeEventListener("mouseleave", onPointerLeave);
     };
   }, []);
 
