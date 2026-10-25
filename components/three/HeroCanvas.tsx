@@ -81,19 +81,21 @@ export function Hero() {
             FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success
           </h1>
 
-          {/* Official Brand Logo with Subtle 3D Perspective Depth */}
-          <div ref={brandRef} className="hero__brand">
-            <div ref={haloRef} className="hero__brand-halo" aria-hidden="true" />
-            <Image
-              src="/brand/flashax-logo-transparent.png"
-              alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
-              width={1024}
-              height={261}
-              priority
-              unoptimized
-              className="hero__brand-img"
-              sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, (max-width: 1440px) 76vw, 1260px"
-            />
+          {/* Official Brand Logo with Smooth Bottom-to-Top Fade Entrance & 3D Depth */}
+          <div className="hero__brand-entrance">
+            <div ref={brandRef} className="hero__brand">
+              <div ref={haloRef} className="hero__brand-halo" aria-hidden="true" />
+              <Image
+                src="/brand/flashax-logo-transparent.png"
+                alt="FLASHAX EVENT SOLUTIONS — Where Engagement Sparks Success"
+                width={1024}
+                height={342}
+                priority
+                unoptimized
+                className="hero__brand-img"
+                sizes="(max-width: 640px) 94vw, (max-width: 1024px) 86vw, (max-width: 1440px) 76vw, 1260px"
+              />
+            </div>
           </div>
 
           {/* Small Service Descriptor (Gold Accent #F7B721, Clean Spacing) */}
@@ -107,12 +109,16 @@ export function Hero() {
 
           {/* Primary & Secondary Calls to Action */}
           <div className="hero__actions">
-            <ButtonLink href="/contact" variant="primary" icon="up-right">
-              GET A PROPOSAL
-            </ButtonLink>
-            <ButtonLink href="#services" variant="secondary" icon="down">
-              EXPLORE SERVICES
-            </ButtonLink>
+            <div className="hero__action-item hero__action-item--primary">
+              <ButtonLink href="/contact" variant="primary" icon="up-right">
+                GET A PROPOSAL
+              </ButtonLink>
+            </div>
+            <div className="hero__action-item hero__action-item--secondary">
+              <ButtonLink href="#services" variant="secondary" icon="down">
+                EXPLORE SERVICES
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </div>

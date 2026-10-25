@@ -40,7 +40,19 @@
   z-index: 2;
   pointer-events: none;
   display: block;
+  opacity: 0;
+  animation: hero-particles-fade-in 1200ms ease-out forwards;
 }
+
+@keyframes hero-particles-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 /* Bottom fade smoothly blending into Section 2 (Who We Are) */
 .hero::after {
@@ -79,7 +91,31 @@
   margin-inline: auto;
 }
 
-/* ---- Hero Brand Logo: Cinematic Reveal & Ambient Floating Animation ---- */
+/* ---- Hero Brand Logo: Bottom-to-Top Smooth Fade Entrance ---- */
+.hero__brand-entrance {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: hero-logo-rise-in 1250ms cubic-bezier(0.22, 1, 0.36, 1) 120ms forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-logo-rise-in {
+  0% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  35% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero__brand {
   position: relative;
   width: min(74vw, 1250px);
@@ -89,8 +125,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: hero-logo-reveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform;
 }
 
 .hero__brand-halo {
@@ -129,67 +164,24 @@
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 55px rgba(82, 18, 98, 0.5));
-  animation: hero-logo-float 4.8s ease-in-out 1.2s infinite alternate;
   transition: transform var(--t-med) var(--ease), filter var(--t-med) var(--ease);
   will-change: transform, filter;
 }
 
 .hero__brand:hover .hero__brand-img {
-  transform: translateY(-8px) scale(1.025);
+  transform: translateY(-4px) scale(1.015);
   filter: drop-shadow(0 26px 60px rgba(0, 0, 0, 0.9))
           drop-shadow(0 0 75px rgba(82, 18, 98, 0.65))
           drop-shadow(0 0 32px rgba(247, 183, 33, 0.38));
 }
 
-/* Cinematic entrance reveal on page load / refresh */
-@keyframes hero-logo-reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.93);
-    filter: blur(8px);
-  }
-  50% {
-    opacity: 0.95;
-    filter: blur(1.5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
-  }
-}
-
-/* Smooth ambient floating levitation & subtle breathing lighting */
-@keyframes hero-logo-float {
-  0% {
-    transform: translateY(0);
-    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.85))
-            drop-shadow(0 0 55px rgba(82, 18, 98, 0.45));
-  }
-  100% {
-    transform: translateY(-7px);
-    filter: drop-shadow(0 28px 65px rgba(0, 0, 0, 0.88))
-            drop-shadow(0 0 72px rgba(82, 18, 98, 0.6))
-            drop-shadow(0 0 28px rgba(247, 183, 33, 0.22));
-  }
-}
-
-/* Staggered smooth fade-up animation for hero elements */
-@keyframes hero-fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
+  .hero__particles,
+  .hero__brand-entrance,
   .hero__brand,
   .hero__descriptor,
-  .hero__actions {
+  .hero__actions,
+  .hero__action-item {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -231,8 +223,19 @@
   margin-bottom: clamp(2.2rem, 4vh, 3.25rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   opacity: 0;
-  animation: hero-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 320ms forwards;
+  animation: hero-descriptor-rise-in 900ms cubic-bezier(0.22, 1, 0.36, 1) 280ms forwards;
   will-change: transform, opacity;
+}
+
+@keyframes hero-descriptor-rise-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero__dot {
@@ -249,9 +252,33 @@
   align-items: center;
   gap: clamp(1.2rem, 2vw, 2rem);
   width: 100%;
+}
+
+.hero__action-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
-  animation: hero-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards;
   will-change: transform, opacity;
+}
+
+.hero__action-item--primary {
+  animation: hero-cta-rise-in 850ms cubic-bezier(0.22, 1, 0.36, 1) 440ms forwards;
+}
+
+.hero__action-item--secondary {
+  animation: hero-cta-rise-in 850ms cubic-bezier(0.22, 1, 0.36, 1) 570ms forwards;
+}
+
+@keyframes hero-cta-rise-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero__actions .btn {
@@ -361,6 +388,9 @@
     max-width: 320px;
     gap: 0.85rem;
     margin-inline: auto;
+  }
+  .hero__action-item {
+    width: 100%;
   }
   .hero__actions .btn {
     width: 100%;

@@ -281,9 +281,3 @@
   opacity: 0;
   will-change: transform, opacity;
 }
-
-/* Prevent flash of hero brand before match cut settles */
-html.intro-pending .hero__brand {
-  opacity: 0 !important;
-  animation: none !important;
-}

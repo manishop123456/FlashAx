@@ -16,6 +16,7 @@ export function Header() {
   const [subOpen, setSubOpen] = useState(false);
   const [scrollDir, setScrollDir] = useState<"up" | "down">("up");
   const megaRef = useRef<HTMLLIElement>(null);
+  const megaMenuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
   const burgerRef = useRef<HTMLButtonElement>(null);
@@ -57,7 +58,15 @@ export function Header() {
   useEffect(() => {
     if (!megaOpen) return;
     const onDown = (e: MouseEvent) => {
-      if (megaRef.current && !megaRef.current.contains(e.target as Node)) setMegaOpen(false);
+      const target = e.target as Node;
+      if (
+        megaRef.current &&
+        !megaRef.current.contains(target) &&
+        megaMenuRef.current &&
+        !megaMenuRef.current.contains(target)
+      ) {
+        setMegaOpen(false);
+      }
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -98,7 +107,7 @@ export function Header() {
   }, []);
   const scheduleClose = useCallback(() => {
     clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMegaOpen(false), 140);
+    closeTimer.current = setTimeout(() => setMegaOpen(false), 160);
   }, []);
 
   const isServices = pathname.startsWith("/services");
@@ -154,49 +163,6 @@ export function Header() {
                   Our Services
                   <ChevronDown aria-hidden="true" />
                 </button>
-                {megaOpen && (
-                  <div
-                    id="services-menu"
-                    className="mega"
-                    onBlur={(e) => {
-                      if (!megaRef.current?.contains(e.relatedTarget as Node)) setMegaOpen(false);
-                    }}
-                  >
-                    <div className="wrap mega__inner">
-                      <ul className="mega__grid">
-                        {serviceData.map((s) => (
-                          <li key={s.slug}>
-                            <Link
-                              href={`/services/${s.slug}`}
-                              className="mega__item"
-                              onClick={() => setMegaOpen(false)}
-                            >
-                              <span className="mega__num">{s.number}</span>
-                              <span className="mega__title">{s.title}</span>
-                              <p className="mega__desc">{s.shortDescription}</p>
-                            </Link>
-                          </li>
-                        ))}
-                        <li>
-                          <Link
-                            href="/services"
-                            className="mega__item mega__item--all"
-                            onClick={() => setMegaOpen(false)}
-                          >
-                            <div>
-                              <span className="mega__num">OVERVIEW</span>
-                              <span className="mega__title">View All 7 Services</span>
-                              <p className="mega__desc">Explore our full end-to-end event production and brand capabilities.</p>
-                            </div>
-                            <span className="mega__all-icon">
-                              <ArrowRight aria-hidden="true" width={20} height={20} />
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
               </li>
               <li>
                 <Link
@@ -229,6 +195,61 @@ export function Header() {
           </button>
         </div>
       </div>
+
+      {/* Desktop Mega Menu Dropdown */}
+      {megaOpen && (
+        <div
+          ref={megaMenuRef}
+          id="services-menu"
+          className="mega"
+          onMouseEnter={openMega}
+          onMouseLeave={scheduleClose}
+          onBlur={(e) => {
+            if (
+              !megaRef.current?.contains(e.relatedTarget as Node) &&
+              !megaMenuRef.current?.contains(e.relatedTarget as Node)
+            ) {
+              setMegaOpen(false);
+            }
+          }}
+        >
+          <div className="mega__inner">
+            <ul className="mega__grid">
+              {serviceData.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="mega__item"
+                    onClick={() => setMegaOpen(false)}
+                  >
+                    <span className="mega__num">{s.number}</span>
+                    <span className="mega__title">{s.title}</span>
+                    <p className="mega__desc">{s.shortDescription}</p>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/services"
+                  className="mega__item mega__item--all"
+                  onClick={() => setMegaOpen(false)}
+                >
+                  <div className="mega__all-content">
+                    <span className="mega__num">OVERVIEW</span>
+                    <span className="mega__title">View All 7 Services</span>
+                    <p className="mega__desc">
+                      Explore our full end-to-end event production and brand capabilities.
+                    </p>
+                  </div>
+                  <span className="mega__all-icon">
+                    <ArrowRight aria-hidden="true" width={20} height={20} />
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Drawer Navigation */}
       {drawerOpen && (

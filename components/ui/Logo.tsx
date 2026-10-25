@@ -9,7 +9,7 @@ export function Logo({
   priority = false,
   sizes = "220px",
   width = 1024,
-  height = 261,
+  height = 342,
 }: {
   className?: string;
   priority?: boolean;

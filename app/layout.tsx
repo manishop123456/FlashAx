@@ -50,8 +50,14 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   icons: {
-    icon: "/brand/flashax-logo-transparent.png",
-    apple: "/brand/flashax-logo-transparent.png",
+    icon: [
+      { url: "/brand/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/fhool-pati-icon.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/fhool-pati-icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     type: "website",
@@ -64,7 +70,7 @@ export const metadata: Metadata = {
       {
         url: "/brand/flashax-logo-transparent.png",
         width: 1024,
-        height: 264,
+        height: 342,
         alt: "FLASHAX EVENT SOLUTIONS",
       },
     ],
@@ -120,19 +126,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (!sessionStorage.getItem('flashax_intro_shown') && 
-                    window.location.pathname === '/' && 
-                    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                  document.documentElement.classList.add('intro-pending');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

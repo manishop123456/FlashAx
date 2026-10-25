@@ -1,18 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  generateWhatsAppProposalUrl,
+  formatProposalWhatsAppMessage,
+  SERVICE_LABELS,
+  BUDGET_LABELS,
+  ProposalFormData,
+} from "@/lib/proposal";
 
-interface ContactFormData {
-  services: string[];
-  projectName: string;
-  projectBrief: string;
-  location: string;
-  date: string;
-  audience: string;
-  budget: string;
-  name: string;
-  organisation: string;
-  email: string;
-  phone: string;
-}
+type ContactFormData = ProposalFormData;
+
 
 function validateContactData(data: unknown): { valid: boolean; errors: Record<string, string>; sanitizedData?: ContactFormData } {
   const errors: Record<string, string> = {};
@@ -94,40 +90,14 @@ async function sendEmail(data: ContactFormData): Promise<{ success: boolean; mes
 
   if (!apiKey || !toEmail || !fromEmail) {
     console.warn("Email not configured: missing RESEND_API_KEY, CONTACT_TO_EMAIL, or CONTACT_FROM_EMAIL");
-    return { success: false, message: "Email delivery not configured. Please contact us directly." };
+    return { success: false, message: "Email delivery not configured." };
   }
 
-  const serviceLabels = data.services.map((s) => {
-    const labels: Record<string, string> = {
-      "event-management": "Event Management",
-      "event-production": "Event Production",
-      "brand-activation": "Brand Activation",
-      "campus-marketing": "Campus Marketing",
-      "digital-marketing": "Digital Marketing",
-      "csr-initiatives": "CSR Initiatives",
-      "corporate-gifting": "Corporate Gifting",
-      "csr-programs": "CSR Initiatives",
-      // Legacy compatibility
-      "exhibitions": "Exhibition & Trade Show Solutions",
-      "production-operations": "Event Production, Manpower & Operations",
-      "campus-connect": "Campus Connect & Partnerships",
-      "digital-creative": "Digital Marketing & Content",
-      "csr-education": "CSR & Educational Programs",
-      "multiple": "Multiple Services",
-      "other": "Other / Not Sure",
-    };
-    return labels[s] || s;
-  }).join(", ");
+  const serviceLabels = data.services
+    .map((s) => SERVICE_LABELS[s] || s)
+    .join(", ");
 
-  const budgetLabels: Record<string, string> = {
-    "under-5l": "Under ₹5 Lakhs",
-    "5l-15l": "₹5 – 15 Lakhs",
-    "15l-30l": "₹15 – 30 Lakhs",
-    "30l-50l": "₹30 – 50 Lakhs",
-    "50l-1cr": "₹50 Lakhs – 1 Crore",
-    "over-1cr": "Over ₹1 Crore",
-    "not-sure": "Not sure yet",
-  };
+  const budgetDisplay = data.budget ? (BUDGET_LABELS[data.budget] || data.budget) : "Not specified";
 
   const html = `
     <!DOCTYPE html>
@@ -169,7 +139,7 @@ async function sendEmail(data: ContactFormData): Promise<{ success: boolean; mes
           </tr>
           <tr>
             <td style="padding: 12px 0; color: #F7B721; font-weight: 600; font-size: 14px;">Budget Range</td>
-            <td style="padding: 12px 0; color: #F2F4E8;">${data.budget ? budgetLabels[data.budget] : "Not specified"}</td>
+            <td style="padding: 12px 0; color: #F2F4E8;">${budgetDisplay}</td>
           </tr>
           <tr>
             <td style="padding: 12px 0; color: #F7B721; font-weight: 600; font-size: 14px;">Contact Name</td>
@@ -216,13 +186,13 @@ async function sendEmail(data: ContactFormData): Promise<{ success: boolean; mes
     if (!response.ok) {
       const errorData = await response.json();
       console.error("Resend API error:", errorData);
-      return { success: false, message: "Failed to send email. Please try again later." };
+      return { success: false, message: "Failed to send email." };
     }
 
     return { success: true };
   } catch (error) {
     console.error("Email send error:", error);
-    return { success: false, message: "Failed to send email. Please try again later." };
+    return { success: false, message: "Failed to send email." };
   }
 }
 
@@ -248,17 +218,56 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const emailResult = await sendEmail(sanitizedData);
+    // Always log the proposal submission to server runtime logs
+    console.info("[Flashax Proposal Received]:", {
+      timestamp: new Date().toISOString(),
+      name: sanitizedData.name,
+      organisation: sanitizedData.organisation,
+      email: sanitizedData.email,
+      phone: sanitizedData.phone,
+      project: sanitizedData.projectName,
+      date: sanitizedData.date,
+      location: sanitizedData.location,
+      services: sanitizedData.services,
+    });
 
-    if (!emailResult.success) {
-      return NextResponse.json(
-        { success: false, message: emailResult.message || "Failed to process enquiry" },
-        { status: 500 }
-      );
+    const whatsappUrl = generateWhatsAppProposalUrl(sanitizedData);
+
+    // Optional email dispatch if configured
+    let emailSent = false;
+    if (process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL && process.env.CONTACT_FROM_EMAIL) {
+      const emailResult = await sendEmail(sanitizedData);
+      emailSent = emailResult.success;
+    } else {
+      console.info("Email delivery unconfigured; submission recorded for direct WhatsApp communication.");
+    }
+
+    // Optional webhook dispatch (e.g. Zapier, Make, Slack, or WhatsApp Cloud API webhook)
+    if (process.env.WHATSAPP_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.WHATSAPP_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "proposal_submission",
+            data: sanitizedData,
+            whatsappUrl,
+            formattedMessage: formatProposalWhatsAppMessage(sanitizedData),
+            timestamp: new Date().toISOString(),
+          }),
+        });
+      } catch (webhookErr) {
+        console.warn("Optional WhatsApp webhook dispatch error:", webhookErr);
+      }
     }
 
     return NextResponse.json(
-      { success: true, message: "Enquiry submitted successfully" },
+      {
+        success: true,
+        message: "Enquiry submitted successfully. Proceeding to WhatsApp.",
+        whatsappUrl,
+        emailSent,
+      },
       { status: 200 }
     );
   } catch (error) {

@@ -280,3 +280,57 @@ This file records decisions that should remain consistent across Antigravity, Co
      - In strict adherence to non-negotiable rules, no unrelated event photographs were assigned to **Digital Marketing**, **CSR Initiatives**, or **Corporate Gifting**. These services, along with **Brand Activation** and **Campus Marketing**, retain their tailored geometric vector motifs (`ServiceVisual` & `DivisionVisual`).
   4. **Performance & Styling:**
      - All image thumbnails use `object-fit: cover` with fixed aspect ratios (`16:9` on Home cards, `16:10` on editorial pages), Next.js responsive sizing, lazy loading below the fold, and subtle vignette overlays matching the `#17091D` / `#521262` palette.
+
+## D-021 — Direct WhatsApp Integration for Proposal Enquiries
+
+- **Status:** Accepted
+- **Date:** 2026-10-25
+- **Context:** Previously, submitting the multi-step "Get a Proposal" form on `/contact` failed with a 500 error when email credentials (Resend) were unconfigured, and submitted client enquiry details were not delivered to WhatsApp.
+- **Decision:**
+  1. **Direct WhatsApp Formatting Utility (`lib/proposal.ts`):**
+     - Created a structured formatter converting all client submissions (client contact info, selected capabilities, project name, scope & objectives, location, target date, attendance size, and budget bracket) into a clean, human-readable WhatsApp message.
+     - Generates universal WhatsApp click-to-chat links (`https://wa.me/917757855121?text=...`) directly routing to the Flashax contact phone number (`+91 7757855121`).
+  2. **Seamless Client-Side Submission Workflow (`app/contact/page.tsx`):**
+     - In Step 4 (Point of Contact), added a clear note informing clients that clicking "GET A PROPOSAL" compiles their brief and routes directly to WhatsApp.
+     - Synchronously triggers `window.open(waUrl)` on submission to bypass mobile/desktop popup blockers.
+     - Replaces the form upon submission with an interactive **Proposal WhatsApp Hub**:
+       - Primary CTA: **"Open WhatsApp (+91 7757855121) ↗"**
+       - Secondary Action: **"Copy Brief Text"** (with clipboard copy feedback)
+       - Detailed summary preview card of the client's submitted project parameters
+       - Reset action: **"Submit Another Proposal Brief"**
+  3. **Resilient Backend API (`app/api/contact/route.ts`):**
+     - Always logs complete incoming proposal details to runtime console logs for auditability.
+     - Non-blocking email dispatch: if Resend API keys are absent, the API records the enquiry and returns `{ success: true, whatsappUrl }` rather than failing with 500.
+     - Optional webhook support (`WHATSAPP_WEBHOOK_URL` in `.env`) for future automation (Zapier, Make, or WhatsApp Cloud API).
+  4. **Quality & Design Standards:**
+     - Preserves the required button CTA `GET A PROPOSAL`.
+     - Tested on mobile and desktop breakpoints; passed `npm run lint`, `npm run typecheck`, and `npm run build`.
+
+## D-022 - Final Logo Replacement, Feather Favicon, and Hero Smooth Down-to-Up Entrance Animation
+
+- **Status:** Accepted
+- **Date:** 2026-10-25
+- **Context:** The user provided the final official Flashax brand asset (media_1792912139531.png) with clean typography and feather mark, requested updating the favicon across the website using public/brand/fhool pati.png, removing the intro loader page (LogoLoader), and introducing a smooth fade-in entrance animation where the big hero Flashax logo glides up from bottom to its resting position.
+- **Decision:**
+  1. **Final Logo Integration Across All Surfaces:**
+     - Replaced `public/brand/flashax-logo-transparent.png`, `public/brand/flashax-final-logo.png`, and `public/brand/flashax-logo-cropped.png` with the final logo asset (1024x342, aspect ratio `1024 / 342 = 2.994`).
+     - Backed up the previous asset to `public/brand/flashax-logo-transparent.bak.png`.
+     - Updated default width and height to 1024 and 342 in `components/ui/Logo.tsx`, `components/three/HeroCanvas.tsx`, and `components/three/HeroFallback.tsx`.
+     - Preserved exact proportions and responsive clamp sizing without distortion.
+  2. **Favicon & App Icon Generation from fhool pati.png:**
+     - Processed the vibrant high-resolution feather mark (`public/brand/fhool pati.png`) using `sharp` to generate perfectly centered, crisp square icons:
+       - 512x512: `public/brand/fhool-pati-icon.png`, `app/icon.png`, `public/icon.png`
+       - 180x180: `public/brand/apple-touch-icon.png`, `app/apple-icon.png`, `public/apple-touch-icon.png`
+       - 32x32: `public/brand/favicon.png`, `app/favicon.ico`, `public/favicon.ico`
+     - Updated `app/layout.tsx` metadata `icons` and `openGraph` tags to ensure all modern browsers, search engines, and bookmark bars render the feather favicon.
+  3. **Intro Loader Page Removal:**
+     - Removed `<LogoLoader />` from `app/page.tsx`, eliminating any blocking overlays or delays on initial arrival (satisfying AGENTS.md Rule 8).
+     - Rendered `components/ui/LogoLoader.tsx` inert (returning `null`) so any lingering imports do not block page rendering.
+  4. **Decoupled Smooth Down-to-Up Entrance Animation:**
+     - Discovered that the hero 3D mouse parallax transform was running in a continuous `requestAnimationFrame` loop on `.hero__brand`, immediately overwriting CSS `@keyframes` transform properties.
+     - Resolved this by decoupling the entrance motion into an outer container (`.hero__brand-entrance`) and the interactive tilt on the inner container (`.hero__brand`).
+     - Designed a silky smooth entrance animation (`@keyframes hero-logo-fade-up`) running over 1250ms with `cubic-bezier(0.16, 1, 0.3, 1)` easing:
+       - Starts at `opacity: 0`, `transform: translateY(48px) scale(0.97)`, `filter: blur(8px)`.
+       - Glides up smoothly to `opacity: 1`, `transform: translateY(0) scale(1)`, `filter: blur(0)`.
+     - Built with full accessibility: immediately renders in its resting state when `prefers-reduced-motion: reduce` is enabled.
+- **Rationale:** Delivers immediate, unblocked page rendering with a visually stunning, smooth entrance glide for the official brand centerpiece, coupled with a recognizable feather favicon.
